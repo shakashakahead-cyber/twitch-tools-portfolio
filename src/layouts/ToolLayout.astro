@@ -8,15 +8,49 @@ interface Props {
     description: string;
     icon: string;
     storeUrl: string;
-    videoId?: string; // 動画IDは任意（なければ表示しない）
+    videoId?: string;
     privacyUrl: string;
   }
 }
 
 const { frontmatter } = Astro.props;
+
+// ▼▼▼ 構造化データ（JSON-LD）の定義 ▼▼▼
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": frontmatter.title,
+  "description": frontmatter.description,
+  "operatingSystem": "Windows, macOS, ChromeOS",
+  "applicationCategory": "BrowserApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Akatsukizaemon",
+    "url": "https://shakashakahead.com"
+  },
+  // 動画がある場合は動画情報も含める
+  ...(frontmatter.videoId && {
+    "video": {
+      "@type": "VideoObject",
+      "name": `${frontmatter.title} 解説動画`,
+      "description": "ツールの使い方解説",
+      "thumbnailUrl": `https://img.youtube.com/vi/${frontmatter.videoId}/maxresdefault.jpg`,
+      "uploadDate": "2025-12-05", // 仮の日付（必要に応じて調整）
+      "contentUrl": `https://www.youtube.com/watch?v=${frontmatter.videoId}`
+    }
+  })
+};
+// ▲▲▲ 定義ここまで ▲▲▲
 ---
 
 <Layout title={`${frontmatter.title} | 暁左衛門 Lab`} description={frontmatter.description}>
+  
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   <div class="bg-slate-900 min-h-screen pt-24 pb-16">
     <div class="mx-auto max-w-4xl px-6 lg:px-8">
       
