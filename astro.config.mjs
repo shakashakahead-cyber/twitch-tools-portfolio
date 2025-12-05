@@ -1,12 +1,11 @@
-// astro.config.mjs
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import icon from 'astro-icon';
+import sitemap from '@astrojs/sitemap'; // ※手順2で追加されますが、書いておきます
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    tailwind(),
-    icon()
-  ],
+  // ▼ ここをあなたのドメインに変更
+  site: 'https://shakashakahead.com', 
+  
+  integrations: [tailwind(), sitemap()]
 });
