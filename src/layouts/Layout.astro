@@ -1,0 +1,55 @@
+---
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-purple-500 selection:text-white">
+    <div class:list={[{'markdown-container prose': Astro.url.pathname.startsWith('/privacy/')}]}>
+	    <slot />
+    </div>
+</body>
+</html>
+
+<style is:global>
+	body {
+		font-family: 'Noto Sans JP', sans-serif;
+	}
+
+    /* Markdownページ用のスタイル */
+    .prose {
+        @apply text-gray-300;
+    }
+    .prose h1 {
+        @apply text-3xl font-bold text-white mt-8 mb-4;
+    }
+    .prose h2 {
+        @apply text-2xl font-bold text-white mt-6 mb-3;
+    }
+    .prose p {
+        @apply mb-4 leading-7;
+    }
+    .prose ul {
+        @apply list-disc list-inside mb-4;
+    }
+    /* Markdownページのコンテナ */
+    .markdown-container {
+        @apply mx-auto max-w-3xl px-6 py-24;
+    }
+</style>
