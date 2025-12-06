@@ -6,7 +6,7 @@ icon: "🗣️"
 storeUrl: "https://chromewebstore.google.com/detail/eolabmdepbcdcppfdmkibgjffiifndkd?utm_source=item-share-cb"
 privacyUrl: "/privacy/voicevox-comment-reader"
 # 動画ID (空欄なら非表示)
-# videoId: ""
+videoId: "NJ9SmGJFUG4"
 ---
 
 ## 概要
