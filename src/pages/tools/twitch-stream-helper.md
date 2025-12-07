@@ -6,7 +6,7 @@ icon: "🛠️"
 storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep"
 privacyUrl: "/privacy/twitch-stream-helper"
 # 動画ができたらIDを入れてください。空欄または行ごと削除で非表示になります。
-# videoId: "" 
+videoId: "02bfIReoEUQ" 
 ---
 
 ## 概要
