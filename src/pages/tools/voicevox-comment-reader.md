@@ -9,6 +9,13 @@ privacyUrl: "/privacy/voicevox-comment-reader"
 # 動画ID (空欄なら非表示)
 videoId: "NJ9SmGJFUG4"
 uploadDate: "2025-12-08T00:00:00+09:00"
+faq:
+  - question: "無料で使えますか？"
+    answer: "はい、拡張機能自体は完全無料です。（VOICEVOXのご利用に関してはVOICEVOXの規約に従ってください）"
+  - question: "OBSに音声を取り込むには？"
+    answer: "この拡張機能はデフォルトではブラウザ（Chrome等）から音を出します。OBSの「デスクトップ音声」でブラウザの音を拾うようにしてください。"
+  - question: "読み上げないコメントがあります（Botなど）"
+    answer: "設定画面で、Botや特定のコマンド（`!`で始まるコメントなど）を読み飛ばすフィルター設定が可能です。"
 ---
 
 ## 🚀 配信のコメントを「いい声」で聞き逃さない
@@ -42,30 +49,8 @@ uploadDate: "2025-12-08T00:00:00+09:00"
 
 ---
 
-## ❓ よくある質問
-
-**Q. 無料で使えますか？**  
-A. はい、拡張機能自体は完全無料です。（VOICEVOXのご利用に関してはVOICEVOXの規約に従ってください）
-
-**Q. OBSに音声を取り込むには？**  
-A. この拡張機能はデフォルトではブラウザ（Chrome等）から音を出します。OBSの「デスクトップ音声」でブラウザの音を拾うようにしてください。
-
-**Q. 読み上げないコメントがあります（Botなど）**  
-A. 設定画面で、Botや特定のコマンド（`!`で始まるコメントなど）を読み飛ばすフィルター設定が可能です。
-
----
-
 ## ⚠️ 注意事項・クレジット
 
 *   本拡張機能を使用するには、VOICEVOXソフトウェアがバックグラウンドで起動している必要があります。
 *   【クレジット】 本拡張機能はVOICEVOXのAPIを利用しています。配信で利用する際は、使用するボイスライブラリの利用規約（クレジット表記など）に従ってください。
     *   VOICEVOX: [https://voicevox.hiroshiba.jp/](https://voicevox.hiroshiba.jp/)
-
-<div class="mt-12 flex justify-center">
-  <a href="https://chromewebstore.google.com/detail/eolabmdepbcdcppfdmkibgjffiifndkd?utm_source=item-share-cb" target="_blank" class="rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-8 py-4 text-lg font-bold text-white shadow-lg hover:from-indigo-400 hover:to-purple-500 hover:shadow-xl transition-all flex items-center gap-3">
-    <span>Chrome Web Storeで今すぐ追加</span>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-    </svg>
-  </a>
-</div>
