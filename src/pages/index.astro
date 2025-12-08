@@ -6,45 +6,22 @@ import ToolsSection from "../components/ToolsSection.astro";
 import AboutSection from "../components/AboutSection.astro";
 import ContactSection from "../components/ContactSection.astro";
 import UpdatesSection from "../components/UpdatesSection.astro";
+import {
+    socialLinks,
+    skills,
+    games,
+    extensions,
+    profile,
+} from "../data/siteData";
 
-// ツール一覧データ
-const extensions = [
-    {
-        title: "Twitch Stream Helper",
-        desc: "タグ管理・配信設定・SNS告知をこれひとつで。配信準備の時間を短縮します。",
-        link: "/tools/twitch-stream-helper/",
-        storeUrl:
-            "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep",
-        icon: "🛠️",
-        image: "/images/twitch-stream-helper-preview.png",
-    },
-    {
-        title: "Comment Reader for Twitch (powered by Voicevox)",
-        desc: "ずんだもん達がコメントを読み上げ。VOICEVOX連携で高品質な音声読み上げを実現。",
-        link: "/tools/voicevox-comment-reader/",
-        storeUrl:
-            "https://chromewebstore.google.com/detail/eolabmdepbcdcppfdmkibgjffiifndkd?utm_source=item-share-cb",
-        icon: "🗣️",
-        image: "/images/voicevox-comment-reader-preview.png",
-    },
-];
-
-const socialLinks = {
-    twitch: "https://www.twitch.tv/akatsukizaemon",
-    x: "https://x.com/akatsukizaemon",
-    email: "shakashakahead@gmail.com",
-};
-
-// 技術スタック
-const skills = ["C#"];
-
-// プレイ中のゲーム
-const games = ["VALORANT", "Apex Legends", "Shadowverse"];
+const currentLang = "ja";
+const strings = profile[currentLang];
+const toolList = extensions[currentLang];
 ---
 
 <Layout
-    title="暁左衛門 Lab | Streamer Tools"
-    description="現役配信者・暁左衛門が開発するTwitch配信効率化ツール・拡張機能のポートフォリオサイト。"
+    title="暁左衛門 Lab | 配信者向けツール開発"
+    description="Twitch配信をより快適に、より楽しく。現役ストリーマー兼エンジニアが開発した便利な拡張機能たち。"
 >
     <!-- Navigation -->
     <Navigation />
@@ -67,17 +44,17 @@ const games = ["VALORANT", "Apex Legends", "Shadowverse"];
                 <div
                     class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20"
                 >
-                    Freelance Engineer & Streamer
+                    {strings.role}
                 </div>
             </div>
             <h1
                 class="text-4xl font-bold tracking-tight text-white sm:text-6xl mb-6"
             >
-                Akatsukizaemon Lab
+                暁左衛門 Lab
             </h1>
             <p class="mt-6 text-lg leading-8 text-gray-300 max-w-2xl mx-auto">
-                現役配信者が作る、配信者のためのツールボックス。<br />
-                Twitch配信をより快適に、より楽しくするための拡張機能を開発・公開しています。
+                配信者のための、配信者によるツールボックス。<br />
+                Twitchでの配信活動を「もっと快適に」「もっと楽しく」する拡張機能を開発しています。
             </p>
 
             <div class="mt-10 flex items-center justify-center gap-x-6">
@@ -92,13 +69,18 @@ const games = ["VALORANT", "Apex Legends", "Shadowverse"];
     </main>
 
     <!-- Tools Section -->
-    <ToolsSection extensions={extensions} />
+    <ToolsSection extensions={toolList} />
 
     <!-- Updates Section (Placeholder) -->
     <UpdatesSection />
 
     <!-- About Section -->
-    <AboutSection skills={skills} games={games} socialLinks={socialLinks} />
+    <AboutSection
+        profile={strings}
+        socialLinks={socialLinks}
+        skills={skills}
+        games={games}
+    />
 
     <!-- Contact Section -->
     <ContactSection socialLinks={socialLinks} />

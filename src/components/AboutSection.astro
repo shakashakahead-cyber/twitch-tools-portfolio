@@ -1,15 +1,23 @@
 ---
 interface Props {
-    skills: string[];
-    games: string[];
+    profile: {
+        role: string;
+        description: string;
+        playingStreaming: {
+            title: string;
+            desc: string;
+        };
+    };
     socialLinks: {
         twitch: string;
         x: string;
         email: string;
     };
+    skills: string[];
+    games: string[];
 }
 
-const { skills, games, socialLinks } = Astro.props;
+const { profile, socialLinks, skills, games } = Astro.props;
 ---
 
 <section
@@ -26,10 +34,10 @@ const { skills, games, socialLinks } = Astro.props;
                 >
                     About Developer
                 </h2>
-                <p class="mt-6 text-lg leading-8 text-gray-300">
-                    自衛隊出身という異色の経歴を持つ、フリーランスエンジニア兼Twitchストリーマー。<br
-                    />
-                    東京・中野で猫と暮らしながら、「自分が配信で困ったことは、技術で解決する」をモットーに開発しています。
+                <p
+                    class="mt-6 text-lg leading-8 text-gray-300 w-full whitespace-pre-line"
+                >
+                    {profile.description}
                 </p>
 
                 <div class="mt-8 border-l-2 border-indigo-500 pl-6">
@@ -49,10 +57,10 @@ const { skills, games, socialLinks } = Astro.props;
 
                 <div class="mt-6 border-l-2 border-purple-500 pl-6">
                     <h3 class="text-sm font-semibold text-purple-400 mb-2">
-                        Playing / Streaming
+                        {profile.playingStreaming.title}
                     </h3>
                     <p class="text-sm text-gray-400 mb-2">
-                        主にVALORANTを配信中。オーディオ機器やデバイスの話も大好きです。
+                        {profile.playingStreaming.desc}
                     </p>
                     <div class="flex flex-wrap gap-2">
                         {
@@ -80,7 +88,7 @@ const { skills, games, socialLinks } = Astro.props;
                                 d="M11.64 5.93h1.43v4.28h-1.43m3.93-4.28H17v4.28h-1.43M7 2L3.43 5.57v12.86h4.28V22l3.58-3.57h2.85L20.57 12V2m-1.43 9.29l-2.85 2.85h-2.86l-2.5 2.5v-2.5H7.71V3.43h11.43z"
                                 clip-rule="evenodd"></path></svg
                         >
-                        Twitchでチャンネルをチェック
+                        Check Channel on Twitch
                     </a>
                     <a
                         href={socialLinks.x}
@@ -111,7 +119,7 @@ const { skills, games, socialLinks } = Astro.props;
                         <div
                             class="absolute -bottom-2 -right-2 rounded-xl bg-slate-800 p-3 shadow-lg ring-1 ring-white/10"
                         >
-                            <div class="items-center gap-x-2 hidden md:flex">
+                            <div class="flex items-center gap-x-2">
                                 <span class="relative flex h-3 w-3">
                                     <span
                                         class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
@@ -140,7 +148,7 @@ const { skills, games, socialLinks } = Astro.props;
                         target="_blank"
                         class="text-xs text-gray-400 hover:text-[#9146FF] transition-colors underline decoration-gray-600 hover:decoration-[#9146FF]"
                     >
-                        ※プレーヤーが反応しない場合はこちら (Twitchへ移動)
+                        *If player doesn't load, click here (Go to Twitch)
                     </a>
                 </div>
 
