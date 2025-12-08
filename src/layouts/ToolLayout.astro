@@ -10,6 +10,7 @@ interface Props {
     image: string;
     storeUrl: string;
     videoId?: string;
+    uploadDate?: string;
     privacyUrl: string;
   };
 }
@@ -41,7 +42,7 @@ const schemaData = {
       name: `${frontmatter.title} 解説動画`,
       description: "ツールの使い方解説",
       thumbnailUrl: `https://img.youtube.com/vi/${frontmatter.videoId}/maxresdefault.jpg`,
-      uploadDate: "2025-12-05", // 仮の日付（必要に応じて調整）
+      uploadDate: frontmatter.uploadDate,
       contentUrl: `https://www.youtube.com/watch?v=${frontmatter.videoId}`,
     },
   }),
@@ -100,7 +101,7 @@ const schemaData = {
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
-              ></iframe>
+              />
             </div>
           </div>
         )
