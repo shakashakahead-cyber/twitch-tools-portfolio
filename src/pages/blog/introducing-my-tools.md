@@ -26,7 +26,11 @@ pubDate: "2025-12-09"
 *   **ロードアウト機能**: タイトル・ゲーム・タグの設定をまとめて保存・適用できます。
 *   **爆速X告知**: 「配信タイトル」と「URL」が自動挿入された状態で、ワンボタンでツイート画面を開けます。
 
-[👉 View Tool Detail](/tools/twitch-stream-helper/)
+<div class="my-8 text-center">
+  <a href="/tools/twitch-stream-helper/" class="inline-block rounded-md bg-indigo-600 px-6 py-3 text-base font-bold text-white shadow-lg hover:bg-indigo-500 transition-all hover:scale-105 no-underline">
+    Twitch Stream Helper の詳細・インストール方法を見る →
+  </a>
+</div>
 
 ## 2. Comment Reader for Twitch (powered by Voicevox)
 
@@ -40,7 +44,11 @@ pubDate: "2025-12-09"
 *   **ずんだもんが喋る！**: 人気のVOICEVOXキャラクター（ずんだもん、四国めたん等）の声を無料で利用できます。
 *   **ブラウザだけで完結**: 重いソフトを常駐させる必要はありません。
 
-[👉 View Tool Detail](/tools/voicevox-comment-reader/)
+<div class="my-8 text-center">
+  <a href="/tools/voicevox-comment-reader/" class="inline-block rounded-md bg-indigo-600 px-6 py-3 text-base font-bold text-white shadow-lg hover:bg-indigo-500 transition-all hover:scale-105 no-underline">
+    Comment Reader for Twitch の詳細・インストール方法を見る →
+  </a>
+</div>
 
 ## まとめ
 

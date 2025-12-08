@@ -8,6 +8,13 @@ storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapi
 privacyUrl: "/privacy/twitch-stream-helper/"
 videoId: "02bfIReoEUQ"
 uploadDate: "2025-12-05T00:00:00+09:00"
+faq:
+  - question: "Is it free?"
+    answer: "Yes, it is completely free to use."
+  - question: "Which browsers are supported?"
+    answer: "It works on Chromium-based browsers such as Google Chrome, Microsoft Edge, and Brave."
+  - question: "Stream title or tags are not updating"
+    answer: "This may be due to Twitch specification changes or temporary errors. Please try reloading the page or waiting a while. If the issue persists, please contact me on X (Twitter)."
 ---
 
 ## 🎮 Zero Hassle for Stream Prep

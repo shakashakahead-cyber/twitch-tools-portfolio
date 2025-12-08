@@ -8,7 +8,14 @@ storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapi
 privacyUrl: "/privacy/twitch-stream-helper/"
 # 動画ができたらIDを入れてください。空欄または行ごと削除で非表示になります。
 videoId: "02bfIReoEUQ"
-uploadDate: "2025-12-05T00:00:00+09:00" 
+uploadDate: "2025-12-05T00:00:00+09:00"
+faq:
+  - question: "無料で使えますか？"
+    answer: "はい、完全無料でお使いいただけます。"
+  - question: "どのブラウザで使えますか？"
+    answer: "Google Chrome、Microsoft Edge、BraveなどのChromiumベースのブラウザで動作します。"
+  - question: "配信タイトルやタグが反映されません"
+    answer: "Twitchの仕様変更や一時的なエラーの可能性があります。ページをリロードするか、少し時間をおいて再度お試しください。それでも直らない場合はX(Twitter)までご連絡ください。" 
 ---
 
 ## 🎮 配信準備の「面倒」をゼロにする
