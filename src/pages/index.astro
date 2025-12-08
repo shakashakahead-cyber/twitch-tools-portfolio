@@ -2,8 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
-import ToolsSection from "../components/ToolsSection.astro";
-import AboutSection from "../components/AboutSection.astro";
 import ContactSection from "../components/ContactSection.astro";
 import UpdatesSection from "../components/UpdatesSection.astro";
 import {
@@ -101,7 +99,7 @@ const toolList = extensions[currentLang];
                         <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-slate-900 shadow-xl ring-1 ring-white/10 transition-all hover:ring-indigo-500 hover:-translate-y-1">
                             <a
                                 href={ext.link}
-                                class="relative h-40 overflow-hidden bg-slate-800 block"
+                                class="relative h-80 overflow-hidden bg-slate-800 block"
                             >
                                 <img
                                     src={ext.image}

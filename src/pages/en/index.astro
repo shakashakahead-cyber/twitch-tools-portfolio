@@ -1,9 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Navigation from "../../components/Navigation.astro";
-import ToolsSection from "../../components/ToolsSection.astro";
 import UpdatesSection from "../../components/UpdatesSection.astro";
-import AboutSection from "../../components/AboutSection.astro";
 import ContactSection from "../../components/ContactSection.astro";
 import Footer from "../../components/Footer.astro";
 import {
@@ -66,7 +64,6 @@ const toolList = extensions[currentLang];
                 >
                     View All Extensions
                 </a>
-                <!-- English Blog is not main yet, but can link to top or maybe just remove this button for now? Keeping it for consistency -->
                 <a
                     href="/blog/"
                     class="text-sm font-semibold leading-6 text-white hover:text-indigo-300 transition-colors"
@@ -100,7 +97,7 @@ const toolList = extensions[currentLang];
                         <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-slate-900 shadow-xl ring-1 ring-white/10 transition-all hover:ring-indigo-500 hover:-translate-y-1">
                             <a
                                 href={ext.link}
-                                class="relative h-40 overflow-hidden bg-slate-800 block"
+                                class="relative h-80 overflow-hidden bg-slate-800 block"
                             >
                                 <img
                                     src={ext.image}
