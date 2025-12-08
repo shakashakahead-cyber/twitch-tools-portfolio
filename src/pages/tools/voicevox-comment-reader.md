@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/ToolLayout.astro
-title: "Twitch Comment Reader (VOICEVOX)"
+title: "Comment Reader for Twitch (powered by Voicevox)"
 description: "VOICEVOXと連携し、Twitchのコメントを高品質な音声で読み上げ。配信のインタラクションを強化します。"
 icon: "🗣️"
 image: "/images/voicevox-comment-reader-preview.png"

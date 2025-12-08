@@ -1,0 +1,67 @@
+---
+import Layout from "./Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+    frontmatter: {
+        title: string;
+        description: string;
+        pubDate: string;
+        image?: string;
+    };
+}
+
+const { frontmatter } = Astro.props;
+
+const socialLinks = {
+    twitch: "https://www.twitch.tv/akatsukizaemon",
+    x: "https://x.com/akatsukizaemon",
+    email: "shakashakahead@gmail.com",
+};
+---
+
+<Layout
+    title={`${frontmatter.title} | 暁左衛門 Lab Blog`}
+    description={frontmatter.description}
+    image={frontmatter.image}
+>
+    <Navigation />
+
+    <main class="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-slate-900 min-h-screen">
+        <div class="mx-auto max-w-3xl px-6 lg:px-8">
+            <div class="mb-10 text-center">
+                <time
+                    datetime={frontmatter.pubDate}
+                    class="text-indigo-400 font-mono text-sm mb-2 block"
+                >
+                    {new Date(frontmatter.pubDate).toLocaleDateString("ja-JP")}
+                </time>
+                <h1
+                    class="text-3xl font-bold tracking-tight text-white sm:text-4xl"
+                >
+                    {frontmatter.title}
+                </h1>
+            </div>
+
+            <article
+                class="prose prose-invert prose-lg max-w-none prose-strong:font-bold prose-strong:text-white"
+            >
+                <slot />
+            </article>
+
+            <div
+                class="mt-16 pt-8 border-t border-white/10 flex justify-between items-center"
+            >
+                <a
+                    href="/blog/"
+                    class="text-sm font-semibold text-indigo-400 hover:text-indigo-300"
+                >
+                    ← ブログ一覧に戻る
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <Footer socialLinks={socialLinks} />
+</Layout>

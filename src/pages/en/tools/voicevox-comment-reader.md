@@ -1,12 +1,3 @@
----
-layout: ../../../layouts/ToolLayout.astro
-title: "Twitch Comment Reader (VOICEVOX)"
-description: "High-quality text-to-speech for Twitch chat using VOICEVOX. Enhance interaction with your viewers."
-icon: "🗣️"
-image: "/images/voicevox-comment-reader-preview.png"
-storeUrl: "https://chromewebstore.google.com/detail/eolabmdepbcdcppfdmkibgjffiifndkd?utm_source=item-share-cb"
-privacyUrl: "/privacy/voicevox-comment-reader"
-videoId: "NJ9SmGJFUG4"
 uploadDate: "2025-12-08T00:00:00+09:00"
 ---
 

@@ -1,14 +1,12 @@
 ---
 layout: ../../layouts/Layout.astro
-title: "プライバシーポリシー | Comment Reader (VOICEVOX)"
+title: "プライバシーポリシー | Comment Reader for Twitch (powered by Voicevox)"
 description: "Comment Reader for Twitch (powered by Voicevox)のプライバシーポリシー"
 ---
 
 # Privacy Policy
 
 **Comment Reader for Twitch (powered by Voicevox)**
-
----
 
 ## 日本語 (Japanese)
 **最終更新日:** 2025年12月3日
