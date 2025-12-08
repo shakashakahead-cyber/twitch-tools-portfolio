@@ -5,7 +5,7 @@ description: "Streamline your Twitch tags and settings. A Chrome extension that 
 icon: "🛠️"
 image: "/images/twitch-stream-helper-preview.png"
 storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep"
-privacyUrl: "/privacy/twitch-stream-helper"
+privacyUrl: "/privacy/twitch-stream-helper/"
 videoId: "02bfIReoEUQ"
 uploadDate: "2025-12-05T00:00:00+09:00"
 ---

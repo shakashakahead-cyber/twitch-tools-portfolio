@@ -1,3 +1,12 @@
+---
+layout: ../../../layouts/ToolLayout.astro
+title: "Comment Reader for Twitch (powered by Voicevox)"
+description: "Let Zundamon and friends read your chat aloud. High-quality TTS integration with VOICEVOX."
+icon: "🗣️"
+image: "/images/voicevox-comment-reader-preview.png"
+storeUrl: "https://chromewebstore.google.com/detail/eolabmdepbcdcppfdmkibgjffiifndkd?utm_source=item-share-cb"
+privacyUrl: "/privacy/voicevox-comment-reader/"
+videoId: "your-video-id-here"
 uploadDate: "2025-12-08T00:00:00+09:00"
 ---
 
