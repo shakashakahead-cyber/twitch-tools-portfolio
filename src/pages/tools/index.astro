@@ -1,0 +1,34 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import ToolsSection from "../../components/ToolsSection.astro";
+import { extensions, socialLinks } from "../../data/siteData";
+
+const toolList = extensions["ja"];
+---
+
+<Layout
+    title="ツール一覧 | 暁左衛門 Lab"
+    description="暁左衛門が開発したTwitch配信向け拡張機能の一覧です。"
+>
+    <Navigation />
+
+    <main class="relative isolate overflow-hidden pt-14">
+        <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 text-center">
+            <h1
+                class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-6"
+            >
+                Developed Tools
+            </h1>
+            <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+                Twitch配信をより快適にするためのChrome拡張機能たち。<br />
+                すべて無料でご利用いただけます。
+            </p>
+        </div>
+
+        <ToolsSection extensions={toolList} />
+    </main>
+
+    <Footer socialLinks={socialLinks} />
+</Layout>

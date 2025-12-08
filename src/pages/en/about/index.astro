@@ -1,0 +1,44 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Navigation from "../../../components/Navigation.astro";
+import Footer from "../../../components/Footer.astro";
+import AboutSection from "../../../components/AboutSection.astro";
+import ContactSection from "../../../components/ContactSection.astro";
+import { socialLinks, skills, games, profile } from "../../../data/siteData";
+import { marked } from "marked";
+
+const currentLang = "en";
+const strings = profile[currentLang];
+
+const detailedProfileHtml = marked.parse(strings.detailedDescription || "");
+---
+
+<Layout
+    title="Profile | Akatsukizaemon Lab"
+    description="Profile, skills, and streaming info of Akatsukizaemon."
+>
+    <Navigation />
+
+    <main class="relative isolate overflow-hidden pt-14">
+        <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+            <div class="mx-auto max-w-4xl">
+                <AboutSection
+                    profile={strings}
+                    socialLinks={socialLinks}
+                    skills={skills}
+                    games={games}
+                />
+
+                <div
+                    class="mt-12 prose prose-invert max-w-none text-gray-300 bg-slate-800/50 p-8 rounded-2xl"
+                >
+                    <Fragment set:html={detailedProfileHtml} />
+                </div>
+            </div>
+        </div>
+
+        <ContactSection socialLinks={socialLinks} />
+    </main>
+
+    <Footer socialLinks={socialLinks} />
+</Layout>

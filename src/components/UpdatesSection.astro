@@ -2,11 +2,19 @@
 const updates = [
     {
         date: "2025.12.09",
-        content: "ポートフォリオサイトをリニューアルしました",
+        content: "ブログを開設し、拡張機能紹介記事を公開しました。",
+        link: "/blog/introducing-my-tools/",
+        type: "blog",
     },
     {
         date: "2025.12.08",
-        content: "Comment Reader for Twitch (powered by Voicevox) v1.0.0 公開",
+        content:
+            "「Comment Reader for Twitch (powered by Voicevox)」へ名称を変更しました。",
+        link: "/tools/voicevox-comment-reader/",
+    },
+    {
+        date: "2025.12.09",
+        content: "ポートフォリオサイトをリニューアルしました",
     },
     { date: "2025.12.05", content: "Twitch Stream Helper v1.0.0 公開" },
 ];
@@ -29,9 +37,19 @@ const updates = [
                             <time class="text-indigo-400 font-mono font-bold whitespace-nowrap text-sm bg-indigo-500/10 px-2 py-1 rounded">
                                 {update.date}
                             </time>
-                            <span class="text-gray-300 text-sm sm:text-base">
-                                {update.content}
-                            </span>
+
+                            {update.link ? (
+                                <a
+                                    href={update.link}
+                                    class="text-gray-300 text-sm sm:text-base hover:text-indigo-400 transition-colors underline decoration-gray-600 hover:decoration-indigo-400"
+                                >
+                                    {update.content}
+                                </a>
+                            ) : (
+                                <span class="text-gray-300 text-sm sm:text-base">
+                                    {update.content}
+                                </span>
+                            )}
                         </li>
                     ))
                 }

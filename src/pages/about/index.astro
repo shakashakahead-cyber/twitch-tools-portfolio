@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import AboutSection from "../../components/AboutSection.astro";
+import ContactSection from "../../components/ContactSection.astro";
+import { socialLinks, skills, games, profile } from "../../data/siteData";
+import { marked } from "marked";
+
+const currentLang = "ja";
+const strings = profile[currentLang];
+
+// マークダウンをHTMLに変換
+const detailedProfileHtml = marked.parse(strings.detailedDescription || "");
+---
+
+<Layout
+    title="プロフィール | 暁左衛門 Lab"
+    description="暁左衛門 (Akatsukizaemon) のプロフィール、スキル、配信情報。"
+>
+    <Navigation />
+
+    <main class="relative isolate overflow-hidden pt-14">
+        <!-- Profile Header -->
+        <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+            <div class="mx-auto max-w-4xl">
+                <!-- 既存のAboutSectionを再利用しつつ、詳細テキストを追加 -->
+                <AboutSection
+                    profile={strings}
+                    socialLinks={socialLinks}
+                    skills={skills}
+                    games={games}
+                />
+
+                <!-- 詳細プロフィール文章 (Markdownレンダリング) -->
+                <div
+                    class="mt-12 prose prose-invert max-w-none text-gray-300 bg-slate-800/50 p-8 rounded-2xl"
+                >
+                    <Fragment set:html={detailedProfileHtml} />
+                </div>
+            </div>
+        </div>
+
+        <ContactSection socialLinks={socialLinks} />
+    </main>
+
+    <Footer socialLinks={socialLinks} />
+</Layout>

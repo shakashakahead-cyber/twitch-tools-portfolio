@@ -1,9 +1,20 @@
 ---
+import { ui, defaultLang } from "../i18n/ui";
+
+const url = Astro.url;
+const currentLang = url.pathname.startsWith("/en") ? "en" : "ja";
+const t = ui[currentLang];
+
+const homePath = currentLang === "en" ? "/en/" : "/";
+const toolsPath = currentLang === "en" ? "/en/tools/" : "/tools/";
+const blogPath = "/blog/"; // ブログは現状日本語のみ想定だが、構造上分けておく
+const aboutPath = currentLang === "en" ? "/en/about/" : "/about/";
+
 const links = [
-    { name: "Home", href: "/" },
-    { name: "Tools", href: "/#products" },
-    { name: "Blog", href: "/blog/" },
-    { name: "About", href: "/#about" },
+    { name: t["nav.home"], href: homePath },
+    { name: t["nav.tools"], href: toolsPath },
+    { name: t["nav.blog"], href: blogPath },
+    { name: t["nav.about"], href: aboutPath },
 ];
 ---
 

@@ -7,7 +7,10 @@ export const defaultLang = 'ja';
 
 export const ui = {
     ja: {
-        'nav.home': 'ツール一覧に戻る',
+        'nav.home': 'ホーム',
+        'nav.tools': 'ツール',
+        'nav.blog': 'ブログ',
+        'nav.about': 'プロフィール',
         'nav.privacy': 'プライバシーポリシー',
         'nav.contact': '開発者に連絡 (X)',
         'btn.add_chrome': 'Chrome Web Storeで追加',
@@ -20,7 +23,10 @@ export const ui = {
         'footer.rights': 'Akatsukizaemon',
     },
     en: {
-        'nav.home': 'Back to Tools',
+        'nav.home': 'Home',
+        'nav.tools': 'Tools',
+        'nav.blog': 'Blog',
+        'nav.about': 'Profile',
         'nav.privacy': 'Privacy Policy',
         'nav.contact': 'Contact Developer (X)',
         'btn.add_chrome': 'Add to Chrome',

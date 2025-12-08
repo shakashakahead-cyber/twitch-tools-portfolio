@@ -54,33 +54,141 @@ const toolList = extensions[currentLang];
             </h1>
             <p class="mt-6 text-lg leading-8 text-gray-300 max-w-2xl mx-auto">
                 配信者のための、配信者によるツールボックス。<br />
-                Twitchでの配信活動を「もっと快適に」「もっと楽しく」する拡張機能を開発しています。
+                Twitch配信をより快適に、より楽しくするための拡張機能を開発・公開しています。
             </p>
 
-            <div class="mt-10 flex items-center justify-center gap-x-6">
+            <div
+                class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6"
+            >
                 <a
-                    href="#products"
-                    class="text-sm font-semibold leading-6 text-white animate-bounce"
+                    href="/tools/"
+                    class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors"
                 >
-                    Check Tools <span aria-hidden="true">↓</span>
+                    拡張機能一覧を見る
+                </a>
+                <a
+                    href="/blog/"
+                    class="text-sm font-semibold leading-6 text-white hover:text-indigo-300 transition-colors"
+                >
+                    配信の裏話ブログを読む <span aria-hidden="true">→</span>
                 </a>
             </div>
         </div>
     </main>
 
-    <!-- Tools Section -->
-    <ToolsSection extensions={toolList} />
+    <!-- Tools Section (Digest) -->
+    <section class="bg-slate-800/50 py-16 relative z-10">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold tracking-tight text-white mb-4">
+                    Developed Extensions
+                </h2>
+                <a
+                    href="/tools/"
+                    class="text-indigo-400 hover:text-indigo-300 text-sm font-semibold"
+                >
+                    すべてのツールを見る <span aria-hidden="true">→</span>
+                </a>
+            </div>
 
-    <!-- Updates Section (Placeholder) -->
+            <!-- 簡易表示のためcomponents/ToolsSectionをそのまま使うが、数は今後制限するかも -->
+            <div
+                class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 lg:mx-0 lg:max-w-none lg:grid-cols-2"
+            >
+                {
+                    toolList.map((ext) => (
+                        // 簡易表示としてToolCardの一部を再利用、あるいはそのまま表示
+                        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-slate-900 shadow-xl ring-1 ring-white/10 transition-all hover:ring-indigo-500 hover:-translate-y-1">
+                            <a
+                                href={ext.link}
+                                class="relative h-40 overflow-hidden bg-slate-800 block"
+                            >
+                                <img
+                                    src={ext.image}
+                                    alt={ext.title}
+                                    class="absolute inset-0 h-full w-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent" />
+                            </a>
+                            <div class="p-6 flex flex-col flex-1">
+                                <a
+                                    href={ext.link}
+                                    class="flex items-center gap-x-3 text-lg font-bold text-white mb-2 hover:text-indigo-400"
+                                >
+                                    <span>{ext.icon}</span>
+                                    {ext.title}
+                                </a>
+                                <p class="text-sm text-gray-400 line-clamp-2 mb-4">
+                                    {ext.desc}
+                                </p>
+
+                                <a
+                                    href={ext.link}
+                                    class="mt-auto text-sm font-semibold text-indigo-400 hover:text-indigo-300"
+                                >
+                                    詳細を見る{" "}
+                                    <span aria-hidden="true">&rarr;</span>
+                                </a>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Updates Section -->
     <UpdatesSection />
 
-    <!-- About Section -->
-    <AboutSection
-        profile={strings}
-        socialLinks={socialLinks}
-        skills={skills}
-        games={games}
-    />
+    <!-- About Section (Digest) -->
+    <section class="bg-slate-800 relative isolate overflow-hidden py-16">
+        <div
+            class="mx-auto max-w-7xl px-6 lg:px-8 lg:flex lg:items-center lg:justify-between lg:gap-16"
+        >
+            <div class="max-w-xl">
+                <h2
+                    class="text-2xl font-bold tracking-tight text-white sm:text-3xl mb-4"
+                >
+                    About Developer
+                </h2>
+                <p class="text-gray-300 mb-6">
+                    {strings.description}
+                </p>
+                <div class="flex items-center gap-4">
+                    <a
+                        href="/about/"
+                        class="text-sm font-semibold text-indigo-400 hover:text-indigo-300"
+                    >
+                        詳細なプロフィール・経歴 <span aria-hidden="true"
+                            >→</span
+                        >
+                    </a>
+                </div>
+            </div>
+            <!-- 簡易AboutなのでTwitch Embedだけ置く -->
+            <div class="mt-10 lg:mt-0 w-full max-w-md lg:shrink-0">
+                <div
+                    class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg ring-1 ring-white/10 bg-slate-900"
+                >
+                    <!-- 常に読み込むと重いのでリンクにするか、画像にする -->
+                    <div
+                        class="flex items-center justify-center h-full flex-col p-6 text-center"
+                    >
+                        <p class="text-white font-bold mb-2">
+                            Akatsukizaemon on Twitch
+                        </p>
+                        <a
+                            href={socialLinks.twitch}
+                            target="_blank"
+                            class="rounded-md bg-[#9146FF] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#7c2cf5] transition-colors"
+                        >
+                            Twitchチャンネルを見る
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <ContactSection socialLinks={socialLinks} />
