@@ -8,5 +8,12 @@ export default defineConfig({
   site: 'https://shakashakahead.com',
   trailingSlash: 'always',
 
-  integrations: [tailwind(), sitemap()]
+  integrations: [tailwind(), sitemap()],
+  i18n: {
+    defaultLocale: "ja",
+    locales: ["ja", "en"],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  }
 });

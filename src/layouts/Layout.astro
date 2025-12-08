@@ -8,10 +8,13 @@ interface Props {
 const { title, description, image = "/images/avatar.png" } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(image, Astro.url);
+
+import { getLangFromUrl } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang="ja" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
     <head>
         <meta charset="UTF-8" />
         <meta name="description" content={description} />
