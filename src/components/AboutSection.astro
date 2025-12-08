@@ -1,0 +1,166 @@
+---
+interface Props {
+    skills: string[];
+    games: string[];
+    socialLinks: {
+        twitch: string;
+        x: string;
+        email: string;
+    };
+}
+
+const { skills, games, socialLinks } = Astro.props;
+---
+
+<section
+    id="about"
+    class="bg-slate-800 relative isolate overflow-hidden py-24 sm:py-32"
+>
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div
+            class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start"
+        >
+            <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
+                <h2
+                    class="text-3xl font-bold tracking-tight text-white sm:text-4xl"
+                >
+                    About Developer
+                </h2>
+                <p class="mt-6 text-lg leading-8 text-gray-300">
+                    自衛隊出身という異色の経歴を持つ、フリーランスエンジニア兼Twitchストリーマー。<br
+                    />
+                    東京・中野で猫と暮らしながら、「自分が配信で困ったことは、技術で解決する」をモットーに開発しています。
+                </p>
+
+                <div class="mt-8 border-l-2 border-indigo-500 pl-6">
+                    <h3 class="text-sm font-semibold text-indigo-400 mb-2">
+                        Tech Stack
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        {
+                            skills.map((skill) => (
+                                <span class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30">
+                                    {skill}
+                                </span>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <div class="mt-6 border-l-2 border-purple-500 pl-6">
+                    <h3 class="text-sm font-semibold text-purple-400 mb-2">
+                        Playing / Streaming
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-2">
+                        主にVALORANTを配信中。オーディオ機器やデバイスの話も大好きです。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        {
+                            games.map((game) => (
+                                <span class="inline-flex items-center rounded-md bg-purple-400/10 px-2 py-1 text-xs font-medium text-purple-400 ring-1 ring-inset ring-purple-400/30">
+                                    {game}
+                                </span>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <div class="mt-10 flex items-center gap-x-6">
+                    <a
+                        href={socialLinks.twitch}
+                        target="_blank"
+                        class="rounded-md bg-[#9146FF] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#7c2cf5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9146FF] transition-colors flex items-center gap-2"
+                    >
+                        <svg
+                            class="h-5 w-5"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                fill-rule="evenodd"
+                                d="M11.64 5.93h1.43v4.28h-1.43m3.93-4.28H17v4.28h-1.43M7 2L3.43 5.57v12.86h4.28V22l3.58-3.57h2.85L20.57 12V2m-1.43 9.29l-2.85 2.85h-2.86l-2.5 2.5v-2.5H7.71V3.43h11.43z"
+                                clip-rule="evenodd"></path></svg
+                        >
+                        Twitchでチャンネルをチェック
+                    </a>
+                    <a
+                        href={socialLinks.x}
+                        target="_blank"
+                        class="text-sm font-semibold leading-6 text-white hover:text-gray-300"
+                    >
+                        X (Twitter) <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 lg:mt-0 flex flex-col gap-8">
+                <!-- Avatar -->
+                <div class="flex justify-center">
+                    <div
+                        class="relative rounded-full bg-gray-900 p-4 ring-1 ring-white/10 shadow-2xl"
+                    >
+                        <div
+                            class="h-48 w-48 lg:h-56 lg:w-56 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-6xl shadow-inner overflow-hidden relative group"
+                        >
+                            <img
+                                src="/images/avatar.png"
+                                alt="Akatsukizaemon"
+                                class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            />
+                        </div>
+
+                        <div
+                            class="absolute -bottom-2 -right-2 rounded-xl bg-slate-800 p-3 shadow-lg ring-1 ring-white/10"
+                        >
+                            <div class="items-center gap-x-2 hidden md:flex">
+                                <span class="relative flex h-3 w-3">
+                                    <span
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+                                    ></span>
+                                    <span
+                                        class="relative inline-flex rounded-full h-3 w-3 bg-green-500"
+                                    ></span>
+                                </span>
+                                <span class="text-xs font-semibold text-white"
+                                    >Accepting Jobs</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Twitch Embed -->
+                <div
+                    class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 ring-auto ring-purple-500/50"
+                >
+                    <div id="twitch-embed" class="w-full h-full"></div>
+                </div>
+                <div class="text-center">
+                    <a
+                        href="https://www.twitch.tv/akatsukizaemon"
+                        target="_blank"
+                        class="text-xs text-gray-400 hover:text-[#9146FF] transition-colors underline decoration-gray-600 hover:decoration-[#9146FF]"
+                    >
+                        ※プレーヤーが反応しない場合はこちら (Twitchへ移動)
+                    </a>
+                </div>
+
+                <script is:inline src="https://embed.twitch.tv/embed/v1.js"
+                ></script>
+                <script is:inline>
+                    new Twitch.Embed("twitch-embed", {
+                        width: "100%",
+                        height: "100%",
+                        channel: "akatsukizaemon",
+                        layout: "video",
+                        autoplay: false,
+                        parent: [
+                            "localhost",
+                            "127.0.0.1",
+                            "shakashakahead.com",
+                        ],
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</section>

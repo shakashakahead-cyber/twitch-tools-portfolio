@@ -75,4 +75,26 @@ const lang = getLangFromUrl(Astro.url);
     .markdown-container {
         @apply mx-auto max-w-3xl px-6 py-24;
     }
+
+    /* テーマ用変数 */
+    :root {
+        --color-main: #5e81ac;
+        --color-accent: #88c0d0;
+        --color-bg: #0f172a;
+        --color-text: #e2e8f0;
+    }
 </style>
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Akatsukizaemon Lab",
+        "url": "https://shakashakahead.com/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://shakashakahead.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+</script>
