@@ -5,7 +5,7 @@ description: "VOICEVOXと連携し、Twitchのコメントを高品質な音声�
 icon: "🗣️"
 image: "/images/voicevox-comment-reader-preview.png"
 storeUrl: "https://chromewebstore.google.com/detail/eolabmdepbcdcppfdmkibgjffiifndkd?utm_source=item-share-cb"
-privacyUrl: "/privacy/voicevox-comment-reader"
+privacyUrl: "/privacy/voicevox-comment-reader/"
 # 動画ID (空欄なら非表示)
 videoId: "NJ9SmGJFUG4"
 uploadDate: "2025-12-08T00:00:00+09:00"
