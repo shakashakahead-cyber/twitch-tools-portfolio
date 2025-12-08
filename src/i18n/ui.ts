@@ -13,6 +13,8 @@ export const ui = {
         'btn.add_chrome': 'Chrome Web Storeで追加',
         'btn.store': 'Storeへ',
         'header.video': '使い方・紹介動画',
+        'schema.video.title_suffix': '解説動画',
+        'schema.video.description': 'ツールの使い方解説',
         'footer.rights': 'Akatsukizaemon',
     },
     en: {
@@ -22,6 +24,8 @@ export const ui = {
         'btn.add_chrome': 'Add to Chrome',
         'btn.store': 'Visit Store',
         'header.video': 'Tutorial Video',
+        'schema.video.title_suffix': 'Tutorial Video',
+        'schema.video.description': 'Video tutorial for this tool',
         'footer.rights': 'Akatsukizaemon',
     },
 } as const;
