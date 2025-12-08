@@ -23,6 +23,8 @@ export const extensions = {
                 "X (Twitter) 連携投稿",
             ],
             isFree: true,
+            badge: "おすすめ",
+            recommend: "毎日タグを手入力しているTwitch配信者",
         },
         {
             title: "Comment Reader for Twitch (powered by Voicevox)",
@@ -37,6 +39,8 @@ export const extensions = {
                 "Botやコマンドの読み飛ばし機能",
             ],
             isFree: true,
+            badge: "NEW",
+            recommend: "棒読みちゃん設定に疲れた配信者",
         },
     ],
     en: [
@@ -53,6 +57,8 @@ export const extensions = {
                 "X (Twitter) Integration",
             ],
             isFree: true,
+            badge: "Recommended",
+            recommend: "Streamers who type tags manually every day",
         },
         {
             title: "Comment Reader for Twitch (powered by Voicevox)",
@@ -67,6 +73,8 @@ export const extensions = {
                 "Ignore Bots and Commands",
             ],
             isFree: true,
+            badge: "NEW",
+            recommend: "Streamers tired of complex TTS setups",
         },
     ],
 };
@@ -76,19 +84,19 @@ export const profile = {
         role: "Freelance Engineer & Streamer",
         description: `元自衛官のフリーランスエンジニア 兼 Twitchストリーマー。\n東京・中野で猫と暮らしながら、「配信の課題を技術で解決する」をモットーに開発しています。`,
         detailedDescription: `
-## キャリア / 背景
-自衛隊での勤務を経て、ITエンジニアに転身。現在はフリーランスとしてWebアプリケーション開発やChrome拡張機能の開発を行っています。
-
-## 配信活動
-Twitchでは主にFPS（VALORANT等）を配信しており、そこで感じた「もっとこうだったら便利なのに」という思いが開発の原動力になっています。
-
 ## お手伝いできること
 * Twitch配信向けChrome拡張機能の開発
 * 配信周りツールの設計・技術相談
 * Webサイト・Webアプリケーション制作
 
 ご依頼やご相談は、ページ下部のContactからお気軽にどうぞ。
-        `,
+
+## キャリア / 背景
+自衛隊での勤務を経て、ITエンジニアに転身。現在はフリーランスとしてWebアプリケーション開発やChrome拡張機能の開発を行っています。
+
+## 配信活動
+Twitchでは主にFPS（VALORANT等）を配信しており、そこで感じた「もっとこうだったら便利なのに」という思いが開発の原動力になっています。
+`,
         playingStreaming: {
             title: "Playing / Streaming",
             desc: "主にVALORANTを配信中。オーディオ機材やガジェットの話も大好きです。",
@@ -98,19 +106,19 @@ Twitchでは主にFPS（VALORANT等）を配信しており、そこで感じた
         role: "Freelance Engineer & Streamer",
         description: `Freelance Engineer & Twitch Streamer with a background in the JSDF.\nLiving in Nakano, Tokyo with cats, developing with the motto "Solving streaming problems with technology".`,
         detailedDescription: `
-## Background
-Starting my career in the JSDF, I transitioned to becoming an IT engineer. Currently working as a freelancer developing Web applications and Chrome extensions.
-
-## Streaming
-I mostly stream FPS games (like VALORANT) on Twitch. My development is driven by the desire to solve problems I encounter during my own streams.
-
 ## What I Can Do
 * Development of Chrome Extensions for Twitch
 * Technical consultation for streaming tools
 * Web site / Web application development
 
 Feel free to contact me via the links below.
-        `,
+
+## Background
+Starting my career in the JSDF, I transitioned to becoming an IT engineer. Currently working as a freelancer developing Web applications and Chrome extensions.
+
+## Streaming
+I mostly stream FPS games (like VALORANT) on Twitch. My development is driven by the desire to solve problems I encounter during my own streams.
+`,
         playingStreaming: {
             title: "Playing / Streaming",
             desc: "Mainly streaming VALORANT. I also love talking about audio gear and gadgets.",

@@ -34,22 +34,32 @@ const updates = [
                 {
                     updates.map((update) => (
                         <li class="flex flex-col sm:flex-row gap-2 sm:gap-6 items-start text-left bg-white/5 p-4 rounded-lg">
-                            <time class="text-indigo-400 font-mono font-bold whitespace-nowrap text-sm bg-indigo-500/10 px-2 py-1 rounded">
-                                {update.date}
-                            </time>
-
-                            {update.link ? (
-                                <a
-                                    href={update.link}
-                                    class="text-gray-300 text-sm sm:text-base hover:text-indigo-400 transition-colors underline decoration-gray-600 hover:decoration-indigo-400"
-                                >
-                                    {update.content}
-                                </a>
-                            ) : (
-                                <span class="text-gray-300 text-sm sm:text-base">
-                                    {update.content}
-                                </span>
-                            )}
+                            <div class="flex items-center gap-3 shrink-0">
+                                <time class="text-sm text-indigo-400 font-mono">
+                                    {update.date}
+                                </time>
+                                {update.type === "blog" ? (
+                                    <span class="inline-flex items-center rounded-md bg-pink-400/10 px-2 py-1 text-xs font-medium text-pink-400 ring-1 ring-inset ring-pink-400/20">
+                                        Blog
+                                    </span>
+                                ) : (
+                                    <span class="inline-flex items-center rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-400 ring-1 ring-inset ring-blue-400/20">
+                                        Update
+                                    </span>
+                                )}
+                            </div>
+                            <div class="text-gray-300 text-sm">
+                                {update.link ? (
+                                    <a
+                                        href={update.link}
+                                        class="hover:text-white hover:underline decoration-indigo-500 underline-offset-4"
+                                    >
+                                        {update.content}
+                                    </a>
+                                ) : (
+                                    update.content
+                                )}
+                            </div>
                         </li>
                     ))
                 }

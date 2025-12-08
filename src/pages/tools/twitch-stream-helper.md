@@ -13,8 +13,18 @@ uploadDate: "2025-12-05T00:00:00+09:00"
 
 ## 🎮 配信準備の「面倒」をゼロにする
 
-**「毎回同じタグを手入力するのが疲れる...」**
-**「ゲームを変えるたびにタイトルとタグを変え忘れる...」**
+<div class="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-6 mb-8">
+  <ul class="space-y-4">
+    <li class="flex items-start gap-3">
+        <span class="text-xl">😓</span>
+        <span class="font-bold text-indigo-200">「毎回同じタグを手入力するのが疲れる...」</span>
+    </li>
+    <li class="flex items-start gap-3">
+        <span class="text-xl">😓</span>
+        <span class="font-bold text-indigo-200">「ゲームを変えるたびにタイトルとタグを変え忘れる...」</span>
+    </li>
+  </ul>
+</div>
 
 Twitch Stream Helperは、そんなストリーマーの悩みを解消するために開発されました。
 配信開始前のルーティンを自動化し、あなたは「配信すること」だけに集中できます。

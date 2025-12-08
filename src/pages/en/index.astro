@@ -114,6 +114,13 @@ const toolList = extensions[currentLang];
                                     <span>{ext.icon}</span>
                                     {ext.title}
                                 </a>
+                                {ext.badge && (
+                                    <div class="mb-2">
+                                        <span class="inline-block bg-indigo-500 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">
+                                            {ext.badge}
+                                        </span>
+                                    </div>
+                                )}
                                 <p class="text-sm text-gray-400 line-clamp-2 mb-4">
                                     {ext.desc}
                                 </p>
@@ -132,9 +139,6 @@ const toolList = extensions[currentLang];
             </div>
         </div>
     </section>
-
-    <!-- Updates Section -->
-    <UpdatesSection />
 
     <!-- About Section (Digest) -->
     <section class="bg-slate-800 relative isolate overflow-hidden py-16">
@@ -181,6 +185,9 @@ const toolList = extensions[currentLang];
             </div>
         </div>
     </section>
+
+    <!-- Updates Section -->
+    <UpdatesSection />
 
     <!-- Contact Section -->
     <ContactSection socialLinks={socialLinks} />

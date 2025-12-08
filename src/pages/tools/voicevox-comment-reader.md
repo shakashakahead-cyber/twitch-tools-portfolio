@@ -20,8 +20,18 @@ faq:
 
 ## 🚀 配信のコメントを「いい声」で聞き逃さない
 
-**「ゲームに集中していてコメントを見逃してしまう...」**
-**「棒読みちゃんの機械的な声に飽きてきた...」**
+<div class="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-6 mb-8">
+  <ul class="space-y-4">
+    <li class="flex items-start gap-3">
+        <span class="text-xl">😓</span>
+        <span class="font-bold text-indigo-200">「ゲームに集中していてコメントを見逃してしまう...」</span>
+    </li>
+    <li class="flex items-start gap-3">
+        <span class="text-xl">😓</span>
+        <span class="font-bold text-indigo-200">「棒読みちゃんの機械的な声に飽きてきた...」</span>
+    </li>
+  </ul>
+</div>
 
 そんな配信者の方におすすめなのが、この **Twitch Comment Reader (VOICEVOX)** です。
 ずんだもんや四国めたんなど、VOICEVOXの人気キャラクターたちが、あなたの配信に届いたコメントを感情豊かに読み上げます。

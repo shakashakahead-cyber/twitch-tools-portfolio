@@ -2,19 +2,30 @@
 interface Props {
     title: string;
     desc: string;
+    image: string;
     link: string;
     icon: string;
-    image: string;
     storeUrl: string;
     features?: string[];
     isFree?: boolean;
+    badge?: string;
+    recommend?: string;
 }
 
-const { title, desc, link, icon, image, storeUrl, features, isFree } =
-    Astro.props;
-import { ui, defaultLang } from "../i18n/ui";
+const {
+    title,
+    desc,
+    image,
+    link,
+    icon,
+    storeUrl,
+    features = [],
+    isFree = false,
+    badge,
+    recommend,
+} = Astro.props;
+import { ui } from "../i18n/ui";
 
-// 言語判定のロジック（簡易的）
 const currentLang = link.startsWith("/en") ? "en" : "ja";
 const t = ui[currentLang];
 ---
@@ -22,7 +33,11 @@ const t = ui[currentLang];
 <div
     class="group relative flex flex-col overflow-hidden rounded-2xl bg-slate-900 shadow-xl ring-1 ring-white/10 transition-all hover:ring-indigo-500 hover:-translate-y-1"
 >
-    <a href={link} class="relative h-80 overflow-hidden bg-slate-800 block">
+    <!-- Card Link Wrapper to make header clickable -->
+    <a href={link} class="absolute inset-x-0 top-0 h-64 z-10" aria-label={title}
+    ></a>
+
+    <div class="relative h-64 overflow-hidden bg-slate-800 block">
         <img
             src={image}
             alt={title}
@@ -32,54 +47,77 @@ const t = ui[currentLang];
             class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent"
         >
         </div>
-    </a>
 
-    <div class="flex flex-1 flex-col justify-between p-6">
-        <div>
-            <a
-                href={link}
-                class="flex items-center gap-x-3 text-2xl mb-2 hover:text-indigo-400 transition-colors w-fit"
-            >
-                <span>{icon}</span>
-                <h3 class="font-bold text-white">
-                    {title}
-                </h3>
-            </a>
-            {
-                isFree && (
-                    <span class="inline-block px-2 py-0.5 mb-3 text-xs font-semibold text-green-400 bg-green-400/10 rounded border border-green-400/20">
-                        {currentLang === "en"
-                            ? "Free to use"
-                            : "無料で利用可能"}
-                    </span>
-                )
-            }
-            <p class="text-sm leading-6 text-gray-400 mb-4">
-                {desc}
-            </p>
+        {
+            isFree && (
+                <div class="absolute top-4 right-4 bg-green-500/90 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg backdrop-blur-sm z-20">
+                    {currentLang === "en" ? "Free to use" : "無料で利用可能"}
+                </div>
+            )
+        }
+    </div>
 
-            {
-                features && features.length > 0 && (
-                    <ul class="mb-4 space-y-1">
-                        {features.map((feature) => (
-                            <li class="text-xs text-gray-300 flex items-start gap-2">
-                                <span class="text-indigo-400 mt-0.5">•</span>{" "}
-                                {feature}
-                            </li>
-                        ))}
-                    </ul>
-                )
-            }
-        </div>
-
+    <div class="p-6 flex flex-col flex-1 relative z-20 pointer-events-none">
         <div
-            class="mt-4 flex items-center justify-between gap-4 pt-4 border-t border-white/5"
+            class="flex items-start justify-between gap-4 mb-2 pointer-events-auto"
         >
             <a
                 href={link}
-                class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition-colors"
+                class="flex items-center gap-x-3 text-xl font-bold text-white group-hover:text-indigo-400 transition-colors"
             >
-                {currentLang === "en" ? "Details / Usage" : "詳細・使い方"}
+                <span>{icon}</span>
+                {title}
+            </a>
+        </div>
+
+        {
+            badge && (
+                <div class="mb-3">
+                    <span class="inline-block bg-indigo-500 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">
+                        {badge}
+                    </span>
+                </div>
+            )
+        }
+
+        <p class="text-sm text-gray-400 line-clamp-2 mb-4">
+            {desc}
+        </p>
+
+        {
+            recommend && (
+                <div class="mb-4 bg-indigo-500/10 border border-indigo-500/20 rounded p-3">
+                    <p class="text-xs text-indigo-300 font-bold mb-1">
+                        {currentLang === "en"
+                            ? "Recommended for:"
+                            : "こんな方に："}
+                    </p>
+                    <p class="text-xs text-gray-300">{recommend}</p>
+                </div>
+            )
+        }
+
+        {
+            features.length > 0 && (
+                <ul class="mb-6 space-y-1">
+                    {features.slice(0, 3).map((feature) => (
+                        <li class="text-xs text-gray-400 flex items-start gap-2">
+                            <span class="text-indigo-500 mt-0.5">•</span>
+                            {feature}
+                        </li>
+                    ))}
+                </ul>
+            )
+        }
+
+        <div
+            class="mt-auto flex items-center justify-between pointer-events-auto pt-4 border-t border-white/5"
+        >
+            <a
+                href={link}
+                class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1"
+            >
+                {currentLang === "en" ? "View Details" : "詳細を見る"}
                 <span aria-hidden="true">&rarr;</span>
             </a>
             <a
