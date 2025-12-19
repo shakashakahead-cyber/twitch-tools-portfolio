@@ -7,7 +7,7 @@ image: "/images/twitch-stream-helper-preview.png"
 storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep"
 privacyUrl: "/privacy/twitch-stream-helper/"
 # 動画ができたらIDを入れてください。空欄または行ごと削除で非表示になります。
-videoId: "02bfIReoEUQ"
+videoId: "2R0BOg5NbpY"
 uploadDate: "2025-12-05T00:00:00+09:00"
 faq:
   - question: "無料で使えますか？"
