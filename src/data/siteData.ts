@@ -31,6 +31,7 @@ export const extensions = {
             desc: "ずんだもん達がコメントを読み上げ。VOICEVOX連携で高品質な音声読み上げを実現。",
             link: "/tools/voicevox-comment-reader/",
             storeUrl: "https://chromewebstore.google.com/detail/eolabmdepbcdcppfdmkibgjffiifndkd?utm_source=item-share-cb",
+            repoUrl: "https://github.com/shakashakahead-cyber/comment-Reader-for-Twitch-powered-by-Voicevox-",
             icon: "🗣️",
             image: "/images/voicevox-comment-reader-preview.png",
             features: [
@@ -65,6 +66,7 @@ export const extensions = {
             desc: "Let Zundamon and friends read your chat aloud. High-quality TTS integration with VOICEVOX.",
             link: "/en/tools/voicevox-comment-reader/",
             storeUrl: "https://chromewebstore.google.com/detail/eolabmdepbcdcppfdmkibgjffiifndkd?utm_source=item-share-cb",
+            repoUrl: "https://github.com/shakashakahead-cyber/comment-Reader-for-Twitch-powered-by-Voicevox-",
             icon: "🗣️",
             image: "/images/voicevox-comment-reader-preview.png",
             features: [

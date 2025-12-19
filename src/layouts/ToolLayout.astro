@@ -9,6 +9,7 @@ interface Props {
     icon: string;
     image: string;
     storeUrl: string;
+    repoUrl?: string;
     videoId?: string;
     uploadDate?: string;
     privacyUrl: string;
@@ -49,6 +50,7 @@ const baseSchema = {
     name: "Akatsukizaemon",
     url: "https://shakashakahead.com",
   },
+  ...(frontmatter.repoUrl && { codeRepository: frontmatter.repoUrl }),
   // 動画がある場合は動画情報も含める
   ...(frontmatter.videoId && {
     video: {
@@ -122,6 +124,17 @@ const schemaData = {
           >
             {t("btn.add_chrome")}
           </a>
+          {
+            frontmatter.repoUrl && (
+              <a
+                href={frontmatter.repoUrl}
+                target="_blank"
+                class="rounded-md bg-white/10 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 transition-all"
+              >
+                {t("btn.github")}
+              </a>
+            )
+          }
         </div>
       </div>
 

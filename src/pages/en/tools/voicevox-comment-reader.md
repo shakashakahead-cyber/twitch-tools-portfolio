@@ -5,6 +5,7 @@ description: "Let Zundamon and friends read your chat aloud. High-quality TTS in
 icon: "🗣️"
 image: "/images/voicevox-comment-reader-preview.png"
 storeUrl: "https://chromewebstore.google.com/detail/eolabmdepbcdcppfdmkibgjffiifndkd?utm_source=item-share-cb"
+repoUrl: "https://github.com/shakashakahead-cyber/comment-Reader-for-Twitch-powered-by-Voicevox-"
 privacyUrl: "/privacy/voicevox-comment-reader/"
 videoId: "your-video-id-here"
 uploadDate: "2025-12-08T00:00:00+09:00"
