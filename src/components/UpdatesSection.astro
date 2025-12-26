@@ -1,6 +1,13 @@
 ---
 const updates = [
     {
+        date: "2025.12.27",
+        content:
+            "デスクトップアプリ「クリップ抽出くん ベータ」を公開しました。",
+        link: "/tools/clip-extractor/",
+        type: "release",
+    },
+    {
         date: "2025.12.12",
         content: "VOICEVOXキャラクター利用規約まとめ記事を公開しました。",
         link: "/blog/voicevox-terms-summary/",
@@ -47,6 +54,10 @@ const updates = [
                                 {update.type === "blog" ? (
                                     <span class="inline-flex items-center rounded-md bg-pink-400/10 px-2 py-1 text-xs font-medium text-pink-400 ring-1 ring-inset ring-pink-400/20">
                                         Blog
+                                    </span>
+                                ) : update.type === "release" ? (
+                                    <span class="inline-flex items-center rounded-md bg-green-400/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-400/20">
+                                        New
                                     </span>
                                 ) : (
                                     <span class="inline-flex items-center rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-400 ring-1 ring-inset ring-blue-400/20">
