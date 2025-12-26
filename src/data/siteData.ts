@@ -81,6 +81,51 @@ export const extensions = {
     ],
 };
 
+export const desktopApps = {
+    ja: [
+        {
+            title: "クリップ抽出くん ベータ",
+            desc: "AIが盛り上がりポイントを自動検知。配信アーカイブからハイライトを簡単に切り出し。",
+            link: "/tools/clip-extractor/",
+            downloadUrl: "https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.2-beta/ClipExtractorSetup.exe",
+            icon: "🎬",
+            image: "/images/clip-extractor-preview.png",
+            features: [
+                "笑い声・歓声をAIが自動検知",
+                "スコア表示で優先度が一目瞭然",
+                "一括エクスポート機能",
+            ],
+            isFree: true,
+            badge: "β",
+            recommend: "切り抜き動画を作りたい配信者",
+            isDesktopApp: true,
+            platform: "Windows",
+            fileSize: "約1.5GB",
+        },
+    ],
+    en: [
+        {
+            title: "Clip Extractor Beta",
+            desc: "AI automatically detects highlight moments. Easily extract clips from stream archives.",
+            link: "/tools/clip-extractor/",
+            downloadUrl: "https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.2-beta/ClipExtractorSetup.exe",
+            icon: "🎬",
+            image: "/images/clip-extractor-preview.png",
+            features: [
+                "AI detects laughter and cheers",
+                "Score display for easy prioritization",
+                "Batch export feature",
+            ],
+            isFree: true,
+            badge: "β",
+            recommend: "Streamers who want to make clip videos",
+            isDesktopApp: true,
+            platform: "Windows",
+            fileSize: "~1.5GB",
+        },
+    ],
+};
+
 export const profile = {
     ja: {
         role: "Freelance Engineer & Streamer",

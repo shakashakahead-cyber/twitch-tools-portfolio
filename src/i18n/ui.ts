@@ -21,6 +21,10 @@ export const ui = {
         'schema.video.description': 'ツールの使い方解説',
         'section.faq': 'よくある質問',
         'section.related_tools': '他の便利ツール',
+        'btn.download': 'ダウンロード',
+        'section.requirements': '動作環境',
+        'section.setup': 'セットアップ',
+        'section.how_to_use': '使い方',
         'footer.rights': 'Akatsukizaemon',
     },
     en: {
@@ -38,6 +42,10 @@ export const ui = {
         'schema.video.description': 'Video tutorial for this tool',
         'section.faq': 'FAQ',
         'section.related_tools': 'Other Tools',
+        'btn.download': 'Download',
+        'section.requirements': 'Requirements',
+        'section.setup': 'Setup',
+        'section.how_to_use': 'How to Use',
         'footer.rights': 'Akatsukizaemon',
     },
 } as const;
