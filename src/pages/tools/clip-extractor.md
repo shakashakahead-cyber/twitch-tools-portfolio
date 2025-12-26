@@ -56,10 +56,15 @@ faq:
 
 ## 🔧 セットアップ
 
-> [!IMPORTANT]
-> **FFmpegが必要です**
-> 
-> 本ソフトを使用するには「FFmpeg」という外部ツールが必要です。
+<div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6 mb-6">
+  <div class="flex items-start gap-3">
+    <span class="text-amber-400 text-xl">⚠️</span>
+    <div>
+      <p class="font-bold text-amber-200 mb-2">FFmpegが必要です</p>
+      <p class="text-gray-300 text-sm">本ソフトを使用するには「FFmpeg」という外部ツールが必要です。</p>
+    </div>
+  </div>
+</div>
 
 ### FFmpegのインストール手順
 
