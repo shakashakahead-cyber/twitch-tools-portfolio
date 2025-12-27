@@ -4,7 +4,7 @@ title: "クリップ抽出くん ベータ"
 description: "動画内の「盛り上がり（笑い声や歓声）」をAIが自動検知し、ハイライトシーンを抽出・切り抜きするソフトウェア。"
 icon: "🎬"
 image: "/images/clip-extractor-preview.png"
-downloadUrl: "https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.2-beta/ClipExtractorSetup.exe"
+downloadUrl: "https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.3-beta/ClipExtractorSetup.exe"
 fileSize: "約1.5GB"
 version: "β"
 faq:
@@ -113,7 +113,7 @@ faq:
 ---
 
 <div class="mt-12 flex justify-center">
-  <a href="https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.2-beta/ClipExtractorSetup.exe" target="_blank" class="rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-8 py-4 text-lg font-bold text-white shadow-lg hover:from-indigo-400 hover:to-purple-500 hover:shadow-xl transition-all flex items-center gap-3">
+  <a href="https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.3-beta/ClipExtractorSetup.exe" target="_blank" class="rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-8 py-4 text-lg font-bold text-white shadow-lg hover:from-indigo-400 hover:to-purple-500 hover:shadow-xl transition-all flex items-center gap-3">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
       <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
     </svg>

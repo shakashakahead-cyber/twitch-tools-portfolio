@@ -87,7 +87,7 @@ export const desktopApps = {
             title: "クリップ抽出くん ベータ",
             desc: "AIが盛り上がりポイントを自動検知。配信アーカイブからハイライトを簡単に切り出し。",
             link: "/tools/clip-extractor/",
-            downloadUrl: "https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.2-beta/ClipExtractorSetup.exe",
+            downloadUrl: "https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.3-beta/ClipExtractorSetup.exe",
             icon: "🎬",
             image: "/images/clip-extractor-preview.png",
             features: [
@@ -108,7 +108,7 @@ export const desktopApps = {
             title: "Clip Extractor Beta",
             desc: "AI automatically detects highlight moments. Easily extract clips from stream archives.",
             link: "/tools/clip-extractor/",
-            downloadUrl: "https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.2-beta/ClipExtractorSetup.exe",
+            downloadUrl: "https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.3-beta/ClipExtractorSetup.exe",
             icon: "🎬",
             image: "/images/clip-extractor-preview.png",
             features: [
