@@ -15,6 +15,7 @@ export const extensions = {
             desc: "タグ管理・配信設定・SNS告知をこれひとつで。配信準備の時間を短縮します。",
             link: "/tools/twitch-stream-helper/",
             storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep",
+            repoUrl: "https://github.com/shakashakahead-cyber/twitch-stream-helper",
             icon: "🛠️",
             image: "/images/twitch-stream-helper-preview.png",
             features: [
@@ -50,6 +51,7 @@ export const extensions = {
             desc: "Manage tags, stream settings, and social posts all in one place. Save time on your pre-stream routine.",
             link: "/en/tools/twitch-stream-helper/",
             storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep",
+            repoUrl: "https://github.com/shakashakahead-cyber/twitch-stream-helper",
             icon: "🛠️",
             image: "/images/twitch-stream-helper-preview.png",
             features: [
