@@ -7,13 +7,20 @@ interface Props {
 
 const { title, description, image = "/images/avatar.png" } = Astro.props;
 const pathname = Astro.url.pathname;
-const canonicalURL = new URL(pathname, Astro.site);
+// 正規化: index.html を削除し、末尾に必ずスラッシュをつける
+const cleanPath = pathname.replace(/\/index\.html$/, "");
+const finalPath = cleanPath.endsWith("/") ? cleanPath : `${cleanPath}/`;
+const canonicalURL = new URL(finalPath, Astro.site);
+
 const socialImageURL = new URL(image, Astro.url);
 
 import { getLangFromUrl } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 
-const basePath = pathname.startsWith("/en/") ? pathname.replace("/en/", "/") : pathname;
+// ベースパスの計算（言語プレフィックスを除外）
+const basePath = pathname.startsWith("/en/")
+    ? pathname.replace("/en/", "/")
+    : pathname;
 const isTranslatedPath =
     basePath === "/" ||
     basePath === "/about/" ||
@@ -110,34 +117,4 @@ const enURL = new URL(`/en${basePath === "/" ? "/" : basePath}`, Astro.site);
         "name": "Akatsukizaemon Lab",
         "url": "https://shakashakahead.com/"
     }
-</script>
-<script is:inline>
-    // ブラウザの言語設定を確認して、英語なら/en/へリダイレクト
-    // ただし、すでに/en/にいる場合や、セッションで言語選択済みの場合は何もしない
-    (function () {
-        try {
-            const path = window.location.pathname;
-            if (path !== "/" && path !== "/index.html") return;
-            const isEnglishPage = path.startsWith("/en");
-            // ローカルストレージに言語設定があればそれを優先（将来的な実装のためにキーだけ決めておく）
-            const savedLang = localStorage.getItem("user-lang");
-
-            if (savedLang) return; // ユーザーが明示的に選んだ履歴があれば何もしない
-
-            const browserLang = navigator.language || navigator.userLanguage;
-            if (browserLang.startsWith("en") && !isEnglishPage) {
-                // 開発環境(localhost)での誤爆を防ぐため、本番ドメインか確認しても良いが
-                // ここでは単純にリダイレクトさせる
-                // 無限リダイレクトを防ぐため、sessionStorageフラグを使う
-                if (!sessionStorage.getItem("redirected-to-en")) {
-                    sessionStorage.setItem("redirected-to-en", "true");
-                    // 現在のパスに対応する英語ページがあればそこへ、なければトップへ
-                    // シンプルに /en/ へ飛ばす
-                    window.location.href = "/en/";
-                }
-            }
-        } catch (e) {
-            console.error(e);
-        }
-    })();
 </script>

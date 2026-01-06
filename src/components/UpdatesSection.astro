@@ -1,5 +1,9 @@
 ---
-const updates = [
+import { getLangFromUrl } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
+const updatesJA = [
     {
         date: "2025.12.28",
         content: "「クリップ抽出くん」の紹介記事を公開しました。",
@@ -37,6 +41,52 @@ const updates = [
     },
     { date: "2025.12.05", content: "Twitch Stream Helper v1.0.0 公開" },
 ];
+
+const updatesEN = [
+    {
+        date: "2025.12.28",
+        content: "Published a blog post introducing 'Clip Extractor'.",
+        // English version of the blog post doesn't exist yet, so we point to the Japanese one or keep it as is,
+        // but for now let's just show the content.
+        // Ideally we should have English blog posts.
+        // If the link is strictly Japanese content, maybe we shouldn't link it or warn.
+        // For now, I'll keep the link but the user should know it's JA content.
+        link: "/blog/release-clip-extractor/",
+        type: "blog",
+    },
+    {
+        date: "2025.12.27",
+        content: "Released desktop app 'Clip Extractor Beta'.",
+        link: "/en/tools/clip-extractor/", // Assuming /en/ route exists or will exist. If not, fallback to /tools/
+        type: "release",
+    },
+    {
+        date: "2025.12.12",
+        content: "Published a summary of VOICEVOX character usage terms.",
+        link: "/blog/voicevox-terms-summary/",
+        type: "blog",
+    },
+    {
+        date: "2025.12.09",
+        content:
+            "Launched the blog and published an introduction to extensions.",
+        link: "/blog/introducing-my-tools/",
+        type: "blog",
+    },
+    {
+        date: "2025.12.08",
+        content:
+            "Renamed to 'Comment Reader for Twitch (powered by Voicevox)'.",
+        link: "/en/tools/voicevox-comment-reader/",
+    },
+    {
+        date: "2025.12.09",
+        content: "Renewed portfolio site.",
+    },
+    { date: "2025.12.05", content: "Twitch Stream Helper v1.0.0 Released" },
+];
+
+const updates = lang === "en" ? updatesEN : updatesJA;
 ---
 
 <section id="updates" class="bg-slate-900 py-16 border-t border-white/5">
