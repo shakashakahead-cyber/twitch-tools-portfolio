@@ -1,0 +1,83 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "FAQ | Akatsukizaemon Lab";
+const description = "Frequently asked questions about Akatsukizaemon Lab tools.";
+
+const faqGroups = [
+  {
+    title: "💰 General",
+    items: [
+      {
+        question: "Is it really free?",
+        answer: "<strong>Yes, completely free for personal use.</strong><br>I develop these tools out of passion. If you like them, please share on SNS or star on GitHub!"
+      },
+      {
+        question: "Can I use it for commercial purposes?",
+        answer: "<strong>Generally, yes.</strong><br>You can use them on monetized Twitch channels or YouTube channels with ad revenue. However, for tools using VOICEVOX, please follow the terms of each voice library."
+      },
+      {
+        question: "Is there a Mac version?",
+        answer: "<strong>Chrome extensions work on Mac.</strong><br>\"Twitch Stream Helper\" and \"Comment Reader for Twitch\" work on any platform that runs Google Chrome.<br>\"Clip Extractor\" is currently Windows only, but Mac support is under consideration."
+      }
+    ]
+  },
+  {
+    title: "🛠️ Troubleshooting",
+    items: [
+      {
+        question: "Extension is not working",
+        answer: "<strong>Try the following steps:</strong><br>1. Restart your browser<br>2. Disable and re-enable the extension<br>3. Hard refresh the Twitch page (Ctrl + F5 / Cmd + Shift + R)"
+      },
+      {
+        question: "\"Clip Extractor\" analysis is stuck",
+        answer: "<strong>Is FFmpeg installed correctly?</strong><br>This software requires FFmpeg. Please ensure <code>ffmpeg.exe</code> is in the same folder as the app or in your system PATH."
+      },
+      {
+        question: "I found a bug",
+        answer: "<strong>Please report it!</strong><br>Contact us via GitHub Issues or X (Twitter) from the <a href=\"/en/support/\">Support Page</a>. Screenshots and reproduction steps help us fix it faster."
+      }
+    ]
+  }
+];
+
+// JSON-LD Schema Generation
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqGroups.flatMap(group => 
+    group.items.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  )
+};
+---
+
+<Layout title={title} description={description}>
+    <h1>❓ FAQ</h1>
+    
+    <p>
+        Frequently asked questions regarding tools on this site.<br>
+        For specific tool FAQs, please refer to each <a href="/en/tools/">tool page</a>.
+    </p>
+
+    {faqGroups.map((group, index) => (
+        <>
+            {index > 0 && <hr />}
+            <h2>{group.title}</h2>
+            {group.items.map(item => (
+                <div class="mb-8">
+                    <h3>Q. {item.question}</h3>
+                    <p>A. <span set:html={item.answer} /></p>
+                </div>
+            ))}
+        </>
+    ))}
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</Layout>
