@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/Layout.astro
+layout: ../../layouts/Layout.astro
 title: "Getting Started | Akatsukizaemon Lab"
 description: "A guide to choosing the right Twitch streamer tools from Akatsukizaemon Lab."
 ---

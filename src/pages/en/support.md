@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/Layout.astro
+layout: ../../layouts/Layout.astro
 title: "Support | Akatsukizaemon Lab"
 description: "Support, bug reports, and inquiries for Akatsukizaemon Lab tools."
 ---
