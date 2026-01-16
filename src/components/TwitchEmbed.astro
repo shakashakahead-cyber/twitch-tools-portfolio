@@ -85,24 +85,27 @@ const { channel, autoplay = true } = Astro.props;
   let isLive = false;
   let isPlayerLoaded = false;
 
-  // Check Live Status via Thumbnail Image
-  const checkLiveStatus = () => {
-    const img = new Image();
+  // Check Live Status via Fetch (to detect redirect to 404 image)
+  const checkLiveStatus = async () => {
     const timestamp = new Date().getTime();
-    // Use a moderate resolution for the check
-    img.src = `https://static-cdn.jtvnw.net/previews-ttv/live_user_${channel}-640x360.jpg?t=${timestamp}`;
+    const url = `https://static-cdn.jtvnw.net/previews-ttv/live_user_${channel}-640x360.jpg?t=${timestamp}`;
 
-    img.onload = () => {
-      // Image loaded successfully -> Channel is LIVE
-      isLive = true;
-      updateUI(true, img.src);
-    };
-
-    img.onerror = () => {
-      // Image failed to load -> Channel is OFFLINE
+    try {
+      const response = await fetch(url);
+      // Twitch redirects to a 404 image when offline (e.g., .../404_preview-320x180.jpg)
+      if (response.url.includes('404_preview')) {
+        isLive = false;
+        updateUI(false);
+      } else {
+        isLive = true;
+        updateUI(true, url);
+      }
+    } catch (error) {
+      console.warn("Twitch status check failed:", error);
+      // Fallback to offline state on error
       isLive = false;
       updateUI(false);
-    };
+    }
   };
 
   const updateUI = (live, imgSrc) => {
