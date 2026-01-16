@@ -7,6 +7,7 @@ image: "/images/clip-extractor-preview.png"
 downloadUrl: "https://github.com/shakashakahead-cyber/clip-extractor/releases/download/v1.0.3-beta/ClipExtractorSetup.exe"
 fileSize: "約1.5GB"
 version: "β"
+tags: ["AI", "Video", "Twitch"]
 faq:
   - question: "無料で使えますか？"
     answer: "はい、完全無料でお使いいただけます。"

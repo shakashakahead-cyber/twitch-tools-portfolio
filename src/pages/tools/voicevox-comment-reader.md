@@ -7,6 +7,7 @@ image: "/images/voicevox-comment-reader-preview.png"
 storeUrl: "https://chromewebstore.google.com/detail/eolabmdepbcdcppfdmkibgjffiifndkd?utm_source=item-share-cb"
 repoUrl: "https://github.com/shakashakahead-cyber/comment-Reader-for-Twitch-powered-by-Voicevox-"
 privacyUrl: "/privacy/voicevox-comment-reader/"
+tags: ["Twitch", "Voicevox", "ChromeExtension"]
 # 動画ID (空欄なら非表示)
 videoId: "NJ9SmGJFUG4"
 uploadDate: "2025-12-08T00:00:00+09:00"

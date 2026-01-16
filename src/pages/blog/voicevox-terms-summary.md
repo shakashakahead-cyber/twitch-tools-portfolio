@@ -3,6 +3,7 @@ layout: ../../layouts/BlogLayout.astro
 title: "【Twitch配信】VOICEVOX規約まとめ！ずんだもんやめたんを安全に使うための3つのポイント【商用利用・クレジット】"
 description: "Twitch配信で「ずんだもん」などのVOICEVOXキャラを使う際の「商用利用」「クレジット表記」「禁止事項」を3分で解説。Comment Reader for Twitchを使うなら必読の安全マニュアルです。"
 pubDate: "2025-12-12"
+tags: ["Voicevox", "Twitch"]
 ---
 
 「配信でずんだもんの声を使いたいけど、規約違反にならないか怖い…」
