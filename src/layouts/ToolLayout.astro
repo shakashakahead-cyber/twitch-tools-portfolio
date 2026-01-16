@@ -108,6 +108,7 @@ const schemaData = {
   title={`${frontmatter.title} | 暁左衛門 Lab`}
   description={frontmatter.description}
   image={frontmatter.image}
+  frontmatter={frontmatter}
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   <div class="bg-slate-900 min-h-screen pt-24 pb-32">
