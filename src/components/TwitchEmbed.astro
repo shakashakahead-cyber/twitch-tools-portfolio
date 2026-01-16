@@ -9,51 +9,148 @@ const { channel, autoplay = true } = Astro.props;
 
 <div
   class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 ring-purple-500/50 bg-slate-900 group cursor-pointer"
-  id="twitch-embed-container"
+  id="twitch-container"
 >
-  <!-- Placeholder / Click to Play Overlay -->
-  <div
-    id="twitch-placeholder"
-    class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900 transition-all duration-300 group-hover:bg-slate-800"
+  <!-- Background Image Layer (For Live Thumbnail) -->
+  <div 
+    id="twitch-bg" 
+    class="absolute inset-0 bg-cover bg-center transition-opacity duration-500 opacity-0 group-hover:scale-105 transition-transform duration-700"
   >
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-transparent"></div>
-    
-    <div class="relative z-10 flex flex-col items-center gap-4">
-      <div class="w-16 h-16 rounded-full bg-[#9146FF] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- Offline Background (Static Gradient) -->
+  <div id="twitch-offline-bg" class="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-950">
+    <div class="absolute inset-0 bg-[url('/images/twitch-bg-pattern.png')] opacity-5"></div>
+  </div>
+
+  <!-- Content Layer -->
+  <div
+    id="twitch-content"
+    class="absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 z-10 p-6 text-center"
+  >
+    <!-- Status Badge -->
+    <div id="status-badge" class="absolute top-4 left-4 px-2 py-1 rounded bg-red-600 text-white text-xs font-bold hidden items-center gap-1 shadow-md">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+      </span>
+      LIVE
+    </div>
+
+    <!-- Icon Container -->
+    <div class="relative mb-4">
+      <div id="play-icon" class="w-16 h-16 rounded-full bg-[#9146FF] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 hidden">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-white ml-1">
           <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
         </svg>
       </div>
-      <p class="text-white font-bold text-lg group-hover:text-[#9146FF] transition-colors">
-        Click to Watch Stream
-      </p>
-      <p class="text-gray-400 text-sm">
-        @{channel}
+
+      <div id="offline-icon" class="w-16 h-16 rounded-full bg-slate-700 flex items-center justify-center shadow-lg group-hover:bg-slate-600 transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-400">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 0 1 0 1.971l-11.54 6.347a1.125 1.125 0 0 1-1.667-.985V5.653Z" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Text Info -->
+    <div>
+      <h3 id="status-title" class="text-white font-bold text-lg mb-1 group-hover:text-[#9146FF] transition-colors">
+        Offline
+      </h3>
+      <p id="status-desc" class="text-gray-400 text-sm">
+        Visit Channel @{channel}
       </p>
     </div>
   </div>
 
   <!-- Twitch Player Target -->
-  <div id="twitch-embed" class="w-full h-full"></div>
+  <div id="twitch-embed" class="relative z-20 w-full h-full hidden"></div>
 </div>
 
 <script define:vars={{ channel, autoplay }}>
-  const container = document.getElementById('twitch-embed-container');
-  const placeholder = document.getElementById('twitch-placeholder');
+  // Elements
+  const container = document.getElementById('twitch-container');
+  const content = document.getElementById('twitch-content');
+  const bg = document.getElementById('twitch-bg');
+  const offlineBg = document.getElementById('twitch-offline-bg');
   const embedTarget = document.getElementById('twitch-embed');
-  let isLoaded = false;
+  
+  const statusBadge = document.getElementById('status-badge');
+  const playIcon = document.getElementById('play-icon');
+  const offlineIcon = document.getElementById('offline-icon');
+  const statusTitle = document.getElementById('status-title');
+  const statusDesc = document.getElementById('status-desc');
+
+  let isLive = false;
+  let isPlayerLoaded = false;
+
+  // Check Live Status via Thumbnail Image
+  const checkLiveStatus = () => {
+    const img = new Image();
+    const timestamp = new Date().getTime();
+    // Use a moderate resolution for the check
+    img.src = `https://static-cdn.jtvnw.net/previews-ttv/live_user_${channel}-640x360.jpg?t=${timestamp}`;
+
+    img.onload = () => {
+      // Image loaded successfully -> Channel is LIVE
+      isLive = true;
+      updateUI(true, img.src);
+    };
+
+    img.onerror = () => {
+      // Image failed to load -> Channel is OFFLINE
+      isLive = false;
+      updateUI(false);
+    };
+  };
+
+  const updateUI = (live, imgSrc) => {
+    if (live) {
+      // Set Live UI
+      bg.style.backgroundImage = `url(${imgSrc})`;
+      bg.style.opacity = '1';
+      offlineBg.style.opacity = '0';
+      
+      statusBadge.classList.remove('hidden');
+      statusBadge.classList.add('flex');
+      
+      playIcon.classList.remove('hidden');
+      offlineIcon.classList.add('hidden');
+      
+      statusTitle.textContent = "Watch Live Stream";
+      statusDesc.textContent = `Playing ${channel}`;
+    } else {
+      // Set Offline UI (Default)
+      bg.style.opacity = '0';
+      offlineBg.style.opacity = '1';
+
+      statusBadge.classList.add('hidden');
+      statusBadge.classList.remove('flex');
+
+      playIcon.classList.add('hidden');
+      offlineIcon.classList.remove('hidden');
+
+      statusTitle.textContent = "Currently Offline";
+      statusDesc.textContent = "Click to visit Twitch channel";
+    }
+  };
 
   const loadTwitchPlayer = () => {
-    if (isLoaded) return;
-    isLoaded = true;
+    if (isPlayerLoaded) return;
+    isPlayerLoaded = true;
 
-    // Remove placeholder visually
-    placeholder.style.opacity = '0';
+    // Hide placeholder content
+    content.style.opacity = '0';
     setTimeout(() => {
-      placeholder.style.display = 'none';
+        content.style.display = 'none';
+        bg.style.display = 'none';
+        offlineBg.style.display = 'none';
     }, 300);
 
-    // Load Twitch script if not present
+    embedTarget.classList.remove('hidden');
+
+    // Load Twitch script
     if (!window.Twitch) {
       const script = document.createElement('script');
       script.src = 'https://embed.twitch.tv/embed/v1.js';
@@ -80,5 +177,16 @@ const { channel, autoplay = true } = Astro.props;
     });
   };
 
-  container.addEventListener('click', loadTwitchPlayer);
+  const handleClick = () => {
+    if (isLive) {
+      loadTwitchPlayer();
+    } else {
+      window.open(`https://twitch.tv/${channel}`, '_blank');
+    }
+  };
+
+  container.addEventListener('click', handleClick);
+
+  // Initial Check
+  checkLiveStatus();
 </script>
