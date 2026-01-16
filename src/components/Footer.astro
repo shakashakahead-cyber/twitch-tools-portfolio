@@ -10,74 +10,107 @@ interface Props {
 const { socialLinks } = Astro.props;
 ---
 
-<footer class="bg-slate-950 py-12 border-t border-white/5">
-    <div
-        class="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6"
-    >
-        <div class="flex items-center gap-4">
-            <a
-                href="/"
-                class="text-white font-bold text-lg hover:text-indigo-400 transition-colors"
-                >暁左衛門 Lab</a
+<footer class="bg-slate-950 py-12 border-t border-white/5 relative z-10">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Navigation Links */}
+        <div
+            class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium text-gray-400 mb-8"
+        >
+            <a href="/start/" class="hover:text-white transition-colors"
+                >はじめての方へ</a
             >
-            <div class="text-xs text-gray-500">
-                © {new Date().getFullYear()} Akatsukizaemon
-            </div>
+            <a href="/tools/" class="hover:text-white transition-colors"
+                >ツール一覧</a
+            >
+            <a href="/faq/" class="hover:text-white transition-colors"
+                >よくある質問</a
+            >
+            <a href="/support/" class="hover:text-white transition-colors"
+                >サポート・お問い合わせ</a
+            >
         </div>
 
-        <div class="flex gap-6">
-            <a
-                href={socialLinks.twitch}
-                target="_blank"
-                class="text-gray-400 hover:text-[#9146FF] transition-colors flex items-center gap-2"
-            >
-                <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    ><path
-                        fill-rule="evenodd"
-                        d="M11.64 5.93h1.43v4.28h-1.43m3.93-4.28H17v4.28h-1.43M7 2L3.43 5.57v12.86h4.28V22l3.58-3.57h2.85L20.57 12V2m-1.43 9.29l-2.85 2.85h-2.86l-2.5 2.5v-2.5H7.71V3.43h11.43z"
-                        clip-rule="evenodd"></path></svg
+        <div
+            class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/5"
+        >
+            <div class="flex items-center gap-4">
+                <a
+                    href="/"
+                    class="text-white font-bold text-lg hover:text-indigo-400 transition-colors"
+                    >暁左衛門 Lab</a
                 >
-                Twitch
-            </a>
-            <a
-                href={socialLinks.x}
-                target="_blank"
-                class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-            >
-                <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    ><path
-                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                    ></path></svg
+                <div class="text-xs text-gray-500">
+                    © {new Date().getFullYear()} Akatsukizaemon
+                </div>
+            </div>
+
+            <div class="flex items-center gap-6">
+                {
+                    Astro.props.privacyUrl && (
+                        <a
+                            href={Astro.props.privacyUrl}
+                            class="text-sm text-gray-400 hover:text-white transition-colors"
+                        >
+                            プライバシーポリシー
+                        </a>
+                    )
+                }
+
+                <a
+                    href={socialLinks.twitch}
+                    target="_blank"
+                    class="text-gray-400 hover:text-[#9146FF] transition-colors flex items-center gap-2"
                 >
-                X
-            </a>
-            <a
-                href={`mailto:${socialLinks.email}`}
-                class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-            >
-                <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
+                    <span class="sr-only">Twitch</span>
+                    <svg
+                        class="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M11.64 5.93h1.43v4.28h-1.43m3.93-4.28H17v4.28h-1.43M7 2L3.43 5.57v12.86h4.28V22l3.58-3.57h2.85L20.57 12V2m-1.43 9.29l-2.85 2.85h-2.86l-2.5 2.5v-2.5H7.71V3.43h11.43z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <a
+                    href={socialLinks.x}
+                    target="_blank"
+                    class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
                 >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                    ></path>
-                </svg>
-                Email
-            </a>
+                    <span class="sr-only">X (Twitter)</span>
+                    <svg
+                        class="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                        ></path>
+                    </svg>
+                </a>
+                <a
+                    href={`mailto:${socialLinks.email}`}
+                    class="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                >
+                    <span class="sr-only">Email</span>
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                        ></path>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
 </footer>

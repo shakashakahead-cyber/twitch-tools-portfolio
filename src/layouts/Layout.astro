@@ -23,6 +23,8 @@ const canonicalURL = new URL(finalPath, Astro.site);
 const socialImageURL = new URL(image, Astro.url);
 
 import { getLangFromUrl } from "../i18n/utils";
+import Footer from "../components/Footer.astro";
+import { socialLinks } from "../data/siteData";
 const lang = getLangFromUrl(Astro.url);
 
 // ベースパスの計算（言語プレフィックスを除外）
@@ -96,6 +98,7 @@ const enURL = new URL(`/en${basePath === "/" ? "/" : basePath}`, Astro.site);
         >
             <slot />
         </div>
+        <Footer socialLinks={socialLinks} privacyUrl={frontmatter?.privacyUrl} />
     </body>
 </html>
 
