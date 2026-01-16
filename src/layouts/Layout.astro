@@ -1,11 +1,19 @@
 ---
 interface Props {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     image?: string;
+    frontmatter?: {
+        title: string;
+        description: string;
+        image?: string;
+    };
 }
 
-const { title, description, image = "/images/avatar.png" } = Astro.props;
+const { frontmatter } = Astro.props;
+const title = Astro.props.title || frontmatter?.title || "Akatsukizaemon Lab";
+const description = Astro.props.description || frontmatter?.description || "Portfolio and tools by Akatsukizaemon";
+const image = Astro.props.image || frontmatter?.image || "/images/avatar.png";
 const pathname = Astro.url.pathname;
 // 正規化: index.html を削除し、末尾に必ずスラッシュをつける
 const cleanPath = pathname.replace(/\/index\.html$/, "");
@@ -79,7 +87,10 @@ const enURL = new URL(`/en${basePath === "/" ? "/" : basePath}`, Astro.site);
             class:list={[
                 {
                     "markdown-container prose prose-invert prose-lg":
-                        Astro.url.pathname.startsWith("/privacy/"),
+                        Astro.url.pathname.startsWith("/privacy/") ||
+                        Astro.url.pathname.startsWith("/support") ||
+                        Astro.url.pathname.startsWith("/start") ||
+                        Astro.url.pathname.startsWith("/faq"),
                 },
             ]}
         >
