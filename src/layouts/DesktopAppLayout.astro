@@ -54,18 +54,21 @@ const baseSchema = {
         url: "https://shakashakahead.com",
     },
     ...(frontmatter.repoUrl && { codeRepository: frontmatter.repoUrl }),
-    // 動画がある場合は動画情報も含める
-    ...(frontmatter.videoId && {
-        video: {
-            "@type": "VideoObject",
-            name: `${frontmatter.title} ${t("schema.video.title_suffix")}`,
-            description: t("schema.video.description"),
-            thumbnailUrl: `https://img.youtube.com/vi/${frontmatter.videoId}/maxresdefault.jpg`,
-            uploadDate: frontmatter.uploadDate,
-            contentUrl: `https://www.youtube.com/watch?v=${frontmatter.videoId}`,
-        },
-    }),
 };
+
+// 動画スキーマ（独立したVideoObjectとして定義）
+const videoSchema = frontmatter.videoId
+    ? {
+          "@type": "VideoObject",
+          "@id": `https://shakashakahead.com${Astro.url.pathname}#video`,
+          name: `${frontmatter.title} ${t("schema.video.title_suffix")}`,
+          description: t("schema.video.description"),
+          thumbnailUrl: `https://img.youtube.com/vi/${frontmatter.videoId}/maxresdefault.jpg`,
+          uploadDate: frontmatter.uploadDate,
+          contentUrl: `https://www.youtube.com/watch?v=${frontmatter.videoId}`,
+          embedUrl: `https://www.youtube.com/embed/${frontmatter.videoId}`,
+      }
+    : null;
 
 // FAQスキーマがある場合
 const faqSchema =
@@ -86,7 +89,7 @@ const faqSchema =
 // Graph形式で複数のスキーマを結合
 const schemaData = {
     "@context": "https://schema.org",
-    "@graph": [baseSchema, ...(faqSchema ? [faqSchema] : [])],
+    "@graph": [baseSchema, ...(videoSchema ? [videoSchema] : []), ...(faqSchema ? [faqSchema] : [])],
 };
 // ▲▲▲ 定義ここまで ▲▲▲
 ---
