@@ -1,0 +1,84 @@
+---
+interface Props {
+  channel: string;
+  autoplay?: boolean;
+}
+
+const { channel, autoplay = true } = Astro.props;
+---
+
+<div
+  class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 ring-purple-500/50 bg-slate-900 group cursor-pointer"
+  id="twitch-embed-container"
+>
+  <!-- Placeholder / Click to Play Overlay -->
+  <div
+    id="twitch-placeholder"
+    class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900 transition-all duration-300 group-hover:bg-slate-800"
+  >
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-transparent"></div>
+    
+    <div class="relative z-10 flex flex-col items-center gap-4">
+      <div class="w-16 h-16 rounded-full bg-[#9146FF] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-white ml-1">
+          <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <p class="text-white font-bold text-lg group-hover:text-[#9146FF] transition-colors">
+        Click to Watch Stream
+      </p>
+      <p class="text-gray-400 text-sm">
+        @{channel}
+      </p>
+    </div>
+  </div>
+
+  <!-- Twitch Player Target -->
+  <div id="twitch-embed" class="w-full h-full"></div>
+</div>
+
+<script define:vars={{ channel, autoplay }}>
+  const container = document.getElementById('twitch-embed-container');
+  const placeholder = document.getElementById('twitch-placeholder');
+  const embedTarget = document.getElementById('twitch-embed');
+  let isLoaded = false;
+
+  const loadTwitchPlayer = () => {
+    if (isLoaded) return;
+    isLoaded = true;
+
+    // Remove placeholder visually
+    placeholder.style.opacity = '0';
+    setTimeout(() => {
+      placeholder.style.display = 'none';
+    }, 300);
+
+    // Load Twitch script if not present
+    if (!window.Twitch) {
+      const script = document.createElement('script');
+      script.src = 'https://embed.twitch.tv/embed/v1.js';
+      script.async = true;
+      script.onload = initPlayer;
+      document.body.appendChild(script);
+    } else {
+      initPlayer();
+    }
+  };
+
+  const initPlayer = () => {
+    new Twitch.Embed("twitch-embed", {
+        width: "100%",
+        height: "100%",
+        channel: channel,
+        layout: "video",
+        autoplay: autoplay,
+        parent: [
+            "localhost",
+            "127.0.0.1",
+            "shakashakahead.com" 
+        ]
+    });
+  };
+
+  container.addEventListener('click', loadTwitchPlayer);
+</script>

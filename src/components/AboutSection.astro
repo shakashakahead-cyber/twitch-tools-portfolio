@@ -17,6 +17,8 @@ interface Props {
     games: string[];
 }
 
+import TwitchEmbed from "./TwitchEmbed.astro";
+
 const { profile, socialLinks, skills, games } = Astro.props;
 ---
 
@@ -137,12 +139,9 @@ const { profile, socialLinks, skills, games } = Astro.props;
                 </div>
 
                 <!-- Twitch Embed -->
-                <div
-                    class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl ring-1 ring-auto ring-purple-500/50"
-                >
-                    <div id="twitch-embed" class="w-full h-full"></div>
-                </div>
-                <div class="text-center">
+                <TwitchEmbed channel="akatsukizaemon" />
+                
+                <div class="text-center mt-2">
                     <a
                         href="https://www.twitch.tv/akatsukizaemon"
                         target="_blank"
@@ -151,23 +150,6 @@ const { profile, socialLinks, skills, games } = Astro.props;
                         *If player doesn't load, click here (Go to Twitch)
                     </a>
                 </div>
-
-                <script is:inline src="https://embed.twitch.tv/embed/v1.js"
-                ></script>
-                <script is:inline>
-                    new Twitch.Embed("twitch-embed", {
-                        width: "100%",
-                        height: "100%",
-                        channel: "akatsukizaemon",
-                        layout: "video",
-                        autoplay: false,
-                        parent: [
-                            "localhost",
-                            "127.0.0.1",
-                            "shakashakahead.com",
-                        ],
-                    });
-                </script>
             </div>
         </div>
     </div>

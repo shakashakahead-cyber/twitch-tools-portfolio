@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import ContactSection from "../components/ContactSection.astro";
 import UpdatesSection from "../components/UpdatesSection.astro";
+import TwitchEmbed from "../components/TwitchEmbed.astro";
 import {
     socialLinks,
     skills,
@@ -332,25 +333,7 @@ const desktopAppList = desktopApps[currentLang];
             </div>
             <!-- 簡易AboutなのでTwitch Embedだけ置く -->
             <div class="mt-10 lg:mt-0 w-full max-w-md lg:shrink-0">
-                <div
-                    class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg ring-1 ring-white/10 bg-slate-900"
-                >
-                    <!-- 常に読み込むと重いのでリンクにするか、画像にする -->
-                    <div
-                        class="flex items-center justify-center h-full flex-col p-6 text-center"
-                    >
-                        <p class="text-white font-bold mb-2">
-                            Akatsukizaemon on Twitch
-                        </p>
-                        <a
-                            href={socialLinks.twitch}
-                            target="_blank"
-                            class="rounded-md bg-[#9146FF] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#7c2cf5] transition-colors"
-                        >
-                            Twitchチャンネルを見る
-                        </a>
-                    </div>
-                </div>
+                <TwitchEmbed channel="akatsukizaemon" />
             </div>
         </div>
     </section>
