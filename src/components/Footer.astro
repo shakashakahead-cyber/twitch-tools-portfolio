@@ -1,13 +1,14 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
 interface Props {
     socialLinks: {
         twitch: string;
         x: string;
         email: string;
     };
+    privacyUrl?: string;
 }
----
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const { socialLinks } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
