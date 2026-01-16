@@ -1,0 +1,83 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "よくある質問 (FAQ) | Akatsukizaemon Lab";
+const description = "暁左衛門 Labの全ツール共通のよくある質問と回答集です。";
+
+const faqGroups = [
+  {
+    title: "💰 全般",
+    items: [
+      {
+        question: "本当に無料で使えますか？",
+        answer: "<strong>はい、個人利用に限り、すべての機能を無料でお使いいただけます。</strong><br>開発は個人の趣味と情熱で行っています。もし気に入っていただけたら、SNSでのシェアやGithubでのスターをいただけると励みになります！"
+      },
+      {
+        question: "商用利用（収益化配信など）は可能ですか？",
+        answer: "<strong>基本的に可能です。</strong><br>Twitchのアフィリエイト/パートナープログラムによる収益化や、YouTubeでの広告収入を得ているチャンネルでも問題なくご利用いただけます。ただし、VOICEVOXを利用するツールに関しては、各音声ライブラリ（キャラクター）の利用規約に従ってください。"
+      },
+      {
+        question: "Mac版はありますか？",
+        answer: "<strong>Chrome拡張機能はMacでも使えます。</strong><br>「Twitch Stream Helper」と「Comment Reader for Twitch」は、Google Chrome等のブラウザが動けばMacでも動作します。<br>「クリップ抽出くん」に関しては、現在はWindows版のみですが、将来的な対応を検討中です。"
+      }
+    ]
+  },
+  {
+    title: "🛠️ トラブルシューティング",
+    items: [
+      {
+        question: "拡張機能が動きません",
+        answer: "<strong>以下の手順を試してみてください。</strong><br>1. ブラウザを再起動する<br>2. 拡張機能を一度無効化し、再度有効化する<br>3. Twitchのページをスーパーリロード（Ctrl + F5 / Cmd + Shift + R）する"
+      },
+      {
+        question: "「クリップ抽出くん」で解析が進まない",
+        answer: "<strong>FFmpegは正しく配置されていますか？</strong><br>本ソフトの動作にはFFmpegが必要です。<code>ffmpeg.exe</code> がソフトと同じフォルダ、またはシステムのPathが通った場所に配置されているか確認してください。"
+      },
+      {
+        question: "不具合を見つけました",
+        answer: "<strong>ぜひご報告ください！</strong><br><a href=\"/support/\">サポートページ</a>から、GitHub IssueまたはX(Twitter)へのご連絡をお願いいたします。スクリーンショットや発生手順を添えていただけると、早期解決につながります。"
+      }
+    ]
+  }
+];
+
+// JSON-LD Schema Generation
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqGroups.flatMap(group => 
+    group.items.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  )
+};
+---
+
+<Layout title={title} description={description}>
+    <h1>❓ よくある質問 (FAQ)</h1>
+    
+    <p>
+        当サイトで公開しているツール全般に関する、よくある質問をまとめました。<br>
+        各ツールの詳細なFAQについては、それぞれの<a href="/tools/">ツール詳細ページ</a>も併せてご覧ください。
+    </p>
+
+    {faqGroups.map((group, index) => (
+        <>
+            {index > 0 && <hr />}
+            <h2>{group.title}</h2>
+            {group.items.map(item => (
+                <div class="mb-8">
+                    <h3>Q. {item.question}</h3>
+                    <p>A. <span set:html={item.answer} /></p>
+                </div>
+            ))}
+        </>
+    ))}
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</Layout>
