@@ -1,2 +1,4 @@
 # Cloudflare Pages Redirects
 /index.html / 301
+/blog/introducing-my-tools /blog/introducing-my-tools/ 301
+/blog/introducing-my-tools/index.html /blog/introducing-my-tools/ 301
