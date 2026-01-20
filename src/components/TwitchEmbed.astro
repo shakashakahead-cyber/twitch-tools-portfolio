@@ -21,7 +21,10 @@ const { channel, autoplay = true } = Astro.props;
 
   <!-- Offline Background (Static Gradient) -->
   <div id="twitch-offline-bg" class="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-950">
-    <div class="absolute inset-0 bg-[url('/images/twitch-bg-pattern.png')] opacity-5"></div>
+    <div
+      class="absolute inset-0 opacity-10"
+      style="background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.12) 1px, transparent 0); background-size: 24px 24px;"
+    ></div>
   </div>
 
   <!-- Content Layer -->
