@@ -1,6 +1,6 @@
 # Akatsukizaemon Lab
 
-Personal portfolio site built with Astro and Tailwind CSS.
+Personal site focused on streamer tools, built with Astro and Tailwind CSS.
 
 ## Requirements
 - Node.js 18+

@@ -1,14 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
-import Navigation from "../components/Navigation.astro";
 import ContactSection from "../components/ContactSection.astro";
 import UpdatesSection from "../components/UpdatesSection.astro";
 import TwitchEmbed from "../components/TwitchEmbed.astro";
 import {
     socialLinks,
-    skills,
-    games,
     extensions,
     desktopApps,
     profile,
@@ -21,8 +18,8 @@ const desktopAppList = desktopApps[currentLang];
 ---
 
 <Layout
-    title="暁左衛門 Lab | 配信者向けツール開発"
-    description="Twitch配信をより快適に、より楽しく。現役ストリーマー兼エンジニアが開発した便利な拡張機能たち。"
+    title="暁左衛門 Lab | 配信者向けツール"
+    description="配信の悩みを解決するツールをまとめた個人サイトです。"
 >
     <!-- Navigation -->
     <Navigation />
@@ -54,8 +51,8 @@ const desktopAppList = desktopApps[currentLang];
                 暁左衛門 Lab
             </h1>
             <p class="mt-6 text-lg leading-8 text-gray-300 max-w-2xl mx-auto">
-                配信者のための、配信者によるツールボックス。<br />
-                Twitch配信をより快適に、より楽しくするための拡張機能を開発・公開しています。
+                配信で感じた不便を解決するために、Twitch向けのツールを作っています。<br />
+                まずはツール一覧から、気になるものを試してみてください。
             </p>
 
             <div
@@ -65,13 +62,13 @@ const desktopAppList = desktopApps[currentLang];
                     href="/tools/"
                     class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors"
                 >
-                    拡張機能一覧を見る
+                    ツール一覧を見る
                 </a>
                 <a
-                    href="/blog/introducing-my-tools/"
+                    href="/blog/"
                     class="text-sm font-semibold leading-6 text-white hover:text-indigo-300 transition-colors"
                 >
-                    拡張機能の紹介記事を読む <span aria-hidden="true">→</span>
+                    ブログを読む <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
         </div>
@@ -82,23 +79,23 @@ const desktopAppList = desktopApps[currentLang];
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="text-center mb-10">
                 <h2 class="text-2xl font-bold tracking-tight text-white mb-4">
-                    Developed Extensions
+                    おすすめツール
                 </h2>
                 <a
                     href="/tools/"
                     class="text-indigo-400 hover:text-indigo-300 text-sm font-semibold"
                 >
-                    すべてのツールを見る <span aria-hidden="true">→</span>
+                    ツール一覧を見る <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
 
-            <!-- 簡易表示のためcomponents/ToolsSectionをそのまま使うが、数は今後制限するかも -->
+            <!-- Tools section digest -->
             <div
                 class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 lg:mx-0 lg:max-w-none lg:grid-cols-2"
             >
                 {
                     toolList.map((ext) => (
-                        // 簡易表示としてToolCardの一部を再利用、あるいはそのまま表示
+                        // Tool card digest
                         <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-slate-900 shadow-xl ring-1 ring-white/10 transition-all hover:ring-indigo-500 hover:-translate-y-1">
                             <a
                                 href={ext.link}
@@ -325,13 +322,11 @@ const desktopAppList = desktopApps[currentLang];
                         href="/about/"
                         class="text-sm font-semibold text-indigo-400 hover:text-indigo-300"
                     >
-                        元自衛官の経歴や、お仕事の依頼はこちら <span
-                            aria-hidden="true">→</span
-                        >
+                        元自衛官の経歴や、お仕事の依頼はこちら <span aria-hidden="true">&rarr;</span>
                     </a>
                 </div>
             </div>
-            <!-- 簡易AboutなのでTwitch Embedだけ置く -->
+            <!-- Simple about section with Twitch embed -->
             <div class="mt-10 lg:mt-0 w-full max-w-md lg:shrink-0">
                 <TwitchEmbed channel="akatsukizaemon" />
             </div>

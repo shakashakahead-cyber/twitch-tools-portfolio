@@ -11,9 +11,21 @@ interface Props {
     };
 }
 
+import { getLangFromUrl } from "../i18n/utils";
+import Footer from "../components/Footer.astro";
+import { socialLinks } from "../data/siteData";
+
+const lang = getLangFromUrl(Astro.url);
 const { frontmatter } = Astro.props;
 const title = Astro.props.title || frontmatter?.title || "Akatsukizaemon Lab";
-const description = Astro.props.description || frontmatter?.description || "Portfolio and tools by Akatsukizaemon";
+const defaultDescription =
+    lang === "en"
+        ? "Streamer tools and notes by Akatsukizaemon"
+        : "配信の悩みを技術で解決するツール集です。";
+const description =
+    Astro.props.description ||
+    frontmatter?.description ||
+    defaultDescription;
 const image = Astro.props.image || frontmatter?.image || "/images/avatar.png";
 const pathname = Astro.url.pathname;
 // 正規化: index.html を削除し、末尾に必ずスラッシュをつける
@@ -22,11 +34,7 @@ const finalPath = cleanPath.endsWith("/") ? cleanPath : `${cleanPath}/`;
 const canonicalURL = new URL(finalPath, Astro.site);
 
 const socialImageURL = new URL(image, Astro.url);
-
-import { getLangFromUrl } from "../i18n/utils";
-import Footer from "../components/Footer.astro";
-import { socialLinks } from "../data/siteData";
-const lang = getLangFromUrl(Astro.url);
+const schemaDescription = defaultDescription;
 
 // ベースパスの計算（言語プレフィックスを除外）
 const basePath = pathname.startsWith("/en/")
@@ -136,11 +144,13 @@ const enURL = new URL(`/en${basePath === "/" ? "/" : basePath}`, Astro.site);
     }
 </style>
 
-<script type="application/ld+json">
-    {
+<script
+    type="application/ld+json"
+    set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Akatsukizaemon Lab",
-        "url": "https://shakashakahead.com/"
-    }
-</script>
+        name: "Akatsukizaemon Lab",
+        url: "https://shakashakahead.com/",
+        description: schemaDescription,
+    })}
+></script>

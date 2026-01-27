@@ -3,11 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import Navigation from "../../components/Navigation.astro";
 import UpdatesSection from "../../components/UpdatesSection.astro";
 import ContactSection from "../../components/ContactSection.astro";
-import Footer from "../../components/Footer.astro";
 import {
     socialLinks,
-    skills,
-    games,
     extensions,
     profile,
 } from "../../data/siteData";
@@ -65,10 +62,10 @@ const toolList = extensions[currentLang];
                     View All Extensions
                 </a>
                 <a
-                    href="/blog/introducing-my-tools/"
+                    href="/blog/"
                     class="text-sm font-semibold leading-6 text-white hover:text-indigo-300 transition-colors"
                 >
-                    Read Introduction Article <span aria-hidden="true">→</span>
+                    Read the Blog <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
         </div>
@@ -79,13 +76,13 @@ const toolList = extensions[currentLang];
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="text-center mb-10">
                 <h2 class="text-2xl font-bold tracking-tight text-white mb-4">
-                    Developed Extensions
+                    Featured Tools
                 </h2>
                 <a
                     href="/en/tools/"
                     class="text-indigo-400 hover:text-indigo-300 text-sm font-semibold"
                 >
-                    View All Tools <span aria-hidden="true">→</span>
+                    View All Tools <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
 
