@@ -1,5 +1,5 @@
 ---
-import { ui, defaultLang } from "../i18n/ui";
+import { ui } from "../i18n/ui";
 
 const url = Astro.url;
 const currentLang = url.pathname.startsWith("/en") ? "en" : "ja";
@@ -9,12 +9,13 @@ const homePath = currentLang === "en" ? "/en/" : "/";
 const toolsPath = currentLang === "en" ? "/en/tools/" : "/tools/";
 const blogPath = "/blog/"; // ブログは現状日本語のみ想定だが、構造上分けておく
 const aboutPath = currentLang === "en" ? "/en/about/" : "/about/";
+const siteName = currentLang === "en" ? "Akatsukizaemon Lab" : "暁左衛門 Lab";
 
 const links = [
-    { name: t["nav.home"], href: homePath },
     { name: t["nav.tools"], href: toolsPath },
     { name: t["nav.blog"], href: blogPath },
     { name: t["nav.about"], href: aboutPath },
+    { name: t["nav.home"], href: homePath },
 ];
 ---
 
@@ -25,10 +26,10 @@ const links = [
     >
         <div class="flex lg:flex-1">
             <a
-                href="/"
+                href={homePath}
                 class="-m-1.5 p-1.5 text-white font-bold text-lg hover:text-indigo-400 transition-colors"
             >
-                暁左衛門 Lab
+                {siteName}
             </a>
         </div>
         <div class="flex gap-x-3 lg:gap-x-12">
