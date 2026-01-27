@@ -29,5 +29,20 @@ npm run preview
 - Twitch embed script and preview image CDN.
 - YouTube embeds for tool pages.
 
+## Affiliate Links
+- Blog pages now show an affiliate disclosure in `src/layouts/BlogLayout.astro`.
+- Use `src/components/AffiliateLink.astro` in `.astro` (or future `.mdx`) files.
+- In plain `.md` files, add the required attributes manually.
+
+```html
+<a
+  href="https://www.amazon.co.jp/dp/XXXXXXXXXX?tag=shakashakahead-22"
+  target="_blank"
+  rel="sponsored nofollow noopener noreferrer"
+>
+  Amazonで見る
+</a>
+```
+
 ## License
 MIT. See `LICENSE`.

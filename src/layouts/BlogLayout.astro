@@ -1,7 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
+import { getLangFromUrl } from "../i18n/utils";
 
 interface Props {
     frontmatter: {
@@ -13,6 +13,16 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const disclosureTitle = lang === "en" ? "Affiliate Disclosure" : "アフィリエイト開示";
+const affiliateDisclosure =
+    lang === "en"
+        ? "This article may contain affiliate links. If you buy through them, I may earn a commission."
+        : "この記事にはアフィリエイトリンクが含まれる場合があります。リンク経由で購入されると、紹介料を受け取ることがあります。";
+const amazonDisclosure =
+    lang === "en"
+        ? "As an Amazon Associate I earn from qualifying purchases."
+        : "当サイトは Amazon アソシエイトとして、適格販売により収入を得ています。";
 
 const socialLinks = {
     twitch: "https://www.twitch.tv/akatsukizaemon",
@@ -47,6 +57,11 @@ const socialLinks = {
             <article
                 class="prose prose-invert prose-lg max-w-none prose-strong:font-bold prose-strong:text-white"
             >
+                <div class="mb-8 rounded-lg border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-100">
+                    <p class="font-semibold text-amber-200">{disclosureTitle}</p>
+                    <p class="mt-1">{affiliateDisclosure}</p>
+                    <p class="mt-1 text-amber-200/90">{amazonDisclosure}</p>
+                </div>
                 <slot />
 
                 <div

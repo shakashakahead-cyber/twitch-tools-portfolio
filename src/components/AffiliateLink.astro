@@ -1,0 +1,29 @@
+---
+interface Props {
+    href: string;
+    label?: string;
+    class?: string;
+    ariaLabel?: string;
+}
+
+const {
+    href,
+    label,
+    class: className,
+    ariaLabel,
+} = Astro.props;
+
+const rel = "sponsored nofollow noopener noreferrer";
+---
+
+<a
+    href={href}
+    rel={rel}
+    target="_blank"
+    class={className}
+    aria-label={ariaLabel}
+    data-affiliate="true"
+>
+    {label ? label : <slot />}
+</a>
+
