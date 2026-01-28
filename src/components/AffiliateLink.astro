@@ -1,0 +1,62 @@
+---
+interface Props {
+    href: string;
+    label?: string;
+    class?: string;
+    ariaLabel?: string;
+    affiliateTag?: string;
+    addAmazonTag?: boolean;
+}
+
+const {
+    href,
+    label,
+    class: className,
+    ariaLabel,
+    affiliateTag,
+    addAmazonTag,
+} = Astro.props;
+
+const rel = "sponsored nofollow noopener noreferrer";
+const defaultAffiliateTag = "shakashakahea-22";
+const tagToUse = affiliateTag ?? defaultAffiliateTag;
+const shouldAddAmazonTag = addAmazonTag ?? true;
+
+function buildAffiliateHref(rawHref: string): string {
+    if (!shouldAddAmazonTag) {
+        return rawHref;
+    }
+
+    try {
+        const url = new URL(rawHref);
+        const host = url.hostname.toLowerCase();
+        const isAmazonCoJp = host === "amazon.co.jp" || host.endsWith(".amazon.co.jp");
+
+        if (!isAmazonCoJp) {
+            return rawHref;
+        }
+
+        if (!url.searchParams.has("tag")) {
+            url.searchParams.set("tag", tagToUse);
+        }
+
+        return url.toString();
+    } catch {
+        // If the URL is relative or invalid, fall back to the original.
+        return rawHref;
+    }
+}
+
+const finalHref = buildAffiliateHref(href);
+---
+
+<a
+    href={finalHref}
+    rel={rel}
+    target="_blank"
+    class={className}
+    aria-label={ariaLabel}
+    data-affiliate="true"
+>
+    {label ? label : <slot />}
+</a>
