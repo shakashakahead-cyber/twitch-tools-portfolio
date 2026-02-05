@@ -1,5 +1,9 @@
 # Cloudflare Pages Redirects
+# Normalize legacy *.html URLs to canonical trailing-slash URLs.
 /index.html / 301
+/:path/index.html /:path/ 301
+
+# Canonical trailing slash redirects for known pages.
 /tools/voicevox-comment-reader /tools/voicevox-comment-reader/ 301
 /en/tools/voicevox-comment-reader /en/tools/voicevox-comment-reader/ 301
 /blog/introducing-my-tools /blog/introducing-my-tools/ 301
