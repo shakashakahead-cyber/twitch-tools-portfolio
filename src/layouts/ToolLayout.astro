@@ -66,17 +66,31 @@ const baseSchema = {
   ...(frontmatter.repoUrl && { codeRepository: frontmatter.repoUrl }),
 };
 
+const pageUrl = `https://shakashakahead.com${Astro.url.pathname}`;
+
 // 動画スキーマ（独立したVideoObjectとして定義）
 const videoSchema = frontmatter.videoId
   ? {
       "@type": "VideoObject",
-      "@id": `https://shakashakahead.com${Astro.url.pathname}#video`,
+      "@id": `${pageUrl}#video`,
       name: `${frontmatter.title} ${t("schema.video.title_suffix")}`,
       description: t("schema.video.description"),
-      thumbnailUrl: `https://img.youtube.com/vi/${frontmatter.videoId}/maxresdefault.jpg`,
+      thumbnailUrl: [
+        `https://img.youtube.com/vi/${frontmatter.videoId}/maxresdefault.jpg`,
+        `https://img.youtube.com/vi/${frontmatter.videoId}/hqdefault.jpg`,
+      ],
       uploadDate: frontmatter.uploadDate,
-      contentUrl: `https://www.youtube.com/watch?v=${frontmatter.videoId}`,
+      mainEntityOfPage: pageUrl,
+      url: `https://www.youtube.com/watch?v=${frontmatter.videoId}`,
       embedUrl: `https://www.youtube.com/embed/${frontmatter.videoId}`,
+      publisher: {
+        "@type": "Organization",
+        name: "Akatsukizaemon Lab",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://shakashakahead.com/favicon.svg",
+        },
+      },
     }
   : null;
 
