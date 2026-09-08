@@ -12,7 +12,7 @@ export const extensions = {
     ja: [
         {
             title: "Twitch Stream Helper",
-            desc: "配信タイトル・カテゴリ・タグ・X告知を1か所で管理。テンプレートと反映状態の表示で、配信準備を短く確実に。",
+            desc: "配信設定とX告知を1か所で管理。公開準備中のv1.1.0では、配信ごとのコメント自動投稿・任意の固定にも対応。",
             link: "/tools/twitch-stream-helper/",
             storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep",
             repoUrl: "https://github.com/shakashakahead-cyber/twitch-stream-helper",
@@ -22,9 +22,10 @@ export const extensions = {
                 "タイトル・カテゴリ・タグをまとめて更新",
                 "テンプレート変数とリアルタイムプレビュー",
                 "X告知文と配信URLの有無をカスタマイズ",
+                "コメント自動投稿・任意の固定（v1.1.0準備中）",
             ],
             isFree: true,
-            badge: "UPDATED",
+            badge: "v1.1.0 公開準備中",
             recommend: "配信前の設定と告知を毎回手作業しているTwitch配信者",
         },
         {
@@ -48,7 +49,7 @@ export const extensions = {
     en: [
         {
             title: "Twitch Stream Helper",
-            desc: "Manage your title, category, tags, and X announcement in one place, with templates and clear update status.",
+            desc: "Manage stream settings and X announcements together. Upcoming v1.1.0 adds one saved chat comment per stream with optional pinning.",
             link: "/en/tools/twitch-stream-helper/",
             storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep",
             repoUrl: "https://github.com/shakashakahead-cyber/twitch-stream-helper",
@@ -58,9 +59,10 @@ export const extensions = {
                 "Update title, category, and tags together",
                 "Template variables with live previews",
                 "Customizable X posts and stream URL option",
+                "Automatic chat posting and optional pins (v1.1.0 soon)",
             ],
             isFree: true,
-            badge: "UPDATED",
+            badge: "v1.1.0 coming soon",
             recommend: "Twitch streamers who repeat the same setup and announcement tasks",
         },
         {
