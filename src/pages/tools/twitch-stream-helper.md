@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/ToolLayout.astro
 title: "Twitch Stream Helper"
-description: "Twitchの配信タイトル・カテゴリ・タグ・X告知を1か所で管理。公開準備中のv1.1.0では、配信ごとのコメント自動投稿と任意の固定にも対応。"
+description: "Twitchの配信タイトル・カテゴリ・タグ・X告知を1か所で管理。v1.1.0では、配信ごとのコメント自動投稿と任意の固定にも対応。"
 icon: "🛠️"
 image: "/images/twitch-stream-helper-preview.png"
 storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep"
@@ -46,7 +46,7 @@ faq:
 Twitch Stream Helperは、Twitchの配信設定とXの告知準備をまとめて行えるChrome拡張機能です。
 重いクリエイターダッシュボードを行き来せず、配信前のルーティンを短時間で整えられます。
 
-**v1.1.0は公開準備中です。** 以下のコメント自動投稿・固定はv1.1.0の新機能です。インストール前にChrome Web Storeのバージョン表示をご確認ください。
+**v1.1.0を公開しました。** 以下のコメント自動投稿・固定は現在のChrome Web Store版で利用できます。
 
 ### ⚡ 主な機能
 
@@ -118,7 +118,7 @@ v1.1.0では通常のログイン時に、配信情報の管理に加え、チ�
 
 ## 🔄 更新履歴
 
-### v1.1.0 — 公開準備中
+### 2026-09-11 — v1.1.0
 
 * 配信ごとに1回のコメント自動投稿と、任意の固定に対応
 * 共通・カテゴリ別コメント、固定時間、手動投稿・再試行を追加
