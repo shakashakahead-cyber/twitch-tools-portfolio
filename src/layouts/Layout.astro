@@ -53,15 +53,22 @@ const enURL = new URL(`/en${basePath === "/" ? "/" : basePath}`, Astro.site);
     <head>
         <meta charset="UTF-8" />
         <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-411RHL1DTK"></script>
         <script is:inline>
+            const isProductionAnalyticsHost =
+                window.location.hostname === "shakashakahead.com";
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);
             }
-            gtag("js", new Date());
+            if (isProductionAnalyticsHost) {
+                gtag("js", new Date());
+                gtag("config", "G-411RHL1DTK");
 
-            gtag("config", "G-411RHL1DTK");
+                const googleTag = document.createElement("script");
+                googleTag.async = true;
+                googleTag.src = "https://www.googletagmanager.com/gtag/js?id=G-411RHL1DTK";
+                document.head.appendChild(googleTag);
+            }
         </script>
         <script is:inline>
             function getToolDownloadTracking(href) {
@@ -86,6 +93,22 @@ const enURL = new URL(`/en${basePath === "/" ? "/" : basePath}`, Astro.site);
                     }
 
                     if (url.hostname === "github.com") {
+                        // Release-page visits may be for source or license checks.
+                        // Keep them separate from direct EXE/APK clicks.
+                        if (path.replace(/\/$/, "") === "/shakashakahead-cyber/twitch-stream-helper/releases/latest") {
+                            return {
+                                toolName: "twitch_stream_helper",
+                                destination: "github_release_page",
+                            };
+                        }
+
+                        if (/^\/shakashakahead-cyber\/twitch-tools-portfolio\/releases\/tag\/ichi-[^/]+\/?$/.test(path)) {
+                            return {
+                                toolName: "ichi_browser",
+                                destination: "github_release_page",
+                            };
+                        }
+
                         if (
                             path.includes("/shakashakahead-cyber/clip-extractor/releases/download/") &&
                             path.endsWith(".exe")
@@ -113,7 +136,10 @@ const enURL = new URL(`/en${basePath === "/" ? "/" : basePath}`, Astro.site);
                 return null;
             }
 
-            document.addEventListener("click", (event) => {
+            function trackToolDownloadClick(event) {
+                if (!isProductionAnalyticsHost) return;
+                if (event.type === "auxclick" && event.button !== 1) return;
+                if (event.type === "click" && event.button !== 0) return;
                 const target = event.target;
                 if (!(target instanceof Element)) return;
 
@@ -128,7 +154,10 @@ const enURL = new URL(`/en${basePath === "/" ? "/" : basePath}`, Astro.site);
                     destination: tracking.destination,
                     link_url: link.href,
                 });
-            });
+            }
+
+            document.addEventListener("click", trackToolDownloadClick);
+            document.addEventListener("auxclick", trackToolDownloadClick);
         </script>
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width" />
