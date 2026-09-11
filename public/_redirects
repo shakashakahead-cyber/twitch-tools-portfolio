@@ -10,3 +10,8 @@
 /blog/introducing-my-tools/index.html /blog/introducing-my-tools/ 301
 /privacy/voicevox-comment-reader /privacy/voicevox-comment-reader/ 301
 /tools/twitch-stream-helper /tools/twitch-stream-helper/ 301
+
+# Ichi Browser: stable human-facing entry points.
+/ichi /tools/ichi-browser/ 302
+/apps/ichi-browser/ /tools/ichi-browser/ 302
+/tools/ichi-browser /tools/ichi-browser/ 301

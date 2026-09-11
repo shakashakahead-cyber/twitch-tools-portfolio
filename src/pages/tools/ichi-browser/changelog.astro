@@ -1,0 +1,8 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Navigation from "../../../components/Navigation.astro";
+import releases from "../../../data/ichi-releases.json";
+---
+<Layout title="Ichi Browser 更新履歴 | 暁左衛門 Lab" description="Ichi Browser 先行公開版の変更点と過去の配布ファイル。">
+  <Navigation /><main class="mx-auto max-w-3xl px-6 py-24 prose prose-invert prose-lg"><p><a href="/tools/ichi-browser/">最新版・APK・導入手順</a></p><h1>Ichi Browser 更新履歴</h1><p>先行公開版の公開履歴です。更新はアプリを削除せず、同じ署名の APK を上書きしてください。</p>{releases.map(r=><section><p>{r.publishedAt}</p><h2>{r.versionName}</h2><ul>{r.changes.map(c=><li>{c}</li>)}</ul><p><a href={r.releaseUrl}>この版の APK・対応ソース</a></p></section>)}</main>
+</Layout>

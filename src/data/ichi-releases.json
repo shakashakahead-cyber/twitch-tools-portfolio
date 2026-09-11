@@ -1,0 +1,18 @@
+[
+  {
+    "versionName": "0.1.0-alpha32",
+    "versionCode": 32,
+    "publishedAt": "2026-09-11",
+    "minSdk": 34,
+    "abi": "arm64-v8a",
+    "sizeBytes": 199945846,
+    "sha256": "c1b84c72f2dbc67aec5379a898429c7fd47cb8c84aff5dc5baac2642edff93f8",
+    "apkUrl": "https://github.com/shakashakahead-cyber/twitch-tools-portfolio/releases/download/ichi-0.1.0-alpha32/IchiBrowser-0.1.0-alpha32-arm64-v8a.apk",
+    "releaseUrl": "https://github.com/shakashakahead-cyber/twitch-tools-portfolio/releases/tag/ichi-0.1.0-alpha32",
+    "changes": [
+      "Ichi Browser を先行公開版として初めて一般配布。",
+      "設定に「アプリの更新を確認」を追加。最新版・導入手順・更新履歴とプライバシーポリシーへ移動できます。",
+      "内部検証版 alpha31 のセッション復旧・権限確認・ジェスチャー認識の修正を含みます。"
+    ]
+  }
+]

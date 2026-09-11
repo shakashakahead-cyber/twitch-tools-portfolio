@@ -1,0 +1,11 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Navigation from "../../../components/Navigation.astro";
+import releases from "../../../data/ichi-releases.json";
+const latest = releases[0];
+---
+<Layout title="Ichi Browser ライセンス・対応ソース | 暁左衛門 Lab" description="同梱する GeckoView、uBlock Origin、フィルターのライセンスと対応ソースの入手先。">
+<Navigation /><main class="mx-auto max-w-3xl px-6 py-24 prose prose-invert prose-lg"><p><a href="/tools/ichi-browser/">Ichi Browser の紹介・最新版へ</a></p><h1>ライセンス・対応ソース</h1><p>対象：{latest.versionName}。第三者ソフトウェアの著作権・ライセンスは各権利者に帰属します。各ライセンスが認める権利を制限するものではありません。</p>
+<h2>uBlock Origin とフィルター</h2><p>Raymond Hill ほかによる uBlock Origin 1.74.0 をもとに、Ichi 用の同梱版 1.74.0.1 を使用しています。GPL-3.0-or-later。初期化の通知、日本語フィルターの同梱、プライベートモードでのログ・カウンター処理などに変更があります。</p><p><a href={latest.releaseUrl}>配布ファイル一覧</a>の <code>ublock-ichi-corresponding-source.zip</code> に、APK 内と同一の変更済み拡張、変更点、ビルド・配置手順、上流のソースとビルドツールを収録しています。JavaScript・フィルター等はソース形式で同梱しています。</p><p>AdGuard Japanese filter（初期同梱 2.0.76.20）は AdGuard による GPL-3.0 のリストです。その他の標準リストの出典・著作権・条件は各リストの冒頭と通知アーカイブをご覧ください。実行時に更新したリストと初期同梱版は異なる場合があります。</p>
+<h2>GeckoView</h2><p>Mozilla GeckoView 155.0.20260903215306 を無改変で使用しています。Mozilla のコードは MPL-2.0、含まれる第三者コードはそれぞれの条件に従います。</p><ul><li><a href="https://hg.mozilla.org/releases/mozilla-release/rev/5fdfd0092780e85643e2cddc0e1b590c8b9ef860">このバイナリに対応するエンジン全体のソースリビジョン</a></li><li><a href="https://hg.mozilla.org/releases/mozilla-release/archive/5fdfd0092780e85643e2cddc0e1b590c8b9ef860.tar.gz">同一リビジョンのソースアーカイブ</a></li><li><a href="https://maven.mozilla.org/maven2/org/mozilla/geckoview/geckoview/155.0.20260903215306/">配布元・API ソース</a></li></ul><p>API ソース JAR だけでなく、上記からエンジン全体の対応ソースを取得できます。</p>
+<h2>AndroidX・Kotlin など</h2><p>AndroidX、Compose、Kotlin 等は Apache-2.0 等に基づいて使用しています。ライセンス原文と同梱物の通知は、アプリの設定画面、および<a href={latest.releaseUrl}>配布ファイル一覧</a>の <code>third-party-notices.zip</code> に収録しています。</p><p>対応ソースのリンクが利用できない場合や通知に関するお問い合わせは、<a href="/support/">サポート窓口</a>へご連絡ください。</p></main></Layout>

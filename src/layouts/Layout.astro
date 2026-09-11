@@ -43,7 +43,7 @@ const basePath = pathname.startsWith("/en/")
 const isTranslatedPath =
     basePath === "/" ||
     basePath === "/about/" ||
-    basePath.startsWith("/tools/");
+    (basePath.startsWith("/tools/") && !basePath.startsWith("/tools/ichi-browser"));
 const jaURL = new URL(basePath, Astro.site);
 const enURL = new URL(`/en${basePath === "/" ? "/" : basePath}`, Astro.site);
 ---
