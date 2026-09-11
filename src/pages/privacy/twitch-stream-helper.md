@@ -14,9 +14,9 @@ description: "Twitch Stream Helperの取得情報、ローカル保存、Twitch�
 
 # Privacy Policy for Twitch Stream Helper
 
-**Last Updated:** 2026-09-08
+**Last Updated:** 2026-09-11
 
-This policy describes data handled by the Twitch Stream Helper browser extension (the "Extension"). It covers stream title, category and tag management, X announcement preparation, and saved chat comments with optional pinning in v1.1.0, which is being prepared for release. Chat automation, delivery records, the two chat OAuth scopes and the `alarms` permission described below apply to v1.1.0.
+This policy describes data handled by the Twitch Stream Helper browser extension (the "Extension"). It covers stream title, category and tag management, X announcement preparation, and saved chat comments with optional pinning in v1.1.0. Chat automation, delivery records, the two chat OAuth scopes and the `alarms` permission described below apply to v1.1.0.
 
 ### Information Handled and Stored Locally
 
@@ -98,9 +98,9 @@ For questions about this policy, contact the developer at **shakashakahead@gmail
 
 # プライバシーポリシー（Twitch Stream Helper）
 
-**最終更新日:** 2026-09-08
+**最終更新日:** 2026-09-11
 
-本ポリシーは、ブラウザ拡張機能「Twitch Stream Helper」（以下「本拡張」）内でのデータの取扱いを説明します。配信タイトル・カテゴリ・タグの管理、X告知の準備に加え、公開準備中のv1.1.0で追加するコメント自動投稿・任意の固定を含みます。以下のコメント自動投稿、投稿記録、2つのチャット用OAuth権限、`alarms`権限はv1.1.0からの機能です。
+本ポリシーは、ブラウザ拡張機能「Twitch Stream Helper」（以下「本拡張」）内でのデータの取扱いを説明します。配信タイトル・カテゴリ・タグの管理、X告知の準備に加え、v1.1.0で追加したコメント自動投稿・任意の固定を含みます。以下のコメント自動投稿、投稿記録、2つのチャット用OAuth権限、`alarms`権限はv1.1.0からの機能です。
 
 ### 取得・ローカル保存する情報
 
