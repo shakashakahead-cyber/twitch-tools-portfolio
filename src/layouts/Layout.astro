@@ -63,6 +63,73 @@ const enURL = new URL(`/en${basePath === "/" ? "/" : basePath}`, Astro.site);
 
             gtag("config", "G-411RHL1DTK");
         </script>
+        <script is:inline>
+            function getToolDownloadTracking(href) {
+                try {
+                    const url = new URL(href, window.location.href);
+                    const path = url.pathname.toLowerCase();
+
+                    if (url.hostname === "chromewebstore.google.com") {
+                        if (path.includes("fonjapihhkafhmjfdpdcgfoghngldmep")) {
+                            return {
+                                toolName: "twitch_stream_helper",
+                                destination: "chrome_web_store",
+                            };
+                        }
+
+                        if (path.includes("eolabmdepbcdcppfdmkibgjffiifndkd")) {
+                            return {
+                                toolName: "comment_reader",
+                                destination: "chrome_web_store",
+                            };
+                        }
+                    }
+
+                    if (url.hostname === "github.com") {
+                        if (
+                            path.includes("/shakashakahead-cyber/clip-extractor/releases/download/") &&
+                            path.endsWith(".exe")
+                        ) {
+                            return {
+                                toolName: "clip_extractor",
+                                destination: "github_release",
+                            };
+                        }
+
+                        if (
+                            path.includes("/shakashakahead-cyber/twitch-tools-portfolio/releases/download/ichi-") &&
+                            path.endsWith(".apk")
+                        ) {
+                            return {
+                                toolName: "ichi_browser",
+                                destination: "github_release",
+                            };
+                        }
+                    }
+                } catch {
+                    return null;
+                }
+
+                return null;
+            }
+
+            document.addEventListener("click", (event) => {
+                const target = event.target;
+                if (!(target instanceof Element)) return;
+
+                const link = target.closest("a[href]");
+                if (!(link instanceof HTMLAnchorElement)) return;
+
+                const tracking = getToolDownloadTracking(link.href);
+                if (!tracking || typeof gtag !== "function") return;
+
+                gtag("event", "tool_download_click", {
+                    tool_name: tracking.toolName,
+                    destination: tracking.destination,
+                    link_url: link.href,
+                });
+            });
+        </script>
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
