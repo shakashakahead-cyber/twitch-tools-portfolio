@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/ToolLayout.astro
 title: "Twitch Stream Helper"
-description: "Manage your Twitch title, category, tags, and X announcement in one place. Upcoming v1.1.0 adds one saved chat comment per stream with optional pinning."
+description: "Manage your Twitch title, category, tags, and X announcement in one place. v1.1.0 adds one saved chat comment per stream with optional pinning."
 icon: "🛠️"
 image: "/images/twitch-stream-helper-preview.png"
 storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep"
@@ -34,7 +34,7 @@ faq:
 Twitch Stream Helper is a Chrome extension that combines Twitch stream settings and X announcement preparation.
 It reduces the time spent moving through the Creator Dashboard before every stream.
 
-**v1.1.0 is being prepared for release.** Automatic chat posting and pinning described below are new in v1.1.0. Check the version listed in the Chrome Web Store before installing.
+**v1.1.0 is now available.** Automatic chat posting and pinning described below are included in the current Chrome Web Store release.
 
 ### ⚡ Main Features
 
@@ -106,7 +106,7 @@ Example: `Going live with {category}! {stream_url}`
 
 ## 🔄 Update History
 
-### v1.1.0 — Preparing for Release
+### 2026-09-11 — v1.1.0
 
 * Automatic posting of one saved chat comment per stream, with optional pinning
 * Default and category-specific comments, pin durations, and manual posting/retry controls
