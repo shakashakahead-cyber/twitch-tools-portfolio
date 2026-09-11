@@ -1,93 +1,116 @@
 ---
 layout: ../../../layouts/ToolLayout.astro
 title: "Twitch Stream Helper"
-description: "Manage your Twitch title, category, tags, and X announcement in one place. v1.1.0 adds one saved chat comment per stream with optional pinning."
+description: "Manage Twitch stream settings, automatic chat comments, and local Analytics in one place. v1.2.0 records viewers, chat participation, follows, raids, and stream history for post-stream review."
 icon: "🛠️"
 image: "/images/twitch-stream-helper-preview.png"
 storeUrl: "https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep"
 privacyUrl: "/privacy/twitch-stream-helper/#english"
+repoUrl: "https://github.com/shakashakahead-cyber/twitch-stream-helper"
+tags: ["Twitch", "ChromeExtension", "Stream", "Analytics"]
 videoId: "02bfIReoEUQ"
 uploadDate: "2025-12-05T00:00:00+09:00"
 faq:
   - question: "Is it free?"
     answer: "Yes, it is completely free to use."
   - question: "Which browsers are supported?"
-    answer: "It works on Chromium-based browsers such as Google Chrome, Microsoft Edge, and Brave."
-  - question: "Can I tell whether Twitch was updated?"
-    answer: "Yes. The popup shows the current Twitch title and separate pending, applying, applied, and failed states."
-  - question: "My title or tags are not updating"
-    answer: "Twitch may temporarily rate-limit frequent updates. Follow the message in the popup, wait briefly, and try again."
-  - question: "Does automatic posting start as soon as I log in?"
-    answer: "No. In v1.1.0, automatic posting is off by default. Enter a comment, enable Post once when a stream starts, and save the settings. Users signed in with older permissions need to log in again once."
-  - question: "Can it post with the browser closed?"
-    answer: "The popup can be closed, but the browser must be running and the computer awake. Stream checks run about once a minute, so posting at the exact moment a stream starts is not guaranteed."
-  - question: "Will it post again if I change categories during a stream?"
-    answer: "No. The comment is selected using the Twitch category at posting time. Changing categories during that stream does not trigger another post. Expired or manually removed pins are not automatically restored."
+    answer: "v1.2.0 requires Chromium 116 or later, including current versions of Google Chrome, Microsoft Edge, and Brave."
+  - question: "What can I see in Analytics?"
+    answer: "Per-stream average and peak viewers, viewer trends, first-time and returning chatters, new follows, raids, title/category history, period charts, and CSV exports."
+  - question: "Can it recover older stream data?"
+    answer: "Twitch history sync can add available archive VODs and current follower information. Viewer samples and chat/follow/raid events that were not measured at the time cannot be reconstructed."
+  - question: "Is Analytics data sent to the developer?"
+    answer: "No. Analytics history is stored locally in account-specific IndexedDB databases in your browser. Twitch API and EventSub traffic goes directly to Twitch services."
+  - question: "Does Analytics require extra permissions?"
+    answer: "Yes. Only when Analytics is enabled, Twitch OAuth additionally requests follower-read and chat-read scopes. v1.2.0 does not add any new Chrome extension permissions."
+  - question: "Does automatic chat posting start when I log in?"
+    answer: "No. Automatic posting is off by default. Save a comment and explicitly enable posting once when a stream starts."
 ---
 
-## 🎮 Stream Settings and Announcements in One Place
+## 🎮 From Stream Setup to Post-Stream Review
 
-**"Changing the title, category, and tags for every game takes too long..."**
+Twitch Stream Helper is a Chrome extension for managing **Twitch titles, categories, tags, X announcements, automatic chat comments, and stream Analytics** in one place.
 
-**"Copying the title and stream URL into every announcement is repetitive..."**
+**v1.2.0 adds local Analytics.** While Chrome and your computer are running, it can record viewer samples, chat participation, follows, raids, and stream changes so you can review each broadcast later.
 
-Twitch Stream Helper is a Chrome extension that combines Twitch stream settings and X announcement preparation.
-It reduces the time spent moving through the Creator Dashboard before every stream.
-
-**v1.1.0 is now available.** Automatic chat posting and pinning described below are included in the current Chrome Web Store release.
+The latest source and ZIP package are also available from [GitHub Releases](https://github.com/shakashakahead-cyber/twitch-stream-helper/releases/latest).
 
 ### ⚡ Main Features
 
-1. **Update the title, category, and tags together**
-   * Save tag combinations for each category and apply them with the title.
-   * Related changes are combined into one API request to reduce rapid-update errors.
-2. **Title templates with live previews**
-   * Insert the category, channel name, tags, date, and other values as variables.
-   * Check the expanded title and its 140-character limit before sending it to Twitch.
-3. **Clear update status**
-   * The popup always shows the title currently stored on Twitch.
-   * Pending, applying, applied, and failed states make the result unambiguous.
-4. **X announcement composer**
-   * Automatically insert the stream title and URL, then open the X composer.
-   * You can omit the stream URL or place the title and URL exactly where you want them.
-5. **One saved chat comment per stream, with optional pinning (v1.1.0)**
-   * Post saved rules or participation instructions once per stream to your own live chat, from your own account. Automatic posting is off by default.
-   * Save a default comment and category-specific comments, each up to 500 characters. Optionally pin the comment until the stream ends, for 30 minutes, or for 10 minutes.
+1. **Manage title, category, and tags together**
+   * Save tags by category and use title template variables.
+   * See whether title changes have been applied to Twitch.
+2. **Compose X announcements**
+   * Insert title, category, tags, channel, date/time, and stream URL through template variables.
+   * The extension opens the X composer for review; it does not publish automatically to X.
+3. **Automatic saved chat comments with optional pinning**
+   * Save a default comment and category-specific variants, then post once per stream.
+   * Pins can last until the stream ends, 30 minutes, or 10 minutes.
+4. **Local stream Analytics (v1.2.0)**
+   * Record average/peak viewers, viewer trends, first-time and returning chatters, new follows, and incoming raids.
+   * Save title/category history, notes, multiple labels, and title ratings for each stream.
+5. **Period comparisons, history sync, and CSV export**
+   * Switch between 7 days, 30 days, 90 days, 1 year, and all-time views.
+   * Sync available Twitch archive VODs and the current follower list.
+   * Export `streams.csv` and `viewer_samples.csv`. CSV import is not included.
 
 ---
 
-## 💬 Set Up Automatic Chat Comments (v1.1.0)
+## 📊 Analytics (v1.2.0)
 
-1. Log in with Twitch and enter a default message in **Saved chat comment**.
-2. Optionally choose categories from category history and save separate comments. A blank category comment falls back to the default.
-3. Choose whether to enable **Pin the comment** and select a pin duration.
-4. Enable **Post once when a stream starts** and click **Save settings**. Saving requires login.
+Open the dedicated Analytics tab from the extension popup. The first time, choose **Enable Analytics / Authorize** to grant the additional Twitch permissions used only by Analytics.
 
-The extension checks your stream about once a minute while the browser is running and the computer is awake, even with the popup closed. If you enable it or restart the browser during an already-live stream, it posts at the next check if that stream has not been handled. It cannot detect a stream starting while the browser is closed or the computer is asleep.
+### What Analytics Records
 
-The Twitch category at posting time selects the message. Changing categories during that stream does not trigger another post. The title and X template variables listed below are not expanded in chat comments.
+* **Per stream:** observed start/end information, duration, title/category history, raids, notes, labels, and title rating
+* **Viewers:** Twitch `viewer_count` sampled about once per minute, used for average, peak, and trend charts
+* **Chat participation:** first-time and returning chatters per stream
+* **Follows:** newly observed follow events plus snapshots of the current follower list and total count
+* **Period charts:** viewer trends, total followers, daily follows, chatter participation, monthly stream hours and count, and more
 
-### Manual Posting, Retries, and Pinning
+The **per-stream record** section opens on the latest saved broadcast. Use **Previous stream** and **Next stream** to move through the full saved timeline, or return to the latest stream. Stream details include raw viewer samples, data coverage, title/category history, raids, and comparisons with recent broadcasts.
 
-* Use **Post now / retry** while live. It does not repost a comment already sent for that stream. If only pinning failed, it retries pinning the original message with the original duration.
-* Failed writes are not automatically retried. If rate-limited, wait at least one minute, or until Twitch's specified retry time if later, then retry manually.
-* An uncertain delivery is not resent, to avoid duplicates. Check Twitch chat and, if the message is missing, post it manually on Twitch.
-* Pinning replaces the existing pinned comment. Expired or manually removed pins are not automatically restored, and do not trigger another post.
-* During Shared Chat, your comment is also shown in the shared channels.
+### Coverage and Missing Data
 
-Duplicate prevention uses delivery records in this browser, retaining the latest 100 streams per account. It cannot prevent duplicates after clearing data or reinstalling, or when running the extension on multiple computers or browsers at once.
+Analytics records data while Chrome and the computer are running. Sleep, browser shutdowns, connection failures, or EventSub interruptions can create gaps. Missing viewer values are not interpolated; the UI records coverage and warns when viewer or event data may be incomplete.
 
-### Login and Stopping Automatic Posting
+Twitch history sync can add available archive VODs, but **viewer samples and chat/follow/raid events that were never observed cannot be recovered later.** VOD duration is stored separately from measured live duration rather than being treated as an exact replacement.
 
-In v1.1.0, normal login requests stream-management, chat-posting, and chat-message-management permissions together. The extension uses chat-message management to pin comments. These permissions are requested even if you do not use automatic posting or pinning. Users signed in with older permissions are guided to log in again once; saved settings and delivery records are retained.
+### Twitch History Sync
 
-To stop automatic posting, uncheck the option and save, or log out. Logout turns automatic posting off and stops periodic checks, but keeps comment settings and delivery records. After switching accounts, review the comments and save the settings again. Expired authorization also requires login again. See the [privacy policy](/privacy/twitch-stream-helper/#english) for details.
+When Analytics is enabled, the extension pages through available archive VODs and the current follower list. VOD history is refreshed daily and after a stream ends; the full follower list is refreshed weekly. You can also run **Sync Twitch history** manually.
+
+If Chrome closes during a paged sync, progress is saved and can resume later. A VOD being removed from Twitch later does not automatically delete a stream record already stored locally.
+
+### OAuth Permissions
+
+The normal extension features use:
+
+* `channel:manage:broadcast` — update title, category, and tags
+* `user:write:chat` — send saved chat comments
+* `moderator:manage:chat_messages` — pin a posted comment
+
+Only when Analytics is enabled, it additionally requests:
+
+* `moderator:read:followers` — read follower information
+* `user:read:chat` — receive chat events through EventSub
+
+Chrome permissions remain `identity`, `storage`, and `alarms`; v1.2.0 adds no new Chrome permission. See the [privacy policy](/privacy/twitch-stream-helper/#english) for details.
+
+---
+
+## 💬 Automatic Saved Chat Comments
+
+1. Log in with Twitch and enter a default saved comment.
+2. Optionally add category-specific comments.
+3. Choose whether to pin the message and for how long.
+4. Enable posting once when a stream starts and save the settings.
+
+The browser periodically checks the stream while Chrome is running and the computer is awake. Delivery records are stored locally to avoid duplicate posts for the same broadcast.
 
 ---
 
 ## ✨ Template Variables
-
-These variables apply to stream titles and X announcements, not saved chat comments.
 
 | Variable | Value |
 | --- | --- |
@@ -100,42 +123,44 @@ These variables apply to stream titles and X announcements, not saved chat comme
 | `{date}` / `{time}` | Local date and time |
 | `{title}` | Current stream title (X announcement only) |
 
-Example: `Going live with {category}! {stream_url}`
-
 ---
 
 ## 🔄 Update History
 
+### 2026-09-11 — v1.2.0
+
+* Added local per-stream Analytics
+* Record average/peak viewers, chat participation and returns, new follows, raids, and title/category history
+* Added previous/next stream navigation, period KPIs/charts, and detailed stream views
+* Added Twitch history sync, notes, labels, title ratings, and CSV export
+* Improved data coverage warnings, EventSub reconnect behavior, and separation of VOD timing from observed live timing
+* Added `moderator:read:followers` and `user:read:chat` only for users who enable Analytics
+* Requires Chromium 116 or later
+
 ### 2026-09-11 — v1.1.0
 
-* Automatic posting of one saved chat comment per stream, with optional pinning
-* Default and category-specific comments, pin durations, and manual posting/retry controls
-* Posting and pinning status, with local delivery records to prevent duplicates
-* Chrome's `alarms` permission for periodic checks, plus Twitch chat-posting and pinning permissions; existing users need to log in again
+* Added one saved chat comment per stream with optional pinning
+* Added default/category comments, pin durations, manual retry, and local duplicate prevention
 
 ### 2026-07-23 — Templates and Update Status
 
-* Redesigned popup with clearer settings, templates, and previews
-* Automatic title update on blur or Enter
-* Queued edits so rapid changes are applied in the correct order
-* Category display rolls back if the Twitch update fails
-* Clear guidance when Twitch temporarily rate-limits an update
+* Improved popup UI, template variables, live previews, update status, and rate-limit guidance
 
 ---
 
-## 🛠️ Usage & Workflow
+## 🛠️ Typical Workflow
 
-1. Install the extension and log in with your Twitch account.
-2. Choose a category and tags, then enter a title template in the popup.
-3. Review the preview, then leave the field or press Enter to apply it.
-4. Optionally edit the X announcement and open the composer.
-5. In v1.1.0, follow the steps above to configure automatic chat posting and pinning.
+1. Install the extension and log in with Twitch.
+2. Manage title, category, tags, and X announcement text from the popup.
+3. Optionally configure automatic chat posting and pinning.
+4. To use Analytics, open its dedicated tab and grant the additional OAuth scopes.
+5. After streaming, review details, period charts, comparisons, or CSV exports.
 
 ---
 
 <div class="mt-12 flex justify-center">
   <a href="https://chromewebstore.google.com/detail/twitch-stream-helper/fonjapihhkafhmjfdpdcgfoghngldmep" target="_blank" class="rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 px-8 py-4 text-lg font-bold text-white shadow-lg hover:from-indigo-400 hover:to-purple-500 hover:shadow-xl transition-all flex items-center gap-3">
-    <span>Add to Chrome Web Store</span>
+    <span>Add from Chrome Web Store</span>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
       <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
     </svg>
