@@ -29,6 +29,7 @@ const prefix = lang === "en" ? "/en" : "";
             <a href={`${prefix}/tools/`} class="hover:text-white transition-colors"
                 >{t("nav.tools")}</a
             >
+            {lang === "ja" && <a href="/tools/ichi-browser/" class="hover:text-white transition-colors">Ichi Browser（Android）</a>}
             <a href={`${prefix}/faq/`} class="hover:text-white transition-colors"
                 >{t("nav.faq")}</a
             >

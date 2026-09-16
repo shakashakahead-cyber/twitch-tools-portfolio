@@ -12,6 +12,7 @@
 /tools/twitch-stream-helper /tools/twitch-stream-helper/ 301
 
 # Ichi Browser: stable human-facing entry points.
-/ichi /tools/ichi-browser/ 302
-/apps/ichi-browser/ /tools/ichi-browser/ 302
+/ichi /tools/ichi-browser/ 301
+/ichi/ /tools/ichi-browser/ 301
+/apps/ichi-browser/ /tools/ichi-browser/ 301
 /tools/ichi-browser /tools/ichi-browser/ 301
