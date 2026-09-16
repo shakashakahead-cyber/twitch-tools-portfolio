@@ -1,0 +1,104 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Navigation from "../../../components/Navigation.astro";
+import releases from "../../../data/ichi-releases.json";
+
+const title = "1タブブラウザとは？Ichi Browserの使い方・設定ガイド";
+const description = "Androidでタブを増やさず閲覧するIchi Browserの使い方。1タブの仕組み、片手操作の設定、広告ブロック、端末内翻訳、ホーム・ブックマークの使い分けを紹介します。";
+const pageURL = new URL("/tools/ichi-browser/guide/", Astro.site).href;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "ホーム", item: Astro.site?.href },
+    { "@type": "ListItem", position: 2, name: "ツール一覧", item: new URL("/tools/", Astro.site).href },
+    { "@type": "ListItem", position: 3, name: "Ichi Browser", item: new URL("/tools/ichi-browser/", Astro.site).href },
+    { "@type": "ListItem", position: 4, name: "使い方・設定ガイド", item: pageURL },
+  ],
+};
+---
+<Layout title={title} description={description} image="/images/ichi-browser/icon.png" structuredData={structuredData}>
+  <Navigation />
+  <main class="guide">
+    <nav class="breadcrumbs" aria-label="パンくずリスト"><a href="/">ホーム</a><span aria-hidden="true">/</span><a href="/tools/">ツール一覧</a><span aria-hidden="true">/</span><a href="/tools/ichi-browser/">Ichi Browser</a><span aria-hidden="true">/</span><span aria-current="page">使い方・設定ガイド</span></nav>
+    <article>
+      <header>
+        <p class="eyebrow">ICHI BROWSER GUIDE</p>
+        <h1>1タブブラウザとは？<br />Ichi Browserの使い方・設定ガイド</h1>
+        <p class="intro">調べ物をするたびにタブが増えて、あとから整理するのが面倒。Ichi Browser（イチブラウザ）は、通常ひとつのページだけを開いて使うAndroidブラウザです。この記事では、1タブでの移動の仕組みと、使い始めに確認したい設定を紹介します。</p>
+        <p class="meta">執筆：<a href="/about/">開発者・暁左衛門</a> · <time datetime="2026-09-16">2026年9月16日</time> · 対象：{releases[0].versionName}</p>
+        <aside>現在は開発途中の先行公開版です。Android 14以降のarm64端末に対応しています。導入がまだの方は、<a href="/tools/ichi-browser/#install">公式APKとインストール手順</a>から確認してください。</aside>
+      </header>
+      <nav class="contents" aria-label="この記事の内容">
+        <a href="#single-tab">1タブの仕組み</a><a href="#navigation">ページの移動と保存</a><a href="#one-handed">片手操作の設定</a><a href="#ad-block">広告ブロック</a><a href="#translation">端末内翻訳</a><a href="#privacy">プライベートモード</a><a href="#troubleshooting">困ったとき</a>
+      </nav>
+
+      <section id="single-tab">
+        <h2>1タブブラウザの仕組みと向いている使い方</h2>
+        <p>Ichiでは、通常の閲覧で別タブ指定のリンクを押しても、同じ画面に次のページが開きます。タブ一覧からページを選ぶ代わりに、戻る・進む、ホーム、ブックマークを使って移動します。</p>
+        <p>たとえば、検索結果から記事をひとつ読み、読み終わったら戻る操作で検索結果へ戻ります。気になる記事をすべて別タブに残すより、ひとつずつ読む使い方に向いています。</p>
+        <div class="comparison">
+          <div><h3>使いやすい場面</h3><ul><li>検索して、知りたいページをひとつ読む</li><li>ホームに登録したサイトを順に確認する</li><li>読み終わったタブを閉じる手間を減らす</li></ul></div>
+          <div><h3>制限を感じやすい場面</h3><ul><li>複数の商品や資料をタブで切り替えて比較する</li><li>多数のページを開いたまま残しておく</li><li>別窓との連携が必要なログインや決済を行う</li></ul></div>
+        </div>
+        <p>タブの数は、速度やメモリ使用量の測定結果ではありません。Ichiの性能や長期間の安定性の検証は継続中です。用途に合うか、普段読むサイトで試してみてください。</p>
+      </section>
+
+      <section id="navigation">
+        <h2>ページを移動する・あとで開く</h2>
+        <p>アドレス入力欄からURLや検索語を入力してページを開きます。前のページには戻る操作、戻ったあとにもう一度先へ移動するときは進む操作を使います。</p>
+        <h3>よく見るサイトはホームへ</h3>
+        <p>毎日開くサイトはホームに追加して、使う順に並べ替えると探しやすくなります。ホームには必要に応じてRSS / Atomのニュースも表示できます。ニュースの取得は初期状態ではオフです。</p>
+        <h3>残しておきたいページはブックマークへ</h3>
+        <p>あとで読み返すページにはブックマークを使います。閲覧履歴は、保存を有効にしている場合に前に見たページを探すために使えます。現在はブックマークのHTML移行と端末間の同期に対応していません。</p>
+      </section>
+
+      <section id="one-handed">
+        <h2>片手で使うためのアドレスバーとジェスチャー設定</h2>
+        <ol><li><strong>アドレスバーを届きやすい位置にする。</strong> 設定で上下の配置を変更できます。スマートフォンの持ち方に合わせて選んでください。</li><li><strong>戻る・進むをスワイプで試す。</strong> 素早い左右スワイプで前後のページに移動できます。丸を描く操作では再読み込みができます。</li><li><strong>操作が合わなければ割り当てを変える。</strong> ジェスチャー設定で操作の割り当て変更や無効化ができます。ページ内の横スクロールなどと競合する場合は調整してください。</li></ol>
+        <p>明暗テーマや文字サイズも設定で変更できます。<a href="/tools/ichi-browser/#screenshots">ジェスチャー設定の実際の画面</a>も掲載しています。</p>
+      </section>
+
+      <section id="ad-block">
+        <h2>uBlock Originによる広告ブロックを使う</h2>
+        <p>IchiはuBlock Originと日本語フィルターを同梱しています。利用者が別の拡張機能を追加することなく、広告ブロックを使い始められます。</p>
+        <p>ブロックの切り替えは盾のボタンからサイトごとに行えます。表示や操作がうまくいかないサイトでは、そのサイトのブロック設定を確認してください。プライベートモード中は広告ブロック設定とサイト設定を変更できません。</p>
+        <p>すべての広告や動画広告の除去、すべてのサイトの動作を保証するものではありません。閲覧エンジンと広告ブロック本体の修正はAPKの更新で届けます。<a href="/tools/ichi-browser/licenses/">同梱ソフトウェアのライセンスと対応ソース</a>も公開しています。</p>
+      </section>
+
+      <section id="translation">
+        <h2>端末内翻訳で外国語のページを読む</h2>
+        <p>翻訳に対応する言語・端末では、通常モードでページを翻訳できます。初回に利用を許可して言語データを取得し、本文は端末内で処理します。ページ本文を外部の翻訳サーバーに送る実装ではありません。</p>
+        <p>言語データの取得には通信が必要です。すべての言語・端末での翻訳に対応しているわけではなく、プライベートモード中は利用できません。</p>
+      </section>
+
+      <section id="privacy">
+        <h2>プライベートモードとデータの扱い</h2>
+        <p>プライベートモードでは通常の閲覧とセッションを分離し、通常の履歴には保存しません。ネットワーク上で匿名になる機能ではなく、閲覧先や通信事業者への通信は発生します。</p>
+        <p>プライベート中はファイル添付・翻訳、広告ブロック設定とサイト設定の変更に制限があります。保存データ、外部通信、削除方法の詳細は<a href="/privacy/ichi-browser/">Ichi Browserのプライバシーポリシー</a>で確認できます。</p>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>インストール・更新・サイト表示で困ったとき</h2>
+        <h3>APKをインストールできない</h3>
+        <p>Android 14以降・arm64端末という対応条件、空き容量、ダウンロードの完了を確認してください。Google Playでは配布していません。<a href="/tools/ichi-browser/#install">公式のインストール手順</a>に沿って、必要なインストール元の許可を確認できます。</p>
+        <p>Play Protectなどがブロックした場合は保護機能を無効にして進めず、表示内容を添えて<a href="/support/">サポート窓口</a>へご連絡ください。</p>
+        <h3>最新版に更新したい</h3>
+        <p>「メニュー」→「設定」→「アプリの更新を確認」から最新版を確認し、公式APKを上書きインストールします。自動更新ではありません。ブックマークや設定を失わないよう、更新のためにアンインストールしないでください。</p>
+        <h3>ログインやダウンロードがうまく動かない</h3>
+        <p>別窓との連携が必要な認証・決済には制限があります。また、ダウンロードはアプリを開いている間の処理で、画面回転や画面の終了でキャンセルされる場合があります。<a href="/tools/ichi-browser/#issues">既知の問題と制限</a>を確認し、うまく動かないサイトでは別のブラウザをご利用ください。</p>
+      </section>
+      <footer class="next"><h2>Ichi Browserを試す</h2><p>先行公開版の対応端末・既知の問題を確認してから導入してください。</p><a class="primary" href="/tools/ichi-browser/#download">公式APK・ダウンロードページへ</a><p><a href="/tools/ichi-browser/changelog/">Ichi Browserの更新履歴を見る</a></p></footer>
+    </article>
+  </main>
+</Layout>
+<style>
+  .guide{max-width:860px;margin:auto;padding:100px 24px 64px;color:#cbd5e1;font-size:1rem;line-height:1.95}
+  .guide a{color:#6ee7b7;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}.guide a:hover{color:#a7f3d0}.guide a:focus-visible{outline:3px solid #6ee7b7;outline-offset:5px}
+  .breadcrumbs{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.875rem}.eyebrow{color:#6ee7b7;font-size:.875rem;letter-spacing:.12em;margin-top:40px}
+  h1{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:700;color:white;line-height:1.5;margin:16px 0 24px;overflow-wrap:anywhere}h2{font-size:clamp(1.4rem,3vw,1.8rem);line-height:1.6;font-weight:700;color:white;margin-bottom:20px}h3{font-size:1.125rem;font-weight:700;color:#f1f5f9;margin:24px 0 10px}
+  p{margin:14px 0}.intro{font-size:1.125rem}.meta{font-size:.875rem;color:#94a3b8}aside{padding:20px 24px;background:#1e293b;border-left:3px solid #fbbf24;margin:24px 0}
+  .contents{display:flex;flex-wrap:wrap;gap:12px 24px;padding:24px 0;border-block:1px solid #334155}.guide section{padding:36px 0;border-bottom:1px solid #334155;scroll-margin-top:24px}ul,ol{padding-left:1.5em}ul{list-style:disc}ol{list-style:decimal}li{margin:12px 0}strong{color:#f1f5f9}
+  .comparison{display:grid;grid-template-columns:1fr 1fr;gap:28px}.next{padding-top:36px}.guide .primary{display:inline-block;background:#047857;color:white;border-radius:8px;padding:14px 22px;font-weight:700;text-decoration:none}.guide .primary:hover{background:#059669}
+  @media(max-width:600px){.comparison{grid-template-columns:1fr;gap:0}.guide{padding:88px 20px 48px}}
+</style>
