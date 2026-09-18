@@ -15,9 +15,12 @@ description: "暁左衛門 Labのツールに関するサポート、不具合�
 ### 1. GitHub Issues（推奨）
 開発状況が見えるため、最も確実に対応できます。GitHubアカウントをお持ちの方はこちらからお願いします。
 
+- **[Ichi Browser Issues](https://github.com/shakashakahead-cyber/twitch-tools-portfolio/issues)**
 - **[Clip Extractor Issues](https://github.com/shakashakahead-cyber/clip-extractor/issues)**
 - **[Twitch Stream Helper Issues](https://github.com/shakashakahead-cyber/twitch-stream-helper/issues)**
 - **[Comment Reader for Twitch Issues](https://github.com/shakashakahead-cyber/comment-Reader-for-Twitch-powered-by-Voicevox-/issues)**
+
+Ichi Browserについては、アプリの版、Androidの版、端末名、問題を再現する手順も添えてください。パスワード、認証コード、個人情報を含む画面やURLは掲載しないでください。
 
 ### 2. X (旧Twitter)
 「これってバグ？」「使い方がわからない」といった気軽な質問は、XのリプライやDMでも受け付けています。
