@@ -10,7 +10,7 @@ const faqGroups = [
     items: [
       {
         question: "本当に無料で使えますか？",
-        answer: "<strong>はい、個人利用に限り、すべての機能を無料でお使いいただけます。</strong><br>開発は個人の趣味と情熱で行っています。もし気に入っていただけたら、SNSでのシェアやGithubでのスターをいただけると励みになります！"
+        answer: "<strong>はい、現在公開しているツールは無料でお使いいただけます。</strong><br>ツールごとの利用条件や、同梱ソフトウェア・音声ライブラリの規約は各詳細ページでご確認ください。気に入っていただけたら、SNSでのシェアやGitHubでのスターをいただけると励みになります！"
       },
       {
         question: "商用利用（収益化配信など）は可能ですか？",
@@ -18,7 +18,24 @@ const faqGroups = [
       },
       {
         question: "Mac版はありますか？",
-        answer: "<strong>Chrome拡張機能はMacでも使えます。</strong><br>「Twitch Stream Helper」と「Comment Reader for Twitch」は、Google Chrome等のブラウザが動けばMacでも動作します。<br>「クリップ抽出くん」に関しては、現在はWindows版のみですが、将来的な対応を検討中です。"
+        answer: "<strong>Chrome拡張機能はMacでも使えます。</strong><br>「Twitch Stream Helper」と「Comment Reader for Twitch」は、Google Chrome等のブラウザが動けばMacでも動作します。「Ichi Browser」はAndroid 14以降のarm64端末向け、「クリップ抽出くん」はWindows向けです。"
+      }
+    ]
+  },
+  {
+    title: "🌐 Ichi Browser",
+    items: [
+      {
+        question: "どの端末で使えますか？Google Playから入手できますか？",
+        answer: "<strong>現在はAndroid 14以降のarm64端末に対応しています。</strong><br>開発途中の先行公開版で、Google Playでは配布していません。<a href=\"/tools/ichi-browser/#download\">Ichi Browserの公式ページ</a>からAPKをダウンロードし、対応条件と既知の問題を確認してからインストールしてください。"
+      },
+      {
+        question: "Ichi Browserを最新版に更新するには？",
+        answer: "アプリの「メニュー」→「設定」→「アプリの更新を確認」から最新版を確認し、公式APKを上書きインストールしてください。<strong>更新のためにアンインストールすると、ブックマークや設定を失う場合があります。</strong>"
+      },
+      {
+        question: "ログインや決済がうまく動かないサイトがあります",
+        answer: "別窓との連携が必要な認証・決済など、一部のサイトや機能には制限があります。<a href=\"/tools/ichi-browser/#issues\">既知の問題</a>を確認し、解決しない場合は別のブラウザをご利用ください。不具合報告は、アプリ版・Android版・端末名・再現手順を添えて<a href=\"/support/\">サポート窓口</a>へお願いします。"
       }
     ]
   },
@@ -35,7 +52,7 @@ const faqGroups = [
       },
       {
         question: "不具合を見つけました",
-        answer: "<strong>ぜひご報告ください！</strong><br><a href=\"/support/\">サポートページ</a>から、GitHub IssueまたはX(Twitter)へのご連絡をお願いいたします。スクリーンショットや発生手順を添えていただけると、早期解決につながります。"
+        answer: "<strong>ぜひご報告ください！</strong><br><a href=\"/support/\">サポートページ</a>から、GitHub IssueまたはX（旧Twitter）へのご連絡をお願いいたします。スクリーンショットや発生手順を添えていただけると、早期解決につながります。パスワード、認証コード、個人情報は掲載しないでください。"
       }
     ]
   }
