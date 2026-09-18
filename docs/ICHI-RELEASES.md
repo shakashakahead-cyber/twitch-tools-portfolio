@@ -16,9 +16,10 @@
 3. アプリ側の `tools/package-preview.py --site <このcheckout> --ublock-source <同じ版の上流ソースZIP>` で配布物と manifest を整える。対応ソースと通知は毎回その APK に一致するものを使う。エンジン・uBOの版を変更した場合は、このスクリプトのソース入手先とライセンスページの固定バージョンも更新する。
 4. このリポジトリの GitHub Releases に `ichi-<versionName>` の **pre-release** を作成。APK・SHA256SUMS・uBO対応ソース・通知だけを添付する。アプリ側の private-source-snapshot.zip や秘密鍵、設定、ログはアップロードしない。
 5. 公開した添付ファイルの匿名ダウンロード、サイズ、SHA-256を確認してから、このサイトの変更を main へ push する。APKを先に公開し、最新版案内を後に切り替える。
-6. Cloudflare Pages の成功後、紹介ページ・JSONの Content-Type と no-store・APK・アプリ内の手動更新確認を確認する。
+6. アプリの非公開リポジトリでは、検証したソースのコミットに `v<versionName>` タグを付け、APKハッシュと公開ReleaseのURLを記録する。公開用タグ `ichi-<versionName>` はこのサイトのコミットを指すため、アプリのソースコミットと混同しない。
+7. Cloudflare Pages の成功後、紹介ページ・JSONの Content-Type と no-store・APK・アプリ内の手動更新確認を確認する。
 
-manifest の必須項目は `schemaVersion: 1`、`applicationId: dev.shaka.singlebrowser`、`channel: preview`、`abi: arm64-v8a`、整数の `versionCode`・`minSdk`、`versionName`。アプリは手動操作時だけ固定HTTPSへ問い合わせ、versionCodeを比較します。URLの自動実行や APK の自動インストールは行いません。ページのダウンロード先・サイズ・SHA-256は同じデータ原本から表示します。
+manifest の必須項目は `schemaVersion: 1`、`applicationId: dev.shaka.singlebrowser`、`channel: preview`、`abi: arm64-v8a`、整数の `versionCode`・`minSdk`、`versionName`。alpha34以降のアプリは約24時間ごとと手動操作時に固定HTTPSへ問い合わせ、versionCodeを比較します。新しい対応版は従量制でないWi-Fiで取得し、インストールは利用者が開始してAndroidで確認します。自動確認・取得は設定でOFFにできます。ページのダウンロード先・サイズ・SHA-256は同じデータ原本から表示します。
 
 Google Playは別工程です。新版に問題がある場合は、案内と manifest を以前の版へ戻して理由を記載し、修正版はさらに大きい versionCode で出します。すでに入った新しい版を、古い versionCode の APK で上書きすることはできません。
 
