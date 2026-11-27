@@ -9,7 +9,7 @@ import updateScreen from "../../../../public/images/ichi-browser/updates.png";
 const latest = releases[0];
 const size = (latest.sizeBytes / 1024 / 1024).toFixed(1);
 const title = "Ichi Browser（イチブラウザ）| 広告ブロック搭載のAndroid向け1タブブラウザ";
-const description = "Ichi Browser（イチブラウザ）は、タブを増やさず使える無料のAndroidブラウザ。uBlock Originの広告ブロック、ジェスチャー操作、端末内翻訳を搭載。Android 14以降のarm64端末向け先行公開版APKと使い方を案内します。";
+const description = "タブは、ひとつだけ。Ichi Browser（イチブラウザ）は、タブ管理の煩わしさから解放される、シンプルなAndroid向け1タブブラウザ。uBlock Originの広告ブロック、ジェスチャー操作、端末内翻訳を搭載。Android 14以降のarm64端末向け無料APKを配布しています。";
 const pageURL = new URL("/tools/ichi-browser/", Astro.site).href;
 const structuredData = {
   "@context": "https://schema.org",
@@ -47,20 +47,20 @@ const structuredData = {
   ],
 };
 const questions = [
-  ["Ichi Browser（イチブラウザ）とは？", "タブを増やさず、通常ひとつのページで閲覧するAndroid向けの無料ブラウザです。GeckoViewを閲覧エンジンに採用し、広告ブロックとジェスチャー操作を備えています。現在は開発途中の先行公開版です。"],
-  ["1タブでも、前に見ていたページに戻れますか？", "戻る・進むの操作で前後のページへ移動できます。よく使うページはホームやブックマークから開けます。複数ページをタブに残して切り替える使い方や、別窓との連携を前提とする認証・決済には制限があります。"],
+  ["Ichi Browser（イチブラウザ）とは？", "普段の閲覧でタブが増えないAndroid向けの無料ブラウザです。GeckoViewを閲覧エンジンに採用し、広告ブロックやジェスチャー操作を備えています。現在は開発途中の先行公開版です。"],
+  ["1タブでも、前に見ていたページに戻れますか？", "戻る・進むの操作で前後のページへ移動できます。よく使うページはホームやブックマークから開けます。複数ページをタブに残して切り替える使い方には向きません。認証・決済などの一時的な別窓は補助画面として扱いますが、実サービスごとに未確認の組み合わせがあります。"],
   ["広告ブロックは最初から使えますか？", "uBlock Originと日本語フィルターを同梱しています。盾のボタンからサイトごとに切り替えられます。すべての広告や動画広告の除去を保証するものではありません。表示が崩れる場合は、そのサイトでの設定を確認してください。"],
   ["どの端末にインストールできますか？", "Android 14以降のarm64端末が対象です。32bit ARM・x86端末、iPhone・iPadには対応していません。Google Playでは配布しておらず、このページから公式APKをダウンロードして導入します。"],
   ["ページの翻訳は外部サーバーに本文を送りますか？", "対応する言語・端末では端末内で翻訳し、ページ本文を外部の翻訳サーバーへ送る実装ではありません。初回に許可して言語データを取得します。プライベートモードでは翻訳できません。"],
   ["ブックマークの移行や端末間の同期はできますか？", "現在の先行公開版では、ブックマークのHTML移行と端末間の同期には対応していません。ブックマーク・履歴・設定などは端末内で管理します。更新時はアンインストールせず、同じ署名の公式APKを上書きしてください。"],
 ];
 const features = [
-  ["01", "タブを増やさない", "通常はひとつのページで閲覧。別タブ指定のリンクも同じ画面に開き、戻る・進むで移動できます。"],
-  ["02", "広告ブロックを同梱", "GeckoView と uBlock Origin を搭載。日本語フィルターを初期設定し、盾のボタンからサイトごとに切り替えられます。"],
-  ["03", "指の動きで操作", "上へ動かして左に曲げると戻る、右に曲げると進む。丸を描いて再読み込み。操作の割り当て変更や無効化もできます。"],
-  ["04", "自分のホームを作る", "よく見るサイトを追加して並べ替え。ブックマーク・履歴と入力候補に加え、必要なら RSS / Atom のニュースも表示できます。"],
-  ["05", "ページを端末内で翻訳", "対応する言語・端末でページを翻訳。初回に許可して言語データを取得し、本文は外部の翻訳サーバーへ送りません。"],
-  ["06", "使い方に合わせる", "アドレスバーの上下配置、明暗テーマ、文字サイズ、検索エンジンを変更。通常と分離したプライベートモードも備えています。"],
+  ["タブが増えない", "普段のリンクは同じ画面で開き、戻る・進むで移動。開いたタブを後から整理する手間を減らします。"],
+  ["広告ブロック", "uBlock Originと日本語フィルターを同梱。盾のボタンからサイトごとに設定できます。"],
+  ["片手でページを移動", "指を上へ動かして左に曲げると戻る、右に曲げると進む。丸を描くと再読み込みできます。"],
+  ["よく見るサイトをホームに", "サイトを登録して好きな順に並べ替え。ブックマークや履歴、必要に応じてRSS / Atomニュースも使えます。"],
+  ["ページを端末内で翻訳", "対応する言語・端末では、ページ本文を外部の翻訳サーバーに送らずに翻訳できます。"],
+  ["自分に合った設定", "アドレスバーの位置、明暗テーマ、文字サイズ、検索エンジン、ジェスチャーを変更。プライベートモードにも対応。"],
 ];
 ---
 <Layout title={title} description={description} image="/images/ichi-browser/icon.png" structuredData={structuredData}>
@@ -69,38 +69,130 @@ const features = [
     <header class="intro">
       <div>
         <nav class="breadcrumbs" aria-label="パンくずリスト"><a href="/">ホーム</a><span aria-hidden="true">/</span><a href="/tools/">ツール一覧</a><span aria-hidden="true">/</span><span aria-current="page">Ichi Browser</span></nav>
-        <p class="eyebrow">ANDROID BROWSER <span>先行公開版</span></p>
+        <p class="eyebrow">Android向けブラウザ <span>先行公開版</span></p>
         <div class="identity"><img src="/images/ichi-browser/icon.png" alt="" width="80" height="80" /><h1>Ichi Browser<span class="name-ja">イチブラウザ</span></h1></div>
-        <p class="lead">ひとつのページに、集中。</p>
-        <p class="summary">タブを増やさず使える、Android向けの1タブブラウザ。uBlock Originによる広告ブロックと、片手で戻る・進むができるジェスチャー操作で、いま見ているページに集中できます。</p>
-        <div class="actions"><a class="primary" href="#download">先行公開版をダウンロード</a><a href="#screenshots">画面を見る</a></div>
+        <p class="lead">タブは、ひとつだけ。</p>
+        <p class="summary">タブ管理の煩わしさから解放される、シンプルなブラウザ。</p>
+        <p class="hero-detail">リンクをたどっても、普段の閲覧でタブは増えません。広告ブロックと片手で使えるジェスチャー操作も備えています。</p>
+        <div class="actions"><a class="primary" href="#download">無料APKをダウンロード</a><a class="secondary" href="#screenshots">画面を見る</a></div>
         <p class="meta">Android 14 以降 / arm64 / 無料 / Google Play 未配布</p>
       </div>
-      <figure class="hero-screen"><Image src={homeScreen} alt="Ichi Browser のホーム。よく見るサイトとアドレス入力欄を表示" width={520} widths={[260, 520]} sizes="(max-width: 720px) 210px, 260px" format="webp" loading="eager" fetchpriority="high" /><figcaption>alpha40のホーム画面</figcaption></figure>
+      <figure class="hero-screen"><Image src={homeScreen} alt="Ichi Browser のホーム。よく見るサイトとアドレス入力欄を表示" width={520} widths={[260, 520]} sizes="(max-width: 720px) 210px, 260px" format="webp" loading="eager" fetchpriority="high" /><figcaption>公開済み alpha40 のホーム画面</figcaption></figure>
     </header>
-    <aside class="preview-note"><strong>先行公開版について</strong><p>開発途中の α 版です。サイトによって表示・認証・保存がうまくいかない場合があります。導入前に<a href="#issues">既知の問題と制限</a>をご確認ください。</p></aside>
-    <nav class="sections" aria-label="このページの内容"><a href="#features">特徴</a><a href="#screenshots">スクリーンショット</a><a href="#download">APK</a><a href="#install">導入手順</a><a href="#updates">更新方法</a><a href="#history">更新履歴</a><a href="#faq">よくある質問</a><a href="#issues">既知の問題</a></nav>
-    <section id="features"><h2>広告ブロック・ジェスチャーを備えた1タブブラウザ</h2><p>リンクをたどるたびにタブが増えてしまう方や、検索してひとつの記事を読む使い方に向けて開発しています。複数ページを開いたまま比較する用途では、1タブという仕様が制限になることもあります。</p><div class="features">{features.map(([n,title,text]) => <article><span>{n}</span><h3>{title}</h3><p>{text}</p></article>)}</div><p class="guide-link"><a href="/tools/ichi-browser/guide/">1タブブラウザとは？Ichi Browser の使い方・設定ガイド</a></p></section>
-    <section id="screenshots"><h2>実際の画面</h2><p>すべて {latest.versionName} の Release 版を Android 14 のテスト用エミュレーターで撮影しています。端末やテーマにより表示は異なります。</p><div class="screens">
+    <aside class="preview-note"><strong>先行公開版について</strong><p>開発途中のα版です。サイトによって表示・認証・保存がうまくいかない場合があります。導入前に<a href="#issues">既知の問題と制限</a>をご確認ください。</p></aside>
+    <nav class="sections" aria-label="このページの内容"><a href="#features">特徴</a><a href="#screenshots">実際の画面</a><a href="#download">ダウンロード</a><a href="#install">インストール</a><a href="#updates">更新方法</a><a href="#history">更新履歴</a><a href="#issues">既知の問題</a><a href="#faq">FAQ</a></nav>
+    <section id="features">
+      <h2>タブを管理しない使い方</h2>
+      <p class="section-intro">検索して記事を読む。よく見るサイトを開く。別のページに移動する。Ichiは、そんな日常の閲覧をひとつの画面で行うブラウザです。</p>
+      <div class="features">{features.map(([title,text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div>
+      <p class="note">複数ページをタブに残して比較する用途には向きません。認証・決済などでは、一時的な補助画面を使うことがあります。<a href="#issues">仕様と制限を確認する</a></p>
+      <p class="guide-link"><a href="/tools/ichi-browser/guide/">使い方・設定ガイド</a></p>
+    </section>
+    <section id="screenshots"><h2>実際の画面</h2><p class="section-intro">よく見るサイトへのアクセス、ジェスチャーの割り当て、アプリの更新。以下は公開済み alpha40 のRelease版をAndroid 14のテスト用エミュレーターで撮影した画面です。端末・テーマ・バージョンにより表示は異なります。</p><div class="screens">
       <figure><a href="/images/ichi-browser/home.png"><Image src={homeScreen} alt="ホーム画面。よく見るサイトを並べ、下部のナビゲーションから移動" width={480} widths={[240, 480]} sizes="(max-width: 440px) 230px, (max-width: 720px) 30vw, 240px" format="webp" loading="lazy" /></a><figcaption>よく見るサイトにすぐアクセス</figcaption></figure>
-      <figure><a href="/images/ichi-browser/gestures.png"><Image src={gestureScreen} alt="ジェスチャー設定。上から左右へ曲げる動きや丸に操作を割り当て" width={480} widths={[240, 480]} sizes="(max-width: 440px) 230px, (max-width: 720px) 30vw, 240px" format="webp" loading="lazy" /></a><figcaption>ジェスチャーを自分の操作に</figcaption></figure>
+      <figure><a href="/images/ichi-browser/gestures.png"><Image src={gestureScreen} alt="ジェスチャー設定。上から左右へ曲げる動きや丸に操作を割り当て" width={480} widths={[240, 480]} sizes="(max-width: 440px) 230px, (max-width: 720px) 30vw, 240px" format="webp" loading="lazy" /></a><figcaption>使いやすい操作に設定</figcaption></figure>
       <figure><a href="/images/ichi-browser/updates.png"><Image src={updateScreen} alt="設定画面のアプリ更新確認と公式配布ページへのリンク" width={480} widths={[240, 480]} sizes="(max-width: 440px) 230px, (max-width: 720px) 30vw, 240px" format="webp" loading="lazy" /></a><figcaption>設定から最新版を確認</figcaption></figure>
     </div></section>
-    <section id="download" class="download"><div><p class="eyebrow">LATEST PREVIEW</p><h2>Ichi Browser の無料APKダウンロード</h2><p><strong>{latest.versionName}</strong>（先行公開版）</p><p>{latest.publishedAt} 公開 · {size} MiB</p><p>Android 14 以降（API {latest.minSdk}+）の arm64 端末用です。32bit ARM・x86 端末では利用できません。</p><a class="primary" href={latest.apkUrl}>APK をダウンロード（{size} MiB）</a><p class="meta">GitHub Releases からダウンロードします。アプリ名は「Ichi」です。</p></div><div class="file-info"><h3>配布ファイルの確認</h3><p>アプリ ID：<code>dev.shaka.singlebrowser</code></p><p>SHA-256</p><code class="hash">{latest.sha256}</code><p><a href={latest.releaseUrl}>配布ファイル・チェックサム・ライセンス</a></p><p>更新時のアプリ削除は不要です。同じ署名の公式 APK を上書きしてください。</p></div></section>
-    <section id="install"><h2>AndroidへのAPKインストール方法</h2><ol class="steps">
+    <section id="download" class="download"><div><p class="eyebrow">最新版・先行公開版</p><h2>Ichi Browser をダウンロード</h2><p><strong>{latest.versionName}</strong>（先行公開版）</p><p>{latest.publishedAt} 公開 · {size} MiB</p><p>Android 14 以降（API {latest.minSdk}+）の arm64 端末用です。32bit ARM・x86 端末では利用できません。</p><a class="primary" href={latest.apkUrl}>APK をダウンロード（{size} MiB）</a><p class="meta">GitHub Releasesから公式APKを配布しています。インストール後のアプリ名は「Ichi」です。Google Playでは未配布です。</p><p><a href="#install">インストール方法</a> / <a href="#updates">すでにお使いの方へ</a></p></div><div class="file-info"><h3>配布ファイルの確認</h3><p>アプリ ID：<code>dev.shaka.singlebrowser</code></p><p>SHA-256</p><code class="hash">{latest.sha256}</code><p><a href={latest.releaseUrl}>配布ファイル・チェックサム・ライセンス</a></p><p>更新時のアプリ削除は不要です。同じ署名の公式 APK を上書きしてください。</p></div></section>
+    <section id="install"><h2>インストール方法</h2><ol class="steps">
       <li><strong>対応端末と空き容量を確認</strong><p>Android 14 以降の arm64 端末で、APK の保存とインストールに十分な空き容量を用意します。通信量が大きいため Wi-Fi をおすすめします。</p></li>
       <li><strong>このページから APK を保存</strong><p>上のダウンロードボタンを押し、完了後に通知または「ファイル」アプリから APK を開きます。</p></li>
       <li><strong>インストール元を一時的に許可</strong><p>Android が確認画面を表示したら、APK を開いたブラウザまたはファイルアプリの「この提供元のアプリを許可」を有効にします。画面の名称は端末により異なります。</p></li>
       <li><strong>インストールして「Ichi」を開く</strong><p>表示されたアプリ名を確認してインストールします。完了後は、先ほどの「この提供元のアプリを許可」をオフに戻せます。必要なら Ichi の設定から標準ブラウザに設定してください。</p></li>
     </ol><p class="note">Play Protect などがブロックした場合は、保護機能を無効にして進めず、表示内容を添えてお問い合わせください。インストールできない場合は、OS・端末の対応、空き容量、ダウンロードの完了を確認してください。</p></section>
-    <section id="updates"><h2>Ichi Browserを最新版に更新する方法</h2><p><strong>alpha32からは、上のAPKを保存して一度手動で上書き更新してください。</strong>更新のためにアンインストールする必要はありません。</p><p>alpha40では、約1日1回、最新版を自動確認します。新しい対応版があれば、従量制でないWi-Fi接続時にAPKを取得します。Androidの省電力設定などで確認が遅れる場合があります。</p><ol><li>更新の準備ができると、通常の閲覧画面に案内が表示されます。</li><li>「メニュー」→「設定」→「更新する」を押します。初回はIchiの「不明なアプリのインストール」を許可し、戻ってもう一度押してください。</li><li>Androidの確認画面で内容を確認して更新します。アプリ使用中に勝手にインストールされることはありません。</li></ol><p>「更新を自動で確認・ダウンロード」は設定でOFFにできます。OFFにしても手動確認とWi-Fiでの取得を利用できます。Wi-Fiが切れると取得を中断し、携帯回線では続けません。</p><p><strong>アンインストールするとブックマーク・履歴・設定などのアプリデータも失われます。</strong>同じ署名の公式APKを上書きしてください。Debug版とはデータを共有しません。</p><p><a href="/tools/ichi-browser/changelog/">更新履歴の専用ページ</a> / <a href={latest.releaseUrl}>配布履歴（GitHub）</a></p></section>
-    <section id="history"><h2>更新履歴</h2>{releases.map(release => <article class="release"><p class="meta">{release.publishedAt}</p><h3>{release.versionName} <span class="tag">先行公開版</span></h3><ul>{release.changes.map(change => <li>{change}</li>)}</ul><p><a href={release.apkUrl}>この版のAPKをダウンロード</a> / <a href={release.releaseUrl}>配布ファイル・対応ソース</a></p></article>)}</section>
+    <section id="updates"><h2>アプリを更新する</h2><p><strong>alpha32からは、上のAPKを保存して一度手動で上書き更新してください。</strong>更新のためにアンインストールする必要はありません。</p><p>alpha40では、約1日1回、最新版を自動確認します。新しい対応版があれば、従量制でないWi-Fi接続時にAPKを取得します。Androidの省電力設定などで確認が遅れる場合があります。</p><ol><li>更新の準備ができると、通常の閲覧画面に案内が表示されます。</li><li>「メニュー」→「設定」→「更新する」を押します。初回はIchiの「不明なアプリのインストール」を許可し、戻ってもう一度押してください。</li><li>Androidの確認画面で内容を確認して更新します。アプリ使用中に勝手にインストールされることはありません。</li></ol><p>「更新を自動で確認・ダウンロード」は設定でOFFにできます。OFFにしても手動確認とWi-Fiでの取得を利用できます。Wi-Fiが切れると取得を中断し、携帯回線では続けません。</p><p><strong>アンインストールするとブックマーク・履歴・設定などのアプリデータも失われます。</strong>同じ署名の公式APKを上書きしてください。Debug版とはデータを共有しません。</p><p><a href="/tools/ichi-browser/changelog/">更新履歴の専用ページ</a> / <a href={latest.releaseUrl}>配布履歴（GitHub）</a></p></section>
+    <section id="history" class="history"><h2>更新履歴</h2><p class="section-intro">各バージョンの変更点と過去の配布ファイルです。</p>{releases.map(release => <details class="release"><summary><span>{release.versionName}</span><span class="meta">{release.publishedAt}</span></summary><ul>{release.changes.map(change => <li>{change}</li>)}</ul><p><a href={release.apkUrl}>この版のAPKをダウンロード</a> / <a href={release.releaseUrl}>配布ファイル・対応ソース</a></p></details>)}<p class="guide-link"><a href="/tools/ichi-browser/changelog/">更新履歴の専用ページ</a></p></section>
     <section id="issues"><h2>既知の問題と制限</h2><h3>確認済みの問題</h3><ul><li>Web サイトの localStorage を変更した直後にアプリを強制終了すると、直前の変更が残らない場合があります。サイト内の下書きなどを強制終了直前まで保存できることは保証できません。</li></ul><h3>現在の仕様</h3><ul><li>ダウンロードは画面回転・バックグラウンド移行後も継続します。途中再開は対応する通常HTTPの配布元に限ります。Blob・プライベートの取得はプロセス終了後に再開できず、強制停止・電源断・認証失効などによる完了は保証できません。</li><li>認証・決済などの一時的な別窓に対応していますが、実サービスごとに未確認の組み合わせがあります。自動ポップアップは抑止し、補助画面は最大3段です。</li><li>プライベート中のファイル添付・翻訳、広告ブロック設定とサイト設定の変更は利用できません。</li><li>フォルダー選択、ファイル入力からの直接カメラ撮影、ブックマークの HTML 移行、端末間の同期は未対応です。</li><li>Web 通知と、別のオリジンの iframe からのカメラ・マイク等の要求は拒否します。</li><li>ページ内操作とジェスチャーが競合する場合は、設定で割り当てを変えるか無効にしてください。</li></ul><h3>確認が完了していない項目</h3><ul><li>Google パスキー用の承認は未取得です。Google パスワードマネージャーの実機自動入力、実アカウントでの各認証・決済、音声入力、端末ごとの連携には未確認の組み合わせがあります。</li><li>すべての動画広告の除去、DRM 動画、すべてのサイトの動作は保証していません。</li><li>長期間の安定性、性能・アクセシビリティの網羅的な検証は継続中です。</li></ul><p>うまく動かないサイトでは、お使いの別のブラウザをご利用ください。</p></section>
-    <section id="faq" class="faq"><h2>Ichi Browser のよくある質問</h2>{questions.map(([question, answer]) => <details><summary>{question}</summary><p>{answer}</p></details>)}<p class="guide-link"><a href="/tools/ichi-browser/guide/">操作と設定については使い方ガイドへ</a></p></section>
-    <section class="support"><h2>開発者・お問い合わせ</h2><p>設定の「不具合を報告・要望を送る」からフォームを開けます。環境情報の添付は選択でき、画像添付や返信希望はメールアプリから送れます。送信前に内容を確認してください。</p><p>Ichi Browser は<a href="/about/">暁左衛門（Akatsukizaemon）</a>が開発・配布しています。</p><p>アプリの版、Android の版、端末名、再現する手順を添えて<a href="/support/">サポート窓口</a>へご連絡ください。パスワード、認証コード、個人情報を含む画面や URL は送らないでください。</p><p><a href="/privacy/ichi-browser/">プライバシーポリシー</a> / <a href="/tools/ichi-browser/licenses/">ライセンス・対応ソース</a></p></section>
+    <section id="faq" class="faq"><h2>よくある質問</h2>{questions.map(([question, answer]) => <details><summary>{question}</summary><p>{answer}</p></details>)}<p class="guide-link"><a href="/tools/ichi-browser/guide/">操作と設定については使い方ガイドへ</a></p></section>
+    <section class="support"><h2>お問い合わせ</h2><p>設定の「不具合を報告・要望を送る」からフォームを開けます。環境情報の添付は選択でき、画像添付や返信希望はメールアプリから送れます。送信前に内容を確認してください。</p><p>Ichi Browser は<a href="/about/">暁左衛門（Akatsukizaemon）</a>が開発・配布しています。</p><p>アプリの版、Android の版、端末名、再現する手順を添えて<a href="/support/">サポート窓口</a>へご連絡ください。パスワード、認証コード、個人情報を含む画面や URL は送らないでください。</p><p><a href="/privacy/ichi-browser/">プライバシーポリシー</a> / <a href="/tools/ichi-browser/licenses/">ライセンス・対応ソース</a></p></section>
   </main>
 </Layout>
 <style>
-.breadcrumbs{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:.875rem}.name-ja{display:block;font-size:1rem;font-weight:400;letter-spacing:.06em;color:#cbd5e1;margin-top:8px}.guide-link{margin-top:28px}.faq details{border-top:1px solid #334155;padding:18px 0}.faq summary{cursor:pointer;font-size:1.125rem;font-weight:700;color:#f1f5f9}.faq summary:focus-visible{outline:3px solid #6ee7b7;outline-offset:5px}.faq details p{margin:14px 0 0}
-.ichi{max-width:1160px;margin:auto;padding:100px 24px 64px;font-size:1rem;line-height:1.9;color:#cbd5e1}.ichi a{color:#6ee7b7;text-underline-offset:5px}.ichi a:hover{text-decoration:underline}.ichi a:focus-visible{outline:3px solid #6ee7b7;outline-offset:5px}.intro{display:grid;grid-template-columns:1.4fr .65fr;align-items:center;gap:72px;padding:16px 0 56px}.back{font-size:.875rem}.eyebrow{font-size:.875rem;letter-spacing:.12em;color:#6ee7b7;margin:32px 0 18px}.eyebrow span,.tag{display:inline-block;background:#064e3b;color:#a7f3d0;padding:3px 12px;border-radius:5px;font-size:.875rem;letter-spacing:0}.identity{display:flex;gap:20px;align-items:center}.identity img{border-radius:18px;width:72px;height:72px}h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.3;font-weight:700;color:white}.lead{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:white;line-height:1.6;margin-top:28px}.summary{font-size:1.125rem;margin:20px 0 28px}.actions{display:flex;flex-wrap:wrap;align-items:center;gap:24px}.ichi .primary{display:inline-block;background:#047857;color:white;border-radius:8px;padding:14px 22px;font-weight:700;text-decoration:none}.ichi .primary:hover{background:#059669}.meta{font-size:.875rem;color:#94a3b8;margin-top:14px}.hero-screen{max-width:260px;justify-self:center}.hero-screen img,.screens img{width:100%;height:auto;border-radius:18px;border:1px solid #475569;background:#17665b}.hero-screen img{box-shadow:0 30px 90px #0006}figcaption{font-size:.875rem;text-align:center;margin-top:14px;color:#94a3b8}.preview-note{padding:20px 24px;border-left:3px solid #fbbf24;background:#1e293b;border-radius:0 8px 8px 0}.preview-note strong{color:#fde68a}.preview-note p{margin:4px 0 0}.sections{display:flex;flex-wrap:wrap;gap:14px 26px;padding:24px 0;border-bottom:1px solid #334155;font-size:.875rem}.ichi section{padding:56px 0;scroll-margin-top:20px;border-bottom:1px solid #334155}h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:white;line-height:1.5;margin-bottom:24px}h3{font-size:1.125rem;color:#f1f5f9;font-weight:700;margin:24px 0 8px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}.features article span{font-size:.875rem;color:#6ee7b7}.features h3{margin-top:8px}.features p{margin:0}.screens{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin:30px auto 0;max-width:890px}.screens img{max-width:240px;display:block;margin:auto}.download{display:grid;grid-template-columns:1fr 1fr;gap:40px}.download .eyebrow{margin-top:0}.download .primary{margin-top:20px}.file-info{padding:20px 24px;background:#1e293b;border-radius:12px;min-width:0}.file-info h3{margin-top:0}code{overflow-wrap:anywhere;font-size:.875rem}.hash{display:block;line-height:1.8;padding:10px;background:#0f172a;border-radius:6px}.ichi p{margin-bottom:12px}.ichi ul{list-style:disc;padding-left:1.5em}.ichi ol{list-style:decimal;padding-left:1.5em}.ichi li{padding-left:6px;margin-bottom:12px}.steps li{margin-bottom:24px}.steps strong{color:white}.steps p{margin:4px 0}.note{padding:20px 24px;background:#1e293b;border-radius:8px}.release{border-left:2px solid #34d399;padding-left:24px}.release h3{margin-top:4px}.support{border-bottom:none!important}@media(max-width:720px){.ichi{padding-top:88px}.intro{grid-template-columns:1fr;gap:32px}.hero-screen{max-width:210px}.features{grid-template-columns:1fr 1fr;gap:28px}.screens{gap:16px}.screens figcaption{font-size:.875rem}.download{grid-template-columns:1fr;gap:20px}.identity{gap:14px}.identity img{width:56px;height:56px}.ichi section{padding:40px 0}}@media(max-width:440px){.features{grid-template-columns:1fr}.screens{grid-template-columns:1fr;gap:30px}.screens img{max-width:230px}.ichi{padding-left:20px;padding-right:20px}}
+  .ichi{--accent:#99e4ce;--muted:#aebfc1;--line:#344744;--surface:#192b2b;max-width:1160px;margin:auto;padding:100px 24px 64px;font-size:1rem;line-height:1.85;color:#d4e0df}
+  .ichi a{color:var(--accent);text-underline-offset:5px}
+  .ichi a:hover{text-decoration:underline}
+  .ichi a:focus-visible,.ichi summary:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+  .ichi p{margin:0 0 12px}
+  .intro{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.7fr);align-items:center;gap:clamp(28px,5vw,64px);padding:clamp(28px,5vw,56px);background:#f7faf6;color:#263c36;border:1px solid #dce8de;border-radius:24px}
+  .breadcrumbs{display:flex;flex-wrap:wrap;gap:6px 10px;font-size:.8rem;margin-bottom:34px;color:#52665e}
+  .ichi .intro a{color:#17665b}
+  .ichi .intro a:focus-visible{outline-color:#17665b}
+  .eyebrow{font-size:.85rem;font-weight:600;letter-spacing:.04em;color:var(--accent)}
+  .intro .eyebrow{color:#49645a;margin-bottom:18px}
+  .eyebrow span{display:inline-block;background:#e1ece5;color:#31574a;padding:2px 10px;border-radius:5px;font-size:.8rem;letter-spacing:0}
+  .identity{display:flex;gap:16px;align-items:center}
+  .identity img{border-radius:15px;width:64px;height:64px;flex:none}
+  h1{font-size:clamp(1.55rem,3vw,2.25rem);line-height:1.2;font-weight:700;color:#234d3d}
+  .name-ja{display:block;font-size:.875rem;font-weight:400;color:#52665e;margin-top:6px}
+  .intro .lead{font-size:clamp(1.9rem,4.1vw,3.35rem);font-weight:700;color:#234d3d;line-height:1.35;letter-spacing:-.035em;margin:28px 0 16px}
+  .intro .summary{font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.7;color:#263c36;margin-bottom:16px}
+  .intro .hero-detail{max-width:42ch;color:#52665e;font-size:.95rem;margin-bottom:28px}
+  .actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+  .ichi .primary,.ichi .intro .primary{display:inline-block;background:#17665b;color:#fff;border-radius:9px;padding:13px 22px;font-weight:700;text-decoration:none}
+  .ichi .primary:hover,.ichi .intro .primary:hover{background:#124e46}
+  .ichi .intro .secondary{font-weight:600;text-decoration:underline}
+  .meta{font-size:.875rem;color:var(--muted)}
+  .intro .meta{color:#52665e;font-size:.8rem;margin:14px 0 0}
+  .hero-screen{width:100%;max-width:245px;justify-self:center;margin:0}
+  .hero-screen img,.screens img{width:100%;height:auto;border-radius:18px;border:1px solid #4b615c;background:#17665b}
+  .hero-screen img{border-color:#d5e1d8;box-shadow:0 18px 45px #234d3d1f}
+  figcaption{font-size:.875rem;text-align:center;margin-top:12px;color:var(--muted)}
+  .hero-screen figcaption{color:#52665e}
+  .preview-note{margin:22px 0 0;padding:16px 20px;border-left:3px solid #d4ad65;background:#26312e;border-radius:0 8px 8px 0;font-size:.9rem}
+  .preview-note strong{color:#f5db9d}
+  .preview-note p{margin:4px 0 0}
+  .sections{display:flex;flex-wrap:wrap;gap:10px 22px;padding:24px 0;border-bottom:1px solid var(--line);font-size:.875rem}
+  .ichi section{padding:52px 0;scroll-margin-top:88px;border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(1.45rem,3vw,1.95rem);font-weight:700;color:#f2f7f3;line-height:1.5;margin:0 0 20px}
+  h3{font-size:1.1rem;color:#f2f7f3;font-weight:700;margin:24px 0 8px}
+  .section-intro{max-width:72ch}
+  .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:28px 0}
+  .features article{padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+  .features h3{margin:0 0 10px;color:#e4f4eb}
+  .features p{margin:0;font-size:.95rem}
+  .ichi .guide-link{margin:20px 0 0}
+  .screens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:28px auto 0;max-width:890px}
+  .screens figure{margin:0}
+  .screens img{max-width:235px;display:block;margin:auto}
+  .ichi .download{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:clamp(22px,4vw,36px);margin-top:32px}
+  .download .primary{margin:12px 0 10px}
+  .file-info{padding:20px;background:#122321;border:1px solid var(--line);border-radius:12px;min-width:0}
+  .file-info h3{margin-top:0}
+  code{overflow-wrap:anywhere;font-size:.875rem}
+  .hash{display:block;line-height:1.7;padding:10px;background:#0e1d1c;border-radius:6px;margin-bottom:10px}
+  .ichi ul{list-style:disc;padding-left:1.5em}
+  .ichi ol{list-style:decimal;padding-left:1.5em}
+  .ichi li{padding-left:4px;margin-bottom:10px}
+  .steps li{margin-bottom:20px}
+  .steps strong{color:#f2f7f3}
+  .steps p{margin:4px 0 0}
+  .note{padding:16px 20px;background:var(--surface);border-radius:9px;font-size:.95rem}
+  .faq details,.release{border-top:1px solid var(--line);padding:16px 0}
+  .faq details:last-of-type,.release:last-of-type{border-bottom:1px solid var(--line)}
+  .faq summary,.release summary{cursor:pointer;font-size:1.05rem;font-weight:600;color:#f2f7f3}
+  .release summary .meta{display:inline-block;margin-left:14px;font-weight:400}
+  .faq details p,.release ul{margin:12px 0 0}
+  .release p{margin-top:12px}
+  .ichi .support{border-bottom:0}
+  @media(max-width:720px){
+    .ichi{padding-top:88px}
+    .intro{grid-template-columns:minmax(0,1fr);gap:28px}
+    .hero-screen{max-width:210px}
+    .features{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .features article{padding:18px}
+    .screens{gap:16px}
+    .ichi .download{grid-template-columns:minmax(0,1fr);gap:20px}
+    .ichi section{padding:36px 0}
+  }
+  @media(max-width:480px){
+    .ichi{padding-left:16px;padding-right:16px}
+    .intro{padding:24px 20px;border-radius:16px}
+    .breadcrumbs{margin-bottom:22px}
+    .identity img{width:52px;height:52px}
+    .identity{gap:12px}
+    .features,.screens{grid-template-columns:1fr}
+    .screens{gap:24px}
+    .screens img{max-width:230px}
+    .actions{align-items:flex-start;flex-direction:column}
+  }
 </style>
